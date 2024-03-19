@@ -26,16 +26,21 @@
             $getname=$_POST['getname'];
             $getpassword=$_POST['getpassword'];
 
-            $sql1="select * from users where user_name = '$getname' and password='$getpassword';";
-            $sqlres=mysqli_query($connect, $sql1);
-            $countrows=mysqli_num_rows($sqlres);
+            $query = "select * from users where user_name = '$getname' and password='$getpassword'";
 
+            $result = $mysqli->query($query);
+
+            $countrows=mysqli_num_rows($result);
+
+            $user_details = $result->fetch_assoc();
+            
             if($countrows == 0){
                 echo "account not available. Please <a href='index.php'>Sign Up.</a>";
             }else{
                 session_start();
                 $_SESSION['loggedin']=true;
                 $_SESSION['sendusername']=$getname;
+                $_SESSION['authlevel'] = $user_details['authlevel'];
                 header("location: dashboard.php"); 
             }
            }
