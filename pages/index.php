@@ -42,11 +42,11 @@ if (isset($_POST['editPage'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Gulpener Turnclub</title>
 </head>
 <body>
     <!-- Logout form -->
-    <form method="POST" action="dashboard.php">
+    <form method="POST" action="index.php">
         <button type="submit" name="logoutsub">Log out</button>
     </form>
 </body>
