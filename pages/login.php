@@ -17,6 +17,9 @@
 
           
             <button type="submit" name="logIn">Log in</button>
+
+            <span>sign up instead</span>
+            <a href='signUp.php'>Sign Up.</a>
          </form>
 
          <?php
@@ -35,13 +38,13 @@
             $user_details = $result->fetch_assoc();
             
             if($countrows == 0){
-                echo "account not available. Please <a href='index.php'>Sign Up.</a>";
+                exit;
             }else{
                 session_start();
                 $_SESSION['loggedin']=true;
                 $_SESSION['sendusername']=$getname;
                 $_SESSION['authlevel'] = $user_details['authlevel'];
-                header("location: dashboard.php"); 
+                header("location: index.php"); 
             }
            }
          ?>

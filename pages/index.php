@@ -1,57 +1,53 @@
+<?php
+session_start();
+
+// Check if user is logged in
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
+    header("location: login.php");
+    exit; 
+}
+
+// Display welcome message
+echo "Welcome " . $_SESSION['sendusername'];
+
+// Check if user is admin
+if ($_SESSION['authlevel'] > 1)
+{
+    echo "Dit is een user";
+}
+
+if ($_SESSION['authlevel'] <= 1) {
+    echo '<form method="post">
+              <button type="submit" name="editPage">Edit Page</button>
+          </form>';
+}
+
+
+// Handle logout
+if (isset($_POST['logoutsub'])) {
+    session_unset();
+    session_destroy();
+    header("location: login.php");
+    exit;
+}
+
+if (isset($_POST['editPage'])) {
+    header("location: editPage.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
 </head>
 <body>
-    <div class="containerIndex">
-        <h1>Sign up</h1>
-        <form action="" method="POST">
-            <span>Name:</span> <br />
-            <input type="text" name="getname" /> <br />
-
-            <span>Email:</span> <br />
-            <input type="text" name="getemail" /> <br />
-
-            <span>Password:</span> <br />
-            <input type="password" name="getpassword" /> <br />
-
-            <span>Confirm Password:</span> <br />
-            <input type="password" name="confirmgetpassword" /> <br />
-
-            <button id="signUpButton" name="signUp">Confirm</button>
-        </form>
-
-        <?php
-        if(isset($_POST["signUp"])){
-          require __DIR__ . "\partials\_dbcon.php";
-            $getname=$_POST["getname"];
-            $getemail=$_POST["getemail"];
-            $getpassword=$_POST["getpassword"];
-            $confirmgetpassword=$_POST["confirmgetpassword"];
-
-            $sql="select user_name from users where user_name ='$getname'";
-            $sqlres=mysqli_query($connect, $sql);
-            $rowcount=mysqli_num_rows($sqlres);
-
-            if($rowcount != 0){
-                echo "User name not available";
-            }
-            if($getpassword != $confirmgetpassword){
-                echo "password is not equal to confirmation field";
-            }
-            if(($rowcount ==0) && ($getpassword == $confirmgetpassword)){
-                echo "YAYYYYY";
-                $gotologin = "<a href='login.php'>log in.</a>";
-                echo $gotologin;
-
-                $sql="insert into users (user_name, email, password) value ('$getname', '$getemail','$getpassword')";
-                $sqlres=mysqli_query($connect, $sql);
-            }
-        }
-        ?>
-    </div>
+    <!-- Logout form -->
+    <form method="POST" action="dashboard.php">
+        <button type="submit" name="logoutsub">Log out</button>
+    </form>
 </body>
 </html>

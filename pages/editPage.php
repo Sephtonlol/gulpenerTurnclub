@@ -1,5 +1,7 @@
 <?php
-if ($_SESSION['admin'] != 1) {
+session_start();
+
+if ($_SESSION['authlevel'] > 1) {
     header("location: index.php");
     exit;
 }
