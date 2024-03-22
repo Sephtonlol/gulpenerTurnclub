@@ -1,16 +1,14 @@
 <?php
 session_start();
 
-// Check if user is logged in
+
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
     header("location: login.php");
     exit; 
 }
 
-// Display welcome message
 echo "Welcome " . $_SESSION['sendusername'];
 
-// Check if user is admin
 if ($_SESSION['authlevel'] > 1)
 {
     echo "Dit is een user";
@@ -18,12 +16,15 @@ if ($_SESSION['authlevel'] > 1)
 
 if ($_SESSION['authlevel'] <= 1) {
     echo '<form method="post">
-              <button type="submit" name="editPage">Edit Page</button>
-          </form>';
+            <button type="submit" name="editPage">Edit Page</button>
+        </form>';
+
+    echo '<form method="post">
+            <button type="submit" name="newBlog">new blog</button>
+        </form>';
 }
 
 
-// Handle logout
 if (isset($_POST['logoutsub'])) {
     session_unset();
     session_destroy();
@@ -33,6 +34,12 @@ if (isset($_POST['logoutsub'])) {
 
 if (isset($_POST['editPage'])) {
     header("location: editPage.php");
+    exit;
+}
+
+
+if (isset($_POST['newBlog'])) {
+    header("location: newBlog.php");
     exit;
 }
 ?>
@@ -45,7 +52,6 @@ if (isset($_POST['editPage'])) {
     <title>Gulpener Turnclub</title>
 </head>
 <body>
-    <!-- Logout form -->
     <form method="POST" action="index.php">
         <button type="submit" name="logoutsub">Log out</button>
     </form>

@@ -15,6 +15,6 @@ if ($_SESSION['authlevel'] > 1) {
     <title>Gulpener Turnclub</title>
 </head>
 <body>
-    <span>HEYYYYYYY ADMIN VAN ME, wat ben je aardig!!!</span>
+    <span>HEYYYYYYY ADMIN VAN ME</span>
 </body>
 </html>
