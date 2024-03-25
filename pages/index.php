@@ -7,12 +7,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
     exit; 
 }
 
-echo "Welcome " . $_SESSION['sendusername'];
-
-if ($_SESSION['authlevel'] > 1)
-{
-    echo "Dit is een user";
-}
+echo "Welkom " . $_SESSION['sendusername'];
 
 if ($_SESSION['authlevel'] <= 1) {
     echo '<form method="post">
@@ -20,7 +15,7 @@ if ($_SESSION['authlevel'] <= 1) {
         </form>';
 
     echo '<form method="post">
-            <button type="submit" name="newBlog">new blog</button>
+            <button type="submit" name="newBlog">nieuw blogpost</button>
         </form>';
 }
 
@@ -42,6 +37,7 @@ if (isset($_POST['newBlog'])) {
     header("location: newBlog.php");
     exit;
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -53,7 +49,25 @@ if (isset($_POST['newBlog'])) {
 </head>
 <body>
     <form method="POST" action="index.php">
-        <button type="submit" name="logoutsub">Log out</button>
+        <button type="submit" name="logoutsub">Log out</button> <br>
+
+        <form>
+            <span>Blog</span> <br>
+
+        <?php
+
+        require __DIR__ . "\partials\_dbcon.php";
+
+        $query = "Select * from blog";
+        
+        $result = $mysqli->query($query);
+        
+        while ($row = $result->fetch_assoc()) {
+            echo $row["title"] . "<br>";
+            echo $row["content"] . "<br>";
+        }
+        ?>
+        </form>
     </form>
 </body>
 </html>

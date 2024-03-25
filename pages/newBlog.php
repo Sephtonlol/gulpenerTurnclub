@@ -12,21 +12,28 @@ include "partials/_dbcon.php"
     <title>Gulpener Turnclub</title>
 </head>
 <body>
-    <form>
-        <input type="text" name="title">
-        <textarea name="content"></textarea>
+<form>
+        <input type="text" name="title"> <br>
+        <textarea name="content"></textarea> <br>
         <button name="new_post">Add post</button>
     </form>
 
     <?php
     session_start();
+    require __DIR__ . "\partials\_dbcon.php";
 
-    if(isset($_REQUEST['new_post'])){
-        echo "yyyyyyyyyyyyyyyyyy";
-        $title = $_POST['title'];
-        $content = $_POST['content'];
+    if ($_SESSION['authlevel'] > 1) {
+        header("location: index.php");
+        exit;
+    }
 
-        $sql = "INSERT INTO data(title, content) VALUES ('$title', '$content')";
+    if(isset($_REQUEST["new_post"])){
+        echo "Blog toegevoegd!";
+        $title=$_REQUEST["title"];
+        $content=$_REQUEST["content"];
+
+        $sql="insert into blog (title, content) value ('$title', '$content')";
+        $sqlres=mysqli_query($connect, $sql);
     }
 
 

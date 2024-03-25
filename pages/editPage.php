@@ -15,6 +15,6 @@ if ($_SESSION['authlevel'] > 1) {
     <title>Gulpener Turnclub</title>
 </head>
 <body>
-    <span>HEYYYYYYY ADMIN VAN ME</span>
+    <span>dit is de edit pagina pagina</span>
 </body>
 </html>
