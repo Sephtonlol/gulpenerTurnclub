@@ -34,8 +34,16 @@
     }
     
     
-  .footer{
-  width: auto;
-  background-color: #5A7284;
-  height: 200px ;
+    .footer {
+      background: #627170;
+      text-align: justify;
+      margin-bottom: -25px;
+      height: 100px;
+
+  }
+
+  .containerLogin {
+    display: flex;
+    flex-direction: row;
+  
   }
