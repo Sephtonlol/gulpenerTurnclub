@@ -56,16 +56,27 @@ if (isset($_POST['newBlog'])) {
 
         <?php
 
-        require __DIR__ . "\partials\_dbcon.php";
+require __DIR__ . "/partials/_dbcon.php";
 
-        $query = "Select * from blog";
-        
-        $result = $mysqli->query($query);
-        
-        while ($row = $result->fetch_assoc()) {
-            echo $row["title"] . "<br>";
-            echo $row["content"] . "<br>";
-        }
+$query = "SELECT * FROM blog";
+
+$result = $mysqli->query($query);
+
+while ($row = $result->fetch_assoc()) {
+    $blogId = $row["blog_id"];
+    $title = $row["title"];
+    $content = $row["content"];
+    
+    echo $title . "<br>";
+    echo $content . "<br>";
+
+    // Find the image file
+    $imagePath = "../assets/images/blogimages/{$blogId}.png"; // Assuming the image extension is jpg
+    if (file_exists($imagePath)) {
+        echo "<img src=\"$imagePath\" alt=\"$title\"><br>";
+    }
+}
+
         ?>
         </form>
     </form>
