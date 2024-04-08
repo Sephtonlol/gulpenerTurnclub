@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gulpener Turnclub</title>
+    <link rel="stylesheet" href="..\styling\login.css">
 </head>
 <body>
-<form method="POST">
-            
 
+    <div class=card>
+        <div class=text.center>
+        <form method="POST">
+            
+        
             <span for="">Name: </span><br>
             <input type="text" name="getname"><br>
 
@@ -21,6 +25,12 @@
             <span>sign up instead</span>
             <a href='signUp.php'>Sign Up.</a>
          </form>
+</div>
+    </div>
+
+    <div class= card2> 
+        
+    </div> 
 
          <?php
            if(isset($_POST['logIn'])){
@@ -50,4 +60,10 @@
          ?>
 
 </body>
+
+<footer>
+
+
+
+        </footer>
 </html>

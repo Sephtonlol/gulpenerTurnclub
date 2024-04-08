@@ -1,0 +1,41 @@
+:root {
+    --main: #407094;
+    --secondary: #5A7284;
+  }
+
+.card {
+   background-color: var(--main);
+   border-radius: 8px; 
+   padding: 30px; 
+   height: 500px;
+   width: 600px;
+   bottom: -160px;
+   left: 9%;
+   position: relative;
+  
+   align-items: center;
+  }
+
+  .card2 {
+    background-color: var(--main);
+    border-radius: 8px;
+    padding: 30px;
+    height: 500px;
+    width: 300px;
+    bottom: 400px;
+    left: 66%;
+    position: relative;
+  }
+
+  .text-center {
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    }
+    
+    
+  .footer{
+  width: auto;
+  background-color: #5A7284;
+  height: 200px ;
+  }
