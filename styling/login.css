@@ -46,4 +46,11 @@
     display: flex;
     flex-direction: row;
   
+<<<<<<< Updated upstream
+=======
+  }
+  html, body { 
+max-height: 100%;
+
+>>>>>>> Stashed changes
   }

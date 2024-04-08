@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="..\styling\login.css">
 </head>
 <body>
+    <div class="containerLogin">
 
     <div class=card>
         <div class=text.center>
@@ -61,9 +62,10 @@
 
 </body>
 
-<footer>
+<div class='footer'>
+<span>ifoewofihewo;fhewpfhewpfhewpfhewfhewfgewfgewohfoewfpewhf;osbycr;3nuv;linuvfli3 uvfoi;emjv;i43muvrlu34uflbqnqqn bananan vbananan</span>
 
 
-
-        </footer>
+ </footer>
+ </div>
 </html>
