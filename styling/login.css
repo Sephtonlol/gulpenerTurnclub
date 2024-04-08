@@ -28,7 +28,7 @@
   }
 
   .text-center {
-    display:flex;
+    display:flex; 
     }
     
     
@@ -50,4 +50,8 @@
   html, body { 
   max-height: 100%;
 
+  }
+  .footer-text {  
+
+  margin-left: auto;
   }

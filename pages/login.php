@@ -64,7 +64,7 @@
 
 <div class='footer'>
 
-<footer-text>lorum lorum banaan, abacadabra </footer-text>
+<div class='footer-text'>lorum lorum banaan, abacadabra </footer-text>
 <div-whitespace> </div-whitespace> 
 
  </footer>
