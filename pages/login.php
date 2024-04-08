@@ -63,8 +63,9 @@
 </body>
 
 <div class='footer'>
-<span>ifoewofihewo;fhewpfhewpfhewpfhewfhewfgewfgewohfoewfpewhf;osbycr;3nuv;linuvfli3 uvfoi;emjv;i43muvrlu34uflbqnqqn bananan vbananan</span>
 
+<footer-text>lorum lorum banaan, abacadabra </footer-text>
+<div-whitespace> </div-whitespace> 
 
  </footer>
  </div>
