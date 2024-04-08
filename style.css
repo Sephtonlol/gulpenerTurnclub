@@ -1,0 +1,117 @@
+/* Standaard body-styling */
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('images/Bgbanner.jpg');
+    background-repeat: no-repeat;
+    font-family: "Arial", sans-serif;
+    position: relative; 
+}
+
+body::after {
+    content: '';
+    display: block;
+    width: 24%;
+    height: 0;
+    border-bottom: 3px solid white; /* Veranderd van background-color naar border-bottom */
+    margin: -335px auto 30px; /* Aanpassing van de marges om het iets hoger en horizontaal te centreren */
+}
+
+/* Logo */
+div#Logo images {
+    width: 150px; 
+    height: auto; 
+    margin-top: 20px; 
+    margin-left: 20px; 
+}
+
+/* Log-in icoon */
+.rectangle {
+    width: 130px; 
+    height: 35px; 
+    background-color: #89b5d6; 
+    position: absolute;
+    margin-top: 30px;
+    margin-right: 20px;
+    border-radius: 25px;
+    top: 0;
+    right: 0;
+    
+}
+
+.rectangle::after {
+    content: attr(data-text); /* Insert the text content from the 'data-text' attribute */
+}
+
+/* Inlog button text */
+.text-rectangle {
+    margin-left: 1323px;
+    margin-top: -97px;
+    position: absolute;
+    font-size: 17px;
+    font-family: "Calibri", sans-serif;
+    font-weight: 500;
+    color: white;
+}
+
+/* Title boven navigatie*/
+#text {
+    margin-top: 20px; 
+}
+
+/* Title boven navigatie */
+#text h1 {
+    color: white;
+    font-size: 97px;
+    margin: 80px 0 0; /* top left bottom */
+    text-align: center;
+    font-family: "Archivo Black", sans-serif;
+}
+
+#text p {
+    color: white;
+    font-size: 24px;
+    margin: 0 0 60px; /* top left bottom */
+    text-align: center;
+}
+
+
+
+/* Navigatie */
+#navigatie-container {
+    position: absolute;
+    margin-top: -50px;
+    width: 100%; /* Cover the entire viewport width */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; /* Ensure the navigation container is on top of the background image */
+    padding: 20px; /* Adjust padding as needed */
+}
+
+#navigatie-container ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #67737C;
+    opacity: 0.8;
+}
+
+#navigatie-container li {
+    display: inline-block; /* Display list items inline */
+}
+
+#navigatie-container li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Color change voor de navigatie balk */
+#navigatie-container li a:hover {
+    background-color: #111;
+}
+
+
