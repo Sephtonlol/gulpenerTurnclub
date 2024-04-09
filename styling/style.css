@@ -4,8 +4,7 @@ body {
     padding: 0;
     background-image: url('images/Bgbanner.jpg');
     background-repeat: no-repeat;
-    font-family: "Arial", sans-serif;
-    position: relative; 
+    font-family: "Arial", sans-serif; 
 }
 
 body::after {
@@ -13,12 +12,17 @@ body::after {
     display: block;
     width: 24%;
     height: 0;
-    border-bottom: 3px solid white; /* Veranderd van background-color naar border-bottom */
-    margin: -335px auto 30px; /* Aanpassing van de marges om het iets hoger en horizontaal te centreren */
+    border-bottom: 3px solid white; 
+    margin: -325px auto 30px; 
+}
+
+.banner {
+    margin-top: 50px;
+    margin-left: 50px;
 }
 
 /* Logo */
-div#Logo images {
+div#Logo img {
     width: 150px; 
     height: auto; 
     margin-top: 20px; 
@@ -40,7 +44,7 @@ div#Logo images {
 }
 
 .rectangle::after {
-    content: attr(data-text); /* Insert the text content from the 'data-text' attribute */
+    content: attr(data-text); 
 }
 
 /* Inlog button text */
