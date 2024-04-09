@@ -39,16 +39,17 @@
             $rowcount=mysqli_num_rows($sqlres);
 
             if($rowcount != 0){
-                echo "User name not available";
+                echo "User name not available or password is not equal to password confirmation";
             }
             if($getpassword != $confirmgetpassword){
-                echo "password is not equal to confirmation field";
+                echo "User name not available or password is not equal to password confirmation";
             }
             if(($rowcount ==0) && ($getpassword == $confirmgetpassword)){;
-                echo "<span>YAYYYYYY JE HEBT EEN ACCOUNT GEMAAKT</span>";
-
+                
                 $sql="insert into users (user_name, email, password) value ('$getname', '$getemail','$getpassword')";
                 $sqlres=mysqli_query($connect, $sql);
+                
+                echo "<span>YAYYYYYY JE HEBT EEN ACCOUNT GEMAAKT</span>";
             }
         }
         ?>

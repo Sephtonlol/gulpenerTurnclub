@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["image"])) {
         $title=$_REQUEST["title"];
         $content=$_REQUEST["content"];
 
-        $sql="insert into blog (title, content) value ('$title', '$content')";
+        $sql="insert into blog (blog_id, title, content) value ('$id', '$title', '$content')";
         $sqlres=mysqli_query($connect, $sql);
         header("location: index.php");
     } else {

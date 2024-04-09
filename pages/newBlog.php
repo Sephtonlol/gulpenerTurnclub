@@ -12,9 +12,9 @@ include "partials/_dbcon.php"
     <title>Gulpener Turnclub</title>
 </head>
 <body>
-<form method='post' action='procesimage.php' enctype="multipart/form-data">
+<form method='post' action='procesPost.php' enctype="multipart/form-data">
         <input type="text" name="title"> <br>
-        <textarea name="content"></textarea> <br>
+        <textarea name="content" rows="4" cols="50"> </textarea> <br>
         <input type="file" name="image" id="image" accept=".jpg, .jpeg, .png"> <br>
         <button type='submit' name="new_post">Add post</button>
     </form>

@@ -51,6 +51,24 @@ if (isset($_POST['newBlog'])) {
     <form method="POST" action="index.php">
         <button type="submit" name="logoutsub">Log out</button> <br>
 
+
+        <?php
+        require __DIR__ . "/partials/_dbcon.php";
+
+        $query = "SELECT * FROM textfields";
+
+        $result = $mysqli->query($query);
+        while ($row = $result->fetch_assoc()) {
+        $textfieldId = $row["textfield_id"];
+        $textContent = $row["textContent"];
+        }
+
+        echo $textContent . "<br>";
+        if ($_SESSION['authlevel'] <= 1) {
+            echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a><br>";
+            }
+        ?>
+
         <form>
             <span>Blog</span> <br>
 
@@ -58,7 +76,8 @@ if (isset($_POST['newBlog'])) {
 
 require __DIR__ . "/partials/_dbcon.php";
 
-$query = "SELECT * FROM blog";
+$query = "SELECT * FROM blog
+order by blog_id desc";
 
 $result = $mysqli->query($query);
 
@@ -70,11 +89,15 @@ while ($row = $result->fetch_assoc()) {
     echo $title . "<br>";
     echo $content . "<br>";
 
-    // Find the image file
-    $imagePath = "../assets/images/blogimages/{$blogId}.png"; // Assuming the image extension is jpg
+    $imagePath = "../assets/images/blogimages/{$blogId}.png";
     if (file_exists($imagePath)) {
         echo "<img src=\"$imagePath\" alt=\"$title\"><br>";
     }
+    if ($_SESSION['authlevel'] <= 1) {
+    echo "<a href=editPost.php?posttoedit=" . $blogId . ">Edit $blogId </a><br>";
+    echo "<a href=deletePost.php/?posttodelete=" . $blogId . ">Delete $blogId</a><br>";
+    }
+
 }
 
         ?>
