@@ -11,7 +11,7 @@
    width: 600px;
    bottom: -160px;
    left: 9%;
-   position: relative;
+   position: relative; /*banaan*/
   
    align-items: center;
   }
