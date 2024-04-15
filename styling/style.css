@@ -2,23 +2,45 @@
 body {
     margin: 0;
     padding: 0;
+    max-width: 100%;
     background-image: url('images/Bgbanner.jpg');
     background-repeat: no-repeat;
-    font-family: "Arial", sans-serif;
-    position: relative; 
+    font-family: "Arial", sans-serif; 
 }
 
+/* lijntje boven title */
 body::after {
     content: '';
     display: block;
     width: 24%;
     height: 0;
-    border-bottom: 3px solid white; /* Veranderd van background-color naar border-bottom */
-    margin: -335px auto 30px; /* Aanpassing van de marges om het iets hoger en horizontaal te centreren */
+    border-bottom: 3px solid white; 
+    margin: -415px auto 30px; 
 }
 
+/* Grootte voor devices */
+
+/* For smaller devices like phones */
+@media (max-width: 768px) {
+    /* CSS rules for small screens */
+    .container {
+        width: 100%; /* Adjust to full width on smaller screens */
+    }
+}
+
+/* For tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* CSS rules for tablets */
+}
+
+/* For larger screens like desktops */
+@media (min-width: 1025px) {
+    /* CSS rules for larger screens */
+}
+
+
 /* Logo */
-div#Logo images {
+div#Logo img {
     width: 150px; 
     height: auto; 
     margin-top: 20px; 
@@ -40,7 +62,7 @@ div#Logo images {
 }
 
 .rectangle::after {
-    content: attr(data-text); /* Insert the text content from the 'data-text' attribute */
+    content: attr(data-text); 
 }
 
 /* Inlog button text */
