@@ -7,16 +7,15 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
     exit; 
 }
 
-echo "Welkom " . $_SESSION['sendusername'];
+echo '<form method="post">
+        <button type="submit" name="logoutsub">Log out</button>
+    </form>';
 
 if ($_SESSION['authlevel'] <= 1) {
     echo '<form method="post">
             <button type="submit" name="editPage">Edit Page</button>
         </form>';
 
-    echo '<form method="post">
-            <button type="submit" name="newBlog">nieuw blogpost</button>
-        </form>';
 }
 
 
@@ -46,10 +45,10 @@ if (isset($_POST['newBlog'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gulpener Turnclub</title>
+    <link rel="stylesheet" href="../styling/blog.css">
 </head>
 <body>
     <form method="POST" action="index.php">
-        <button type="submit" name="logoutsub">Log out</button> <br>
 
 
         <?php
@@ -69,8 +68,9 @@ if (isset($_POST['newBlog'])) {
             }
         ?>
 
-        <form>
-            <span>Blog</span> <br>
+<span>Blog</span> <br>
+        <div class='Blog' onclick="window.location.href='blog.php';">
+            
 
         <?php
 
@@ -81,27 +81,32 @@ order by blog_id desc";
 
 $result = $mysqli->query($query);
 
-while ($row = $result->fetch_assoc()) {
+
+$count = 0;
+while (($row = $result->fetch_assoc()) && $count < 4) {
+    $count++;
     $blogId = $row["blog_id"];
     $title = $row["title"];
     $content = $row["content"];
     
-    echo $title . "<br>";
-    echo $content . "<br>";
-
+    echo "<div class='blogPost'>";
     $imagePath = "../assets/images/blogimages/{$blogId}.png";
     if (file_exists($imagePath)) {
-        echo "<img src=\"$imagePath\" alt=\"$title\"><br>";
+        echo "<img src='$imagePath' alt='$title' class='blogImage' ><br>";
     }
+    echo "<span>" . $title .  "</span>" . "<br>";
+    echo "<div class='blogText'><span>" . $content .  "</span>" . "</div><br>";
+
     if ($_SESSION['authlevel'] <= 1) {
-    echo "<a href=editPost.php?posttoedit=" . $blogId . ">Edit $blogId </a><br>";
-    echo "<a href=deletePost.php/?posttodelete=" . $blogId . ">Delete $blogId</a><br>";
+    echo "<a href=editPost.php?posttoedit=" . $blogId . ">Edit post $blogId </a><br>";
+    echo "<a href=deletePost.php/?posttodelete=" . $blogId . ">Delete post $blogId</a><br>";
     }
+    echo "</div>";
 
 }
 
         ?>
-        </form>
+        </div>
     </form>
 </body>
 </html>
