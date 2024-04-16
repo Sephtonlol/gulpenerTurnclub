@@ -48,65 +48,68 @@ if (isset($_POST['newBlog'])) {
     <link rel="stylesheet" href="../styling/blog.css">
 </head>
 <body>
-    <form method="POST" action="index.php">
+    <div class="container">
+        <form method="POST" action="index.php">
 
 
-        <?php
-        require __DIR__ . "/partials/_dbcon.php";
+            <?php
+            require __DIR__ . "/partials/_dbcon.php";
 
-        $query = "SELECT * FROM textfields";
+            $query = "SELECT * FROM textfields";
 
-        $result = $mysqli->query($query);
-        while ($row = $result->fetch_assoc()) {
-        $textfieldId = $row["textfield_id"];
-        $textContent = $row["textContent"];
-        }
-
-        echo $textContent . "<br>";
-        if ($_SESSION['authlevel'] <= 1) {
-            echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a><br>";
+            $result = $mysqli->query($query);
+            while ($row = $result->fetch_assoc()) {
+            $textfieldId = $row["textfield_id"];
+            $textContent = $row["textContent"];
             }
-        ?>
 
-<span>Blog</span> <br>
-        <div class='Blog' onclick="window.location.href='blog.php';">
-            
+            echo $textContent . "<br>";
+            if ($_SESSION['authlevel'] <= 1) {
+                echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a><br>";
+                }
+            ?>
+    <span>Blog</span> <br>
+            <div class='BlogIndex' onclick="window.location.href='blog.php';">
+                
 
-        <?php
+            <?php
 
-require __DIR__ . "/partials/_dbcon.php";
+    require __DIR__ . "/partials/_dbcon.php";
 
-$query = "SELECT * FROM blog
-order by blog_id desc";
+    $query = "SELECT * FROM blog
+    order by blog_id desc";
 
-$result = $mysqli->query($query);
+    $result = $mysqli->query($query);
 
 
-$count = 0;
-while (($row = $result->fetch_assoc()) && $count < 4) {
-    $count++;
-    $blogId = $row["blog_id"];
-    $title = $row["title"];
-    $content = $row["content"];
-    
-    echo "<div class='blogPost'>";
-    $imagePath = "../assets/images/blogimages/{$blogId}.png";
-    if (file_exists($imagePath)) {
-        echo "<img src='$imagePath' alt='$title' class='blogImage' ><br>";
+    $count = 0;
+    while (($row = $result->fetch_assoc()) && $count < 4) {
+        $count++;
+        $blogId = $row["blog_id"];
+        $title = $row["title"];
+        $content = $row["content"];
+        $date = $row["date"];
+        
+        echo "<div class='blogPost'>";
+        $imagePath = "../assets/images/blogimages/{$blogId}.png";
+        if (file_exists($imagePath)) {
+            echo "<div><img src='$imagePath' alt='$title' class='blogImage' ><br>";
+        }
+        echo "<span>" . $title .  "</span><br>";
+        echo "<div class='blogText'><span>" . $content .  "</span></div>";
+        echo "<span>" . $date . "</span></div>";
+
+        if ($_SESSION['authlevel'] <= 1) {
+        echo "<div class='editButtons'><a href=editPost.php?posttoedit=" . $blogId . ">Edit post $blogId </a><br>";
+        echo "<a href=deletePost.php/?posttodelete=" . $blogId . ">Delete post $blogId</a> </div>";
+        }
+        echo "</div>";
+
     }
-    echo "<span>" . $title .  "</span>" . "<br>";
-    echo "<div class='blogText'><span>" . $content .  "</span>" . "</div><br>";
 
-    if ($_SESSION['authlevel'] <= 1) {
-    echo "<a href=editPost.php?posttoedit=" . $blogId . ">Edit post $blogId </a><br>";
-    echo "<a href=deletePost.php/?posttodelete=" . $blogId . ">Delete post $blogId</a><br>";
-    }
-    echo "</div>";
-
-}
-
-        ?>
-        </div>
-    </form>
+            ?>
+            </div>
+        </form>
+    </div>
 </body>
 </html>

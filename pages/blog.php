@@ -58,18 +58,20 @@ while ($row = $result->fetch_assoc()) {
     $blogId = $row["blog_id"];
     $title = $row["title"];
     $content = $row["content"];
+    $date = $row["date"];
     
     echo "<div class='blogPost'>";
     $imagePath = "../assets/images/blogimages/{$blogId}.png";
     if (file_exists($imagePath)) {
-        echo "<img src='$imagePath' alt='$title' class='blogImage' ><br>";
+        echo "<div><img src='$imagePath' alt='$title' class='blogImage' ><br>";
     }
     echo "<span>" . $title .  "</span>" . "<br>";
-    echo "<div class='blogText'><span>" . $content .  "</span>" . "</div><br>";
+    echo "<div class='blogText'><span>" . $content .  "</span>" . "</div>";
+    echo "<span>" . $date . "</span></div>";
 
     if ($_SESSION['authlevel'] <= 1) {
-    echo "<a href=editPost.php?posttoedit=" . $blogId . ">Edit post $blogId </a><br>";
-    echo "<a href=deletePost.php/?posttodelete=" . $blogId . ">Delete post $blogId</a><br>";
+    echo "<div class='editButtons'> <a href=editPost.php?posttoedit=" . $blogId . ">Edit post $blogId </a><br>";
+    echo "<a href=deletePost.php/?posttodelete=" . $blogId . ">Delete post $blogId</a></div>";
     }
     echo "</div>";
 
