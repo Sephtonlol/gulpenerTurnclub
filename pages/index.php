@@ -80,19 +80,19 @@
 
 <div id="samenvatting1">
     <p>
-    Bij de Gulpener Turnclub worden al een aantal jaren op<br>
-    dinsdagavond van 19.30 – 20.30 uur in Sporthal het<br>
-    Gulpdal bewegingslessen speciaal voor ouderen (v.a. 55<br>
+    Bij de Gulpener Turnclub worden al een aantal jaren op
+    dinsdagavond van 19.30 – 20.30 uur in Sporthal het
+    Gulpdal bewegingslessen speciaal voor ouderen (v.a. 55
     jaar) gegeven.<br>
     <br>
     De contributie voor deze lessen is € 15,00 per maand.<br>
     <br>
-    De manier waarop de lessen door onze deskundige<br>
-    trainer Pierre de Bie worden gegeven, wordt door de<br>
-    leden als zeer prettig ervaren. Niet alleen wordt er<br>
-    tijdens de les samen met de groep op een gezonde en<br>
-    verantwoorde manier gesport, ook het gezellig<br>
-    samenzijn ná de les wordt – voor wie dat wil - erg op<br>
+    De manier waarop de lessen door onze deskundige
+    trainer Pierre de Bie worden gegeven, wordt door de
+    leden als zeer prettig ervaren. Niet alleen wordt er
+    tijdens de les samen met de groep op een gezonde en
+    verantwoorde manier gesport, ook het gezellig
+    samenzijn ná de les wordt – voor wie dat wil - erg op
     prijs gesteld.<br>
 </p>
 </div>

@@ -37,7 +37,7 @@ body {
   }
   
   #texthome p {
-    color: white;
+    color: rgb(255, 255, 255);
     font-size: 24px;
     margin: 0 0 60px;
   }
@@ -131,7 +131,7 @@ div#inleidingfoto {
     width: 100px; 
     height: auto;  
     margin-left: 35px; 
-    margin-top: 60px;
+    margin-top: 20px;
     padding-bottom: 60px;
     transform: scale(0.45); /* groote van 45% */
 }
@@ -144,8 +144,8 @@ div#inleiding {
     flex-direction: column; 
     align-items: flex-start; 
     max-width: 1000px; 
-    margin-top: 50px;
-    margin-left: auto;
+    margin-top: 500px;
+    margin-left: 50px;
 }
 
 
