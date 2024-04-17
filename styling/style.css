@@ -8,107 +8,91 @@ body {
     font-family: "Arial", sans-serif; 
 }
 
-/* lijntje boven title */
-body::after {
-    content: '';
-    display: block;
-    width: 24%;
-    height: 0;
-    border-bottom: 3px solid white; 
-    margin: -415px auto 30px; 
-}
-
-/* Grootte voor devices */
-
-/* For smaller devices like phones */
-@media (max-width: 768px) {
-    /* CSS rules for small screens */
-    .container {
-        width: 100%; /* Adjust to full width on smaller screens */
-    }
-}
-
-/* For tablets */
-@media (min-width: 769px) and (max-width: 1024px) {
-    /* CSS rules for tablets */
-}
-
-/* For larger screens like desktops */
-@media (min-width: 1025px) {
-    /* CSS rules for larger screens */
-}
-
-
+/* Homepagina begin text container */
+.containerbegintext {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+/* lijntje boven de titel */
+  .line {
+    width: 25%;
+    height: 3px; 
+    background-color: rgb(255, 255, 255); 
+    margin-bottom: 15px; 
+  }
+  
+  /* titel positie */
+  #texthome { 
+    text-align: center;
+  }
+  
+  /* Title boven navigatie */
+  #texthome h1 {
+    color: white;
+    font-size: 97px;
+    margin: 24px 0 0; 
+    font-family: "Archivo Black", sans-serif;
+  }
+  
+  #texthome p {
+    color: white;
+    font-size: 24px;
+    margin: 0 0 60px;
+  }
+  
 /* Logo */
-div#Logo img {
+div#Logo {
+    display: flex;
+    align-items: center;
+    margin-top: -30px; 
+  }
+  
+  div#Logo img {
     width: 150px; 
     height: auto; 
-    margin-top: 20px; 
-    margin-left: 20px; 
-}
-
+    margin-left: 20px;
+  }
+  
 /* Log-in icoon */
-.rectangle {
-    width: 130px; 
-    height: 35px; 
-    background-color: #89b5d6; 
-    position: absolute;
-    margin-top: 30px;
-    margin-right: 20px;
+.rectangle-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start; 
+    margin-top: 20px; 
+    margin-right: 20px;  
+  }
+  
+  .rectangle {
+    width: 130px;
+    height: 35px;
+    background-color: #89b5d6;
     border-radius: 25px;
-    top: 0;
-    right: 0;
-    
-}
-
-.rectangle::after {
-    content: attr(data-text); 
-}
-
-/* Inlog button text */
-.text-rectangle {
-    margin-left: 1323px;
-    margin-top: -97px;
-    position: absolute;
+    margin-right: 10px; 
+  }
+  
+  /* text inlog button */
+  .text-rectangle {
+    text-align: center;
     font-size: 17px;
     font-family: "Calibri", sans-serif;
     font-weight: 500;
     color: white;
-}
+    margin-top: 5px;
 
-/* Title boven navigatie*/
-#text {
-    margin-top: 20px; 
-}
-
-/* Title boven navigatie */
-#text h1 {
-    color: white;
-    font-size: 97px;
-    margin: 80px 0 0; /* top left bottom */
-    text-align: center;
-    font-family: "Archivo Black", sans-serif;
-}
-
-#text p {
-    color: white;
-    font-size: 24px;
-    margin: 0 0 60px; /* top left bottom */
-    text-align: center;
-}
-
-
+  }
 
 /* Navigatie */
 #navigatie-container {
     position: absolute;
     margin-top: -50px;
-    width: 100%; /* Cover the entire viewport width */
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1; /* Ensure the navigation container is on top of the background image */
-    padding: 20px; /* Adjust padding as needed */
+    z-index: 1; 
+    padding: 20px; 
 }
 
 #navigatie-container ul {
@@ -120,7 +104,7 @@ div#Logo img {
 }
 
 #navigatie-container li {
-    display: inline-block; /* Display list items inline */
+    display: inline-block; 
 }
 
 #navigatie-container li a {
@@ -136,4 +120,82 @@ div#Logo img {
     background-color: #111;
 }
 
+/* Container voor foto and text */
+div#inleidingstuk {
+    display: flex; 
+    align-items: flex-start; 
+}
 
+/* Inleiding image */
+div#inleidingfoto {
+    width: 100px; 
+    height: auto;  
+    margin-left: 35px; 
+    margin-top: 60px;
+    padding-bottom: 60px;
+    transform: scale(0.45); /* groote van 45% */
+}
+
+/* Inleiding text */
+div#inleiding {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 25px;
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start; 
+    max-width: 1000px; 
+    margin-top: 50px;
+    margin-left: auto;
+}
+
+
+/* banner */
+div#banner {
+    width: auto;
+    height: auto;
+    margin-top: -170px;
+}
+
+/* titel van samenvatting */
+div#samenvatting h1 {
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 32px;
+    margin-left: 15px;
+}
+
+/* text samenvatting 1 */
+div#samenvatting1 p {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 26,7px;
+    margin-left: 25px;
+}
+
+/* lijntje onder samenvatting1 */
+#samenvatting1 {
+    width: 24%;
+    border-bottom: 2px solid rgb(0, 0, 0);
+  }
+
+/* foto van ouderen in samenvatting */
+div#ouderen {
+  width: 10px; /* reageert niet? */
+  height: auto; /* reageert niet? */
+  margin-left: 850px;
+  margin-top: -750px ; 
+  max-width: 100%; 
+  max-height: 100%; 
+  transform: scale(0.50); /* groote van 50% */
+}
+  
+/* text samenvatting 2 */
+div#samenvatting2 p {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 26,7px;
+    margin-left: 25px;
+}
+
+/* lijntje onder samenvatting2 */
+#samenvatting2 {
+    width: 24%;
+    border-bottom: 2px solid rgb(0, 0, 0);
+  }
