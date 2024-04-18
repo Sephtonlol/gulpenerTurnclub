@@ -9,17 +9,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
 
 echo '<button type="submit" name="logoutsub">Log out</button> <br>';
 
-if ($_SESSION['authlevel'] <= 1) {
-    echo '<form method="post">
-            <button type="submit" name="editPage">Edit Page</button>
-        </form>';
-
-    echo '<form method="post">
-            <button type="submit" name="newBlog">nieuw blogpost</button>
-        </form>';
-}
-
-
 if (isset($_POST['logoutsub'])) {
     session_unset();
     session_destroy();
@@ -27,16 +16,6 @@ if (isset($_POST['logoutsub'])) {
     exit;
 }
 
-if (isset($_POST['editPage'])) {
-    header("location: editPage.php");
-    exit;
-}
-
-
-if (isset($_POST['newBlog'])) {
-    header("location: newBlog.php");
-    exit;
-}
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +30,7 @@ if (isset($_POST['newBlog'])) {
 <body>
 
 <span class="headerBlog">Laatste nieuws</span>
-<div class='Blog'>
+<div class='blog'>
 
         <?php
 
@@ -61,6 +40,16 @@ $query = "SELECT * FROM blog
 order by blog_id desc";
 
 $result = $mysqli->query($query);
+
+if ($_SESSION['authlevel'] <= 1) {
+    echo "<a href='newBlog.php';' style='justify-content: center;' class='blogSpecial'>
+            <div class='specialTextContainer'>
+                <span class='addPost'>Post Toevoegen</span>
+                </div>
+    </a>";
+        
+}
+
 
 while ($row = $result->fetch_assoc()) {
     $blogId = $row["blog_id"];

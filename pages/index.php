@@ -63,14 +63,15 @@ if (isset($_POST['newBlog'])) {
             $textfieldId = $row["textfield_id"];
             $textContent = $row["textContent"];
             }
-
+            if ($textfieldId == 1){
             echo $textContent . "<br>";
+            }
             if ($_SESSION['authlevel'] <= 1) {
                 echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a><br>";
                 }
             ?>
     <span onclick="window.location.href='blog.php';" class="headerBlog">Laatste nieuws</span>
-            <div class='BlogIndex'>
+            <div class='blogIndex'>
                 
 
             <?php
@@ -115,8 +116,8 @@ if (isset($_POST['newBlog'])) {
     }
 
             ?>
-            <div onclick="window.location.href='blog.php';" style="justify-content: center;" class="blogSeeAll">
-            <div class="seeAllTextContainer">
+            <div onclick="window.location.href='blog.php';" style="justify-content: center;" class="blogSpecial">
+            <div class="specialTextContainer">
                 <span class="blogTitle">alles zien</span>
                 </div>
             </div>
