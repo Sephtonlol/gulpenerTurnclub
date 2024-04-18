@@ -46,6 +46,7 @@ if (isset($_POST['newBlog'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gulpener Turnclub</title>
     <link rel="stylesheet" href="../styling/blog.css">
+    <script src="../scripts/deletePostConfirm.js"></script>
 </head>
 <body>
     <div class="container">
@@ -68,8 +69,8 @@ if (isset($_POST['newBlog'])) {
                 echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a><br>";
                 }
             ?>
-    <span>Blog</span> <br>
-            <div class='BlogIndex' onclick="window.location.href='blog.php';">
+    <span onclick="window.location.href='blog.php';" class="headerBlog">Laatste nieuws</span>
+            <div class='BlogIndex'>
                 
 
             <?php
@@ -83,7 +84,7 @@ if (isset($_POST['newBlog'])) {
 
 
     $count = 0;
-    while (($row = $result->fetch_assoc()) && $count < 4) {
+    while (($row = $result->fetch_assoc()) && $count < 3) {
         $count++;
         $blogId = $row["blog_id"];
         $title = $row["title"];
@@ -91,23 +92,34 @@ if (isset($_POST['newBlog'])) {
         $date = $row["date"];
         
         echo "<div class='blogPost'>";
-        $imagePath = "../assets/images/blogimages/{$blogId}.png";
+        $imagePath = "../assets/images/blogimages/$blogId.png";
         if (file_exists($imagePath)) {
             echo "<div><img src='$imagePath' alt='$title' class='blogImage' ><br>";
         }
-        echo "<span>" . $title .  "</span><br>";
-        echo "<div class='blogText'><span>" . $content .  "</span></div>";
-        echo "<span>" . $date . "</span></div>";
+        echo "<div class='blogTitle'><span>" . $title .  "</span></div>";
+        echo "<div class='blogTextContainer'><div class='filler2'></div><div class='blogText'><span>" . $content .  "</span></div><div class='filler2'></div></div></div>";
+        
+        echo "<div class='blogDate'> <span>" . $date . "</span><br>";
+        echo "<a class='readPostRedirect' href='blogPost.php?postToView=" . $blogId . "'><div class='readPostContainer'><div class='readPost'>Lees meer</div></div></a>";
+
 
         if ($_SESSION['authlevel'] <= 1) {
-        echo "<div class='editButtons'><a href=editPost.php?posttoedit=" . $blogId . ">Edit post $blogId </a><br>";
-        echo "<a href=deletePost.php/?posttodelete=" . $blogId . ">Delete post $blogId</a> </div>";
+        echo "<div class='editButtons'><a href=editPost.php?posttoedit=" . $blogId . ">Edit post</a><br>";
+        echo "<a onclick='check()' href=deletePost.php/?posttodelete=" . $blogId . ">Delete post</a> </div>";
         }
-        echo "</div>";
+        else {
+        echo "<div class='filler'></div>";
+        }
+        echo "</div></div>";
 
     }
 
             ?>
+            <div onclick="window.location.href='blog.php';" style="justify-content: center;" class="blogSeeAll">
+            <div class="seeAllTextContainer">
+                <span class="blogTitle">alles zien</span>
+                </div>
+            </div>
             </div>
         </form>
     </div>

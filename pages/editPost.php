@@ -58,17 +58,32 @@ if(isset($_POST['edited_post'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit post</title>
+    <title>Gulpener Turnclub</title>
+    <link rel="stylesheet" href="../styling/blogPost.css">
     <script src="../scripts/editPost.js"></script>
 </head>
 <body>
-    <form method="post" enctype="multipart/form-data">
-        <img src="../assets/images/blogimages/<?php echo $postToEdit . '.png'; ?>" alt="Uploaded Image" style="max-width: 200px; max-height: 200px;">
-        <input type="file" name="image" id="image" onchange="previewImage()" accept=".jpg, .jpeg, .png"> <br>
-        <input type="hidden" name="postToEdit" value="<?php echo $postToEdit;?>">
-        <input name="edited_title" type="text" value="<?php echo $title; ?>">
-        <input name="edited_post" type="text" value="<?php echo $content; ?>">
+    <form class="blogPost" method="post" enctype="multipart/form-data">
+      <div class='imageContainer'>
+        <img class="blogImage" src="../assets/images/blogimages/<?php echo $postToEdit . '.png'; ?>" alt="<?php echo $title . '.png'?>">
+        
+      </div>
+      <div class='blogContent'>
+        <div>
+          <div class='blogTitle'>
+            <input name="edited_title" type="text" maxlength="20" value="<?php echo $title; ?>">
+          </div>
+          <div class='blogTextContainer'>
+            <div class='blogText'>
+              <textarea name="edited_post" rows="35" cols="50" ><?php echo $content; ?></textarea>
+            </div>
+            <input type="file" name="image" id="image" onchange="previewImage()" accept=".jpg, .jpeg, .png">
+          </div>
+        </div>
         <button type="submit" name="editBlogPost">Apply Changes</button>
+        <input type="hidden" name="postToEdit" value="<?php echo $postToEdit;?>">
+        <button onclick="window.location.href='index.php'">Cancel</button>
+      </div>
     </form>
 </body>
 </html>

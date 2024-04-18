@@ -1,5 +1,3 @@
-
-<link rel="stylesheet" href="../styling/blog.css">
 <?php
 session_start();
 
@@ -41,8 +39,18 @@ if (isset($_POST['newBlog'])) {
 }
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gulpener Turnclub</title>
+    <link rel="stylesheet" href="../styling/blog.css">
+    <script src="../scripts/deletePostConfirm.js"></script>
+</head>
+<body>
 
-<span>Blog</span> <br>
+<span class="headerBlog">Laatste nieuws</span>
 <div class='Blog'>
 
         <?php
@@ -65,17 +73,25 @@ while ($row = $result->fetch_assoc()) {
     if (file_exists($imagePath)) {
         echo "<div><img src='$imagePath' alt='$title' class='blogImage' ><br>";
     }
-    echo "<span>" . $title .  "</span>" . "<br>";
-    echo "<div class='blogText'><span>" . $content .  "</span>" . "</div>";
-    echo "<span>" . $date . "</span></div>";
+    echo "<div class='blogTitle'><span>" . $title .  "</span></div>";
+    echo "<div class='blogTextContainer'><div class='filler2'></div><div class='blogText'><span>" . $content .  "</span></div><div class='filler2'></div></div></div>";
+    
+    echo "<div class='blogDate'> <span>" . $date . "</span><br>";
+    echo "<a class='readPostRedirect' href='blogPost.php?postToView=" . $blogId . "'><div class='readPostContainer'><div class='readPost'>Lees meer</div></div></a>";
+
 
     if ($_SESSION['authlevel'] <= 1) {
-    echo "<div class='editButtons'> <a href=editPost.php?posttoedit=" . $blogId . ">Edit post $blogId </a><br>";
-    echo "<a href=deletePost.php/?posttodelete=" . $blogId . ">Delete post $blogId</a></div>";
+    echo "<div class='editButtons'><a href=editPost.php?posttoedit=" . $blogId . ">Edit post</a><br>";
+    echo "<a onclick='check()' href=deletePost.php/?posttodelete=" . $blogId . ">Delete post</a> </div>";
     }
-    echo "</div>";
+    else {
+    echo "<div class='filler'></div>";
+    }
+    echo "</div></div>";
 
 }
 
         ?>
         </div>
+        </body>
+</html>

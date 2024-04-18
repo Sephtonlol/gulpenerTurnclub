@@ -49,7 +49,7 @@
                 $sql="insert into users (user_name, email, password) value ('$getname', '$getemail','$getpassword')";
                 $sqlres=mysqli_query($connect, $sql);
                 
-                echo "<span>YAYYYYYY JE HEBT EEN ACCOUNT GEMAAKT</span>";
+                echo "<span>Account is gemaakt!</span>";
             }
         }
         ?>

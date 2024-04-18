@@ -7,11 +7,7 @@ if ($_SESSION['authlevel'] > 1) {
     exit;
 }
 
-
-
 $postToDelete = $_GET['posttodelete'];
-echo $postToDelete;
-
 
 $delete = mysqli_query($connect, "DELETE FROM `blog` WHERE `blog_id`='$postToDelete'");
 

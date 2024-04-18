@@ -15,10 +15,10 @@ include "partials/_dbcon.php"
 </head>
 <body>
 <form method='post' action='procesPost.php' enctype="multipart/form-data">
-        <input type="text" name="title"> <br>
+        <input type="text" name="title" maxlength="20"> <br>
         <textarea name="content" rows="4" cols="50"> </textarea> <br>
         <input type="file" name="image" id="image" onchange="previewImage()" accept=".jpg, .jpeg, .png"> <br>
-        <img id="preview" src="#" alt="Image Preview" style="max-width: 200px; max-height: 200px;"> <br>
+        <img id="preview" src="../assets/images/logoWB.png" alt="Image Preview" style="max-width: 200px; max-height: 200px;"> <br>
         <button type='submit' name="new_post">Add post</button>
     </form>
 </body>
