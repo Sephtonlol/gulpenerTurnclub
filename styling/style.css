@@ -1,120 +1,201 @@
 /* Standaard body-styling */
 body {
-  margin: 0;
-  padding: 0;
-  max-width: 100%;
-  background-image: url("images/Bgbanner.jpg");
-  background-repeat: no-repeat;
-  font-family: "Arial", sans-serif;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    background-image: url('images/Bgbanner.jpg');
+    background-repeat: no-repeat;
+    font-family: "Arial", sans-serif; 
 }
 
 /* Homepagina begin text container */
 .containerbegintext {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
 /* lijntje boven de titel */
-.line {
-  width: 25%;
-  height: 3px;
-  background-color: rgb(255, 255, 255);
-  margin-bottom: 15px;
-}
-
-/* titel positie */
-#texthome {
-  text-align: center;
-}
-
-/* Title boven navigatie */
-#texthome h1 {
-  color: white;
-  font-size: 97px;
-  margin: 24px 0 0;
-  font-family: "Archivo Black", sans-serif;
-}
-
-#texthome p {
-  color: white;
-  font-size: 24px;
-  margin: 0 0 60px;
-}
-
+  .line {
+    width: 25%;
+    height: 3px; 
+    background-color: rgb(255, 255, 255); 
+    margin-bottom: 15px; 
+  }
+  
+  /* titel positie */
+  #texthome { 
+    text-align: center;
+  }
+  
+  /* Title boven navigatie */
+  #texthome h1 {
+    color: white;
+    font-size: 97px;
+    margin: 24px 0 0; 
+    font-family: "Archivo Black", sans-serif;
+  }
+  
+  #texthome p {
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    margin: 0 0 60px;
+  }
+  
 /* Logo */
 div#Logo {
-  display: flex;
-  align-items: center;
-  margin-top: -30px;
-}
-
-div#Logo img {
-  width: 150px;
-  height: auto;
-  margin-left: 20px;
-}
-
+    display: flex;
+    align-items: center;
+    margin-top: -30px; 
+  }
+  
+  div#Logo img {
+    width: 150px; 
+    height: auto; 
+    margin-left: 20px;
+  }
+  
 /* Log-in icoon */
 .rectangle-container {
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
-  margin-top: 20px;
-  margin-right: 20px;
-}
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start; 
+    margin-top: 20px; 
+    margin-right: 20px;  
+  }
+  
+  .rectangle {
+    width: 130px;
+    height: 35px;
+    background-color: #89b5d6;
+    border-radius: 25px;
+    margin-right: 10px; 
+  }
+  
+  /* text inlog button */
+  .text-rectangle {
+    text-align: center;
+    font-size: 17px;
+    font-family: "Calibri", sans-serif;
+    font-weight: 500;
+    color: white;
+    margin-top: 5px;
 
-.rectangle {
-  width: 130px;
-  height: 35px;
-  background-color: #89b5d6;
-  border-radius: 25px;
-  margin-right: 10px;
-}
-
-/* text inlog button */
-.text-rectangle {
-  text-align: center;
-  font-size: 17px;
-  font-family: "Calibri", sans-serif;
-  font-weight: 500;
-  color: white;
-  margin-top: 5px;
-}
+  }
 
 /* Navigatie */
 #navigatie-container {
-  position: absolute;
-  margin-top: -50px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
-  padding: 20px;
+    position: absolute;
+    margin-top: -50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; 
+    padding: 20px; 
 }
 
 #navigatie-container ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  background-color: #67737c;
-  opacity: 0.8;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #67737C;
+    opacity: 0.8;
 }
 
 #navigatie-container li {
-  display: inline-block;
+    display: inline-block; 
 }
 
 #navigatie-container li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
 }
 
 /* Color change voor de navigatie balk */
 #navigatie-container li a:hover {
-  background-color: #111;
+    background-color: #111;
 }
+
+/* Container voor foto and text */
+div#inleidingstuk {
+    display: flex; 
+    align-items: flex-start; 
+}
+
+/* Inleiding image */
+div#inleidingfoto {
+    width: 100px; 
+    height: auto;  
+    margin-left: 35px; 
+    margin-top: 20px;
+    padding-bottom: 60px;
+    transform: scale(0.45); /* groote van 45% */
+}
+
+/* Inleiding text */
+div#inleiding {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 25px;
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start; 
+    max-width: 1000px; 
+    margin-top: 500px;
+    margin-left: 50px;
+}
+
+
+/* banner */
+div#banner {
+    width: auto;
+    height: auto;
+    margin-top: -170px;
+}
+
+/* titel van samenvatting */
+div#samenvatting h1 {
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 32px;
+    margin-left: 15px;
+}
+
+/* text samenvatting 1 */
+div#samenvatting1 p {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 26,7px;
+    margin-left: 25px;
+}
+
+/* lijntje onder samenvatting1 */
+#samenvatting1 {
+    width: 24%;
+    border-bottom: 2px solid rgb(0, 0, 0);
+  }
+
+/* foto van ouderen in samenvatting */
+div#ouderen {
+  width: 10px; /* reageert niet? */
+  height: auto; /* reageert niet? */
+  margin-left: 850px;
+  margin-top: -750px ; 
+  max-width: 100%; 
+  max-height: 100%; 
+  transform: scale(0.50); /* groote van 50% */
+}
+  
+/* text samenvatting 2 */
+div#samenvatting2 p {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 26,7px;
+    margin-left: 25px;
+}
+
+/* lijntje onder samenvatting2 */
+#samenvatting2 {
+    width: 24%;
+    border-bottom: 2px solid rgb(0, 0, 0);
+  }
