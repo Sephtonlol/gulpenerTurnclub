@@ -29,16 +29,23 @@
 </div>
 
 <!-- Navigatie Balk-->
-<div id="navigatie-container">
+<div id="navigatie-container"></div>
     <ul>
+	 <div class="dropdown-menu">
+	<div class="Groepen" id='Groepen'>
+			    <div class="active">
+			    <a class='groepTurn' id='groepTurn' href="Algemeen.php">Groepen</a>
+			<div
         <li><a href=”index.php”>Homepage</a></li>
         <li><a href=”#”>Vereniging</a></li>
-        <li><a href=”#”>Groepen</a></li>
         <li><a href=”#”>Historie</a></li>
         <li><a href=”#”>Foto's</a></li>
         <li><a href=”#”>Nieuws</a></li>
         <li><a href=”#”>Contact</a></li> 
     </ul>  
+</div>
+</div>
+</div>
 </div>
 
 <div class="block1">
