@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel='stylesheet' href="..\styling\login.css" />
     <title>Gulpener Turnclub</title>
 </head>
 <body>
+
+<div class='card'>
     <div class="containerIndex">
         <h1>Sign up</h1>
         <form action="" method="POST">
@@ -25,6 +28,9 @@
 
             <a href='login.php'>log in.</a>
         </form>
+</div>
+
+<div class="card2"></div>
     
         <?php
         if(isset($_POST["signUp"])){

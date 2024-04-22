@@ -3,13 +3,26 @@
   --secondary: #5a7284;
 }
 
+.topbar {
+  width: 100%;
+  height: 71px;
+  background-color: var(--secondary);
+  font-family: "Archivo Black", sans-serif;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: -53%;
+  align-content: space-around;
+}
+
 .card {
   background-color: var(--main);
   border-radius: 8px;
   padding: 30px;
   height: 500px;
   width: 600px;
-  bottom: -160px;
+  margin-top: 12.58%;
   left: 9%;
   position: relative;
   align-items: center;
@@ -25,22 +38,14 @@
   border-radius: 8px;
   padding: 30px;
   height: 500px;
+  margin-top: 12.58%;
+  margin-left: 18%;
   width: 300px;
-  left: 18%;
-  position: relative;
-  top: 160px;
+  display: flex;
 }
 
 .text-center {
   display: flex;
-}
-
-.footer {
-  background: #627170;
-  position: absolute;
-  text-align: right;
-  margin-bottom: -25px;
-  height: 122px;
 }
 
 .containerLogin {
@@ -50,7 +55,17 @@
 html,
 body {
   max-height: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  flex-wrap: nowrap;
+  align-items: stretch;
 }
 .footer-text {
   margin-left: auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .item {
+    flex-basis: 45%; /* Adjust the width of items for smaller screens */
+  }
 }

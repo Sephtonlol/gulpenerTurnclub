@@ -1,0 +1,9 @@
+.page-name {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  height: 50px;
+  background-color: #89b6d6;
+  align-items: center;
+}
