@@ -1,0 +1,353 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+.hero-image {
+  background-image:  url("Bgbanner.jpg");
+  height: 550px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.hero-menu {
+  text-align: center;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+
+/* Voeg een zwarte achtergrondkleur toe aan de navigatie bovenaan */
+.topnav {
+
+ text-align: center;
+
+
+ top:550px;
+  background-color: #333;
+  overflow: hidden;
+  
+  
+  
+  
+}
+
+/* De links in de navigatiebalk opmaken */
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Voeg een actieve lesgroep toe om de huidige pagina te markeren*/
+.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+/* Verberg de link die de topnav moet openen en sluiten op kleine schermen */
+.topnav .icon {
+  display: none;
+}
+
+/* Dropdown-container - nodig om de dropdown-inhoud te positioneren */
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+/* Stijl de vervolgkeuzeknop zodat deze in het navigatiesysteem past */
+.dropdown .dropbtn {
+  font-size: 17px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+/* De inhoud van de vervolgkeuzelijst opmaken (standaard verborgen) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Stijl van de links in de vervolgkeuzelijst */
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Voeg een donkere achtergrond toe aan de topnav-links en de vervolgkeuzeknop bij de muisaanwijzer */
+.topnav a:hover, .dropdown:hover .dropbtn {
+  background-color: #555;
+  color: white;
+}
+
+/* Voeg een grijze achtergrond toe aan vervolgkeuzekoppelingen bij het aanwijzen */
+.dropdown-content a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Toon het vervolgkeuzemenu wanneer de gebruiker de muis over de vervolgkeuzeknop beweegt */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+/* Twee kolommen die naast elkaar zweven */
+.column {
+  float: left;
+  padding:0px 40px 0px 40px;
+  
+}
+
+/* Column Header */
+.column.header {
+  width: 100%;
+  color:white;
+  text-align: center;
+  background-color: #5A7284;
+  font-family: sans-serif;
+}
+
+
+
+/* Column Banner */
+.column.banner {
+  width: 100%;
+  color:white;
+  text-align: center;
+  background-color: #FFF;
+  font-family: sans-serif;
+  margin-top:0px;
+  margin-bottom:20px;
+}
+
+
+/* Linker en rechter kolom */
+.column.side {
+  width: 50%;
+ 
+}
+
+.column.side1 {
+  width: 60%;
+  height: 500px;
+  background-color: #FFF;
+}
+
+.column.photo {
+  width: 40%;
+  height: 100%;
+  background-color: #FFF;
+ 
+ 
+}
+
+.column.side_66 {
+  width: 66%;
+  /* background-color: yellow; */
+}
+
+
+.column.side_34 {
+  width: 34%;
+  /*background-color: orange; */
+}
+
+.container {
+	margin-top:0px;
+	margin-bottom:20px;
+}
+
+.container::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.column2 {
+  width: 100%;
+  height: 320px;
+  padding:3px 40px 0px 40px;
+  color:black;
+  text-align: left;
+  background-color: #e5e5e5;
+  font-family: sans-serif;
+}
+
+.column.textblock {
+  width: 100%;
+  padding:3px 40px 0px 40px;
+  color:black;
+  text-align: left;
+  background-color: #fff;
+  font-family: sans-serif;
+  
+}	
+
+.message {
+  border-bottom: 2px dotted #5A7284;
+  border-left: 2px dotted #5A7284;
+  border-right: 2px dotted #5A7284;
+  border-top: 2px dotted #5A7284;
+  padding:0px 40px 0px 40px;
+}	
+
+/*Collumn footer*/
+.column.footer {
+  width: 100%;
+  color:white;
+  text-align: right;
+  padding-right: 250px;
+  background-color: #5A7284;
+  font-family: sans-serif;
+  padding:20px;
+  margin-bottom:0px;
+}
+
+
+
+
+
+
+
+
+
+
+/* Als het scherm minder dan 600 pixels breed is, verberg dan alle links, behalve de eerste ('Home'). Toon de link die de topnav moet openen en sluiten (.icon) */
+
+
+
+@media screen and (max-width: 400px) {
+  .topnav a:not(:first-child), .dropdown .dropbtn {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+	
+  }
+  
+  
+  .column.side_66 {
+  width: 100%;
+  /* background-color: purple; */
+
+}
+
+
+.column.side_34 {
+  width: 100%;
+  /* background-color: blue; */
+
+}
+
+  
+  
+}
+
+
+
+/* Als het scherm minder dan 600 pixels breed is, verberg dan alle links, behalve de eerste ('Home'). Toon de link die de topnav moet openen en sluiten (.icon) */
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child), .dropdown .dropbtn {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+  
+    .column.side_66 {
+  width: 100%;
+	/* background-color: green; */
+ 
+}
+
+
+.column.side_34 {
+  width: 100%;
+  /* background-color: red; */
+
+}
+  
+  
+  
+  
+}
+
+/* De "responsive" klasse wordt met JavaScript toegevoegd aan de topnav wanneer de gebruiker op het icoon klikt. Deze klasse zorgt ervoor dat de topnav er goed uitziet op kleine schermen (geef de links verticaal weer in plaats van horizontaal) */
+@media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive a.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .topnav.responsive .dropdown {float: none;}
+  .topnav.responsive .dropdown-content {position: relative;}
+  .topnav.responsive .dropdown .dropbtn {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
+
+
+
+
+/* Responsive layout - stapel de twee kolommen op elkaar */
+@media screen and (max-width: 800px) {
+  .column.side, .column.middle {
+    width: 100%;
+  }
+}
+
+
+
+
