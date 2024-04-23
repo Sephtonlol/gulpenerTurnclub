@@ -122,6 +122,8 @@ body {
   }
 }
 .expanding {
+  margin-top: 45px;
+  position: absolute;
   display: none;
   z-index: 1;
   animation: expand 300ms ease-in-out forwards;

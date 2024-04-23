@@ -125,8 +125,8 @@ require __DIR__ . "/partials/_dbcon.php";
         <div class=menu>
             <button class="headerButtons">Nieuws</button>
             <div class="expanding">
-            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option2</button>
+            <button id="dropdownMenu" onclick="window.location.href='#news'" class="headerButtons">Recent</button><br>
+            <button id="dropdownMenu" onclick="window.location.href='blog.php'" class="headerButtons">Alle nieuws</button>
             </div>
         </div>
         <div class=menu>
@@ -136,7 +136,6 @@ require __DIR__ . "/partials/_dbcon.php";
             <button id="dropdownMenu" class="headerButtons">Option2</button>
             </div>
             </div>
-<script></script>
         </div>
     </div>
     <div class="preface">

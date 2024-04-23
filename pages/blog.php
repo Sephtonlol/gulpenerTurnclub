@@ -26,12 +26,72 @@ if (isset($_POST['logoutsub'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gulpener Turnclub</title>
+    <link rel="stylesheet" href="../styling/header.css">
+
     <link rel="stylesheet" href="../styling/style.css">
     <link rel="stylesheet" href="../styling/blog.css">
 
     <script src="../scripts/deletePostConfirm.js"></script>
 </head>
 <body>
+<div class="buttonContainer" style="background-color: var(--quinary-color);">
+            <div class=menu>
+            <button onclick="window.location.href='index.php'" class="headerButtons">HomePage</button>
+            <div class="expanding">
+            <button id="dropdownMenu" onclick="window.location.href='index.php#info'" class="headerButtons">Info</button><br>
+            <button id="dropdownMenu" onclick="window.location.href='index.php#algemeen'" class="headerButtons">algemeen</button><br>
+            <button id="dropdownMenu" onclick="window.location.href='index.php#news'" class="headerButtons">Nieuws</button><br>
+            <button id="dropdownMenu" onclick="window.location.href='index.php#footer'" class="headerButtons">Ondersteuning</button>
+            </div>
+        </div>
+        <div class=menu>
+            <button class="headerButtons">Vereniging</button>
+            <div class="expanding">
+            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
+            <button id="dropdownMenu" class="headerButtons">Option2</button>
+            </div>
+        </div>
+        <div class=menu>
+            <button class="headerButtons">Groepen</button>
+            <div class="expanding">
+            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
+            <button id="dropdownMenu" class="headerButtons">Option2</button><br>
+            <button id="dropdownMenu" class="headerButtons">Option3</button><br>
+            <button id="dropdownMenu" class="headerButtons">Option4</button>
+            </div>
+        </div>
+        <div class=menu>
+            <button class="headerButtons">Geschiedenis</button>
+            <div class="expanding">
+            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
+            <button id="dropdownMenu" class="headerButtons">Option2</button>
+            </div>
+        </div>
+        <div class=menu>
+            <button class="headerButtons">Foto's</button>
+            <div class="expanding">
+            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
+            <button id="dropdownMenu" class="headerButtons">Option2</button><br>
+            <button id="dropdownMenu" class="headerButtons">Option3</button>
+            </div>
+        </div>
+        <div class=menu>
+            <button class="headerButtons">Nieuws</button>
+            <div class="expanding">
+            <button id="dropdownMenu" onclick="window.location.href='index.php#news'" class="headerButtons">Recent</button><br>
+            <button id="dropdownMenu" onclick="window.location.href='blog.php'" class="headerButtons">Alle nieuws</button>
+            </div>
+        </div>
+        <div class=menu>
+            <button class="headerButtons">Contact</button>
+            <div class="expanding">
+            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
+            <button id="dropdownMenu" class="headerButtons">Option2</button>
+            </div>
+            </div>
+<script></script>
+        </div>
+    </div>
 
 <span class="smallHeader">Laatste nieuws</span>
 <div class='blog'>
