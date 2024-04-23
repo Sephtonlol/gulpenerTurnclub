@@ -1,123 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gulpener Turnclub</title>
-    <link rel="stylesheet" href="../styling/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Page</title>
+<link rel="stylesheet" href="../styling/style.css"> <!-- Link to external CSS file -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+<script src='Turn.js' defer></script>
 </head>
-<body>
+<body>  
 
-<!-- Log in icon -->
-<div class="rectangle-container">
-<div class="rectangle">
-<h2 class="text-rectangle">Inloggen</h2>
-</div>
-</div>
-
-<!--Logo-->
-<div id="Logo">
-<img src="../styling/images/turnclub-logo.png" alt="Logo">
-</div> 
+<div class="hero-image">
+    <div class="hero-text">
+        <h1 style="font-size:50px">Gulpener</h1>
+        <h1 style="font-size:50px">Turnclub</h1>
+        <p>Landsraderweg 5, 6271 NT Gulpen</p>
 
 
-<!-- Begin pagina Text -->
-<div class="containerbegintext">
-  <div class="line"></div>
-  <div id="texthome">
-    <h1>Gulpener<br>Turnclub</h1>
-    <p>Landsraderweg 5, 6271 NT Gulpen</p>
-  </div>
-</div>
 
-<!-- Navigatie Balk-->
-<div id="navigatie-container">
-    <ul>
-        <li><a href=”index.php”>Homepage</a></li>
-        <li><a href=”#”>Vereniging</a></li>
-        <li><a href=”#”>Groepen</a></li>
-        <li><a href=”#”>Historie</a></li>
-        <li><a href=”#”>Foto's</a></li>
-        <li><a href=”#”>Nieuws</a></li>
-        <li><a href=”#”>Contact</a></li> 
-    </ul>  
-</div>
-
-<!-- Inleiding image -->
-<div id=inleidingstuk>
-
-    <div id="inleidingfoto">
-    <img src="../styling/images/inleiding.jpg" alt="inleidingfoto">
+    </div> 
+    <div class="topnav" id="myTopnav2">
+            <a href="#home" class="active">Home</a>
+            <a href="#news">News</a>
+            <a href="#contact">Contact</a>
+            <div class="dropdown">
+                <button class="dropbtn">Dropdown
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </div>
+            <a href="#about">About</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+            <div class="container">
     </div>
+</div>
 
-<!-- Inleding text -->
-    <div id="inleiding">
+<div class="logo">
+<img src="../styling/images/turnclub-logo.png" class="logo"alt="logo">
+</div> 
+</div>
+
+
+<div class="Log-in-icon-text">
+<h2>Inloggen</h2>
+</div>  
+
+<div class="inleiding-content">
+<div class="inleiding-foto-container1">
+    <div class="inleiding-foto">
+    <img src="../styling/images/inleiding.jpg" class="logo"alt="logo">
+    </div> 
+</div>
+
+<div class="inleiding-text-container1">
+    <div class="inleiding-text">
     <p>
     Welkom bij de Gulpener Turnclub (GTC)! Ontdek de opwinding van<br>
     gymnastiek en turnen in onze gemeenschap van passie en prestatie.<br>
-    Of je nu een beginner of een ervaren turner bent, bij GTC vind je een<br> 
+    Of je nu een beginner of een ervaren turner bent, bij GTC vind je een<br>
     thuis om je potentieel te ontdekken en te ontwikkelen.<br>
+    </p>
+    </div> 
+</div>
+</div>
+
+<div class="banner-foto-container2">
+    <div class="banner-foto">
+    <img src="../styling/images/banner.jpeg" class="banner"alt="banner">
+    </div> 
+</div>
+
+<div class="samenvatting-text-container1">
+    <div class="samenvatting-text">
+    <h1> Gezond bewegen voor ouderen bij de Gulpener Turnclub</h1>
+
+    <div class="ouderen-foto-container">
+    <div class="ouderen-foto">
+    <img src="../styling/images/ouderen.png" class="ouderen"alt="ouderen">
+    </div> 
+    </div>
+    
+    <div class="samenvatting-text-1">
+    <p>Bij de Gulpener Turnclub worden al een aantal jaren op dinsdagavond van 19.30 – 20.30 uur in Sporthal het Gulpdal bewegingslessen speciaal voor ouderen (v.a. 55 jaar) gegeven.
+        <br>
+        De contributie voor deze lessen is € 15,00 per maand.
+        <br>
+        De manier waarop de lessen door onze deskundige trainer Pierre de Bie worden gegeven, wordt door de leden als zeer prettig ervaren. Niet alleen wordt er tijdens de les samen met de groep op een gezonde en verantwoorde manier gesport, ook het gezellig samenzijn ná de les wordt – voor wie dat wil - erg op prijs gesteld.
     </p>
     </div>
 
-</div>
 
-<!-- banner na de inleiding -->
-<div id="banner">
-    <img src="../styling/images/banner.jpeg" alt="banner">
-</div>
-
-<!-- samenvatting title -->
-<div id="samenvatting">
-<h1>
-    Gezond bewegen voor ouderen bij de <br>
-    Gulpener Turnclub
-</h1>
-</div>
-
-<div id="samenvatting1">
+    <div class="samenvatting-text-2">
     <p>
-    Bij de Gulpener Turnclub worden al een aantal jaren op
-    dinsdagavond van 19.30 – 20.30 uur in Sporthal het
-    Gulpdal bewegingslessen speciaal voor ouderen (v.a. 55
-    jaar) gegeven.<br>
+    Niet alleen wordt er tijdens de les samen met de groep op een gezonde en verantwoorde manier gesport, ook het gezellig samenzijn ná de les wordt – voor wie dat wil - erg op prijs gesteld.
+    De leden organiseren ook regelmatig buiten de lessen om zélf leuke activiteiten.
     <br>
-    De contributie voor deze lessen is € 15,00 per maand.<br>
-    <br>
-    De manier waarop de lessen door onze deskundige
-    trainer Pierre de Bie worden gegeven, wordt door de
-    leden als zeer prettig ervaren. Niet alleen wordt er
-    tijdens de les samen met de groep op een gezonde en
-    verantwoorde manier gesport, ook het gezellig
-    samenzijn ná de les wordt – voor wie dat wil - erg op
-    prijs gesteld.<br>
-</p>
+    Bent u nieuwsgierig geworden, kom dan een keer kijken of een proefles bijwonen! Voor vragen kunt u altijd een mailtje sturen naar gtcgulpen@gmail.com.
+    </p>
+    </div> 
 </div>
 
-<!-- samenvatting foto-->
-<div id="ouderen">
-    <img src="../styling/images/ouderen.png" alt="banner">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+    <div class="column footer">
+        <h1>Volg ons</h1>
+        <img src="instagram_2111463.png" <a="https://www.instagram.com/gulpenerturnclub/" height=30></a> <img src="facebook_5968764.png" height=30> <img src="twitter_5968830.png" height=30>
+    </div>
 </div>
 
-<div id="samenvatting2">
-    <p>
-    Niet alleen wordt er tijdens de les samen met<br>
-    de groep op een gezonde en verantwoorde<br>
-    manier gesport, ook het gezellig samenzijn ná<br>
-    de les wordt – voor wie dat wil - erg op prijs<br>
-    gesteld.<br>
-    De leden organiseren ook regelmatig buiten<br>
-    de lessen om zélf leuke activiteiten.<br>
-    <br>
-    Bent u nieuwsgierig geworden, kom dan een<br>
-    keer kijken of een proefles bijwonen! Voor<br>
-    vragen kunt u altijd een mailtje sturen naar<br>
-    gtcgulpen@gmail.com.<br>
 
-   
+</body>
+</html>
 
 
 
@@ -142,7 +154,12 @@
 
 
 
-<!-- banaan php -->
+
+
+
+
+
+<!-- php -->
 <?php
 session_start();
 
@@ -183,8 +200,7 @@ if (isset($_POST['newBlog'])) {
 
 ?>
 
-
-<!-- extra php -->
+<!-- nog meer php -->
 
  <form method="POST" action="index.php">
     <button type="submit" name="logoutsub">Log out</button> <br>
