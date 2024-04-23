@@ -1,0 +1,27 @@
+.containerAlgemeen {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--primary-color);
+}
+.innerContainerAlgemeen {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.bulletPoints {
+  display: flex;
+  flex-direction: column;
+  max-width: 40%;
+}
+.bulletPointsTitle {
+  font-size: 25px;
+  font-family: sans-serif;
+  font-weight: bolder;
+  margin-top: 35px;
+}
+.bulletPointsText {
+  font-size: 20px;
+  font-family: sans-serif;
+  font-weight: lighter;
+  margin-top: 20px;
+}

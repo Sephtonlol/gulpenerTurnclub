@@ -1,19 +1,12 @@
-:root {
-  --accent-color: #89b6d6;
-  --primary-color: #f1f1f1;
-  --secundary-color: #659dc6;
-  --tertiary-color: #4c95c9;
-  --quaternary-color: #659dc66d;
-  --quinary-color: #5b7284;
-  --senary-color: #66737c;
-}
 html,
 body {
   margin: 0;
 }
 
 .header {
-  background-image: url("../assets/images/pageimages/pageImage_1.png");
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("../assets/images/pageimages/pageImage_1.png");
+  /* background-image: url("../assets/images/pageimages/pageImage_1.png"); */
   background-size: contain;
   height: 800px;
   min-width: 100%;
@@ -92,7 +85,10 @@ body {
   margin: 2px;
   padding: 10px;
   color: var(--primary-color);
-  min-width: 100px;
+  min-width: 125px;
+
+  font-size: 15px;
+  transition-duration: 0.2s;
 }
 .headerButtons:hover {
   border-color: var(--primary-color);
@@ -104,4 +100,34 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+.menu {
+  display: flex;
+  flex-direction: column;
+}
+#dropdownMenu {
+  position: relative;
+  min-width: 125px;
+}
+.headerButtons:hover .expanding {
+  display: block;
+}
+
+@keyframes expand {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+.expanding {
+  display: none;
+  z-index: 1;
+  animation: expand 300ms ease-in-out forwards;
+  transform-origin: top center;
+}
+
+.menu:hover .expanding {
+  display: block;
 }

@@ -5,7 +5,7 @@ require __DIR__ . "/partials/_dbcon.php";
 $imageToEdit = $_GET["imageToEdit"] ?? '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_FILES["editedImage"]["name"])) {
-    $uploadDir = "../assets/images/pageImage_";
+    $uploadDir = "../assets/images/pageimages/pageImage_";
     $uploadFile = $uploadDir . $imageToEdit . ".png";
 
     if (move_uploaded_file($_FILES["editedImage"]["tmp_name"], $uploadFile)) {
@@ -26,14 +26,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_FILES["editedImage"]["name"
     <script src="../scripts/editPost.js"></script>
 </head>
 <body>
+    <div class="row">
 <form class="blogPost" method="post" enctype="multipart/form-data">
-    <img class="blogImage" src="../assets/images/pageimages/pageImage_<?php echo htmlspecialchars($imageToEdit) . '.png'; ?>" alt="<?php echo htmlspecialchars($imageToEdit) . '.png'?>">
+    <img style="max-height: 100vh;" class="blogImage" src="../assets/images/pageimages/pageImage_<?php echo htmlspecialchars($imageToEdit) . '.png'; ?>" alt="<?php echo htmlspecialchars($imageToEdit) . '.png'?>">
     <div class='blogTextContainer'>
         <input type="file" name="editedImage" id="image" onchange="previewImage()" accept=".jpg, .jpeg, .png">
         <button type="submit" name="editBlogPost">Apply Changes</button>
         <input type="hidden" name="postToEdit" value="<?php echo htmlspecialchars($imageToEdit);?>">
-        <button onclick="window.location.href='index.php'">Cancel</button>
+    </form>
     </div>
-</form>
+<button class="button" onclick="window.location.href='index.php'">Cancel</button>
+</div>
 </body>
 </html>

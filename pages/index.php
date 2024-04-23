@@ -40,10 +40,12 @@ require __DIR__ . "/partials/_dbcon.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gulpener Turnclub</title>
-    <link rel="stylesheet" href="../styling/blog.css">
+    <link rel="stylesheet" href="../styling/style.css">
     <link rel="stylesheet" href="../styling/header.css">
+    <link rel="stylesheet" href="../styling/algemeen.css">
     <link rel="stylesheet" href="../styling/preface.css">
     <link rel="stylesheet" href="../styling/longImage.css">
+    <link rel="stylesheet" href="../styling/blog.css">
     <link rel="stylesheet" href="../styling/lesInformatie.css">
     <link rel="stylesheet" href="../styling/footer.css">
 
@@ -66,7 +68,7 @@ require __DIR__ . "/partials/_dbcon.php";
                 
             <div class="simpleImage">
             <?php
-            echo '<form method="post">
+            echo '<form  method="post">
             <button class="button" type="submit" name="logoutsub">Log out</button>
             </form>';
             
@@ -80,22 +82,68 @@ require __DIR__ . "/partials/_dbcon.php";
         <span class="headerTitle">GULPENER TURNCLUB</span>
         <span class="headerText">Landsraderweg 5, 6271 NT Gulpen</span>
         <div class="buttonContainer">
-            <button class="headerButtons">HomePage</button>
+            <div class=menu>
+            <button onclick="window.location.href='index.php'" class="headerButtons">HomePage</button>
+            <div class="expanding">
+            <button id="dropdownMenu" onclick="window.location.href='#info'" class="headerButtons">Info</button><br>
+            <button id="dropdownMenu" onclick="window.location.href='#algemeen'" class="headerButtons">algemeen</button><br>
+            <button id="dropdownMenu" onclick="window.location.href='#news'" class="headerButtons">Nieuws</button><br>
+            <button id="dropdownMenu" onclick="window.location.href='#footer'" class="headerButtons">Ondersteuning</button>
+            </div>
+        </div>
+        <div class=menu>
             <button class="headerButtons">Vereniging</button>
+            <div class="expanding">
+            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
+            <button id="dropdownMenu" class="headerButtons">Option2</button>
+            </div>
+        </div>
+        <div class=menu>
             <button class="headerButtons">Groepen</button>
+            <div class="expanding">
+            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
+            <button id="dropdownMenu" class="headerButtons">Option2</button><br>
+            <button id="dropdownMenu" class="headerButtons">Option3</button><br>
+            <button id="dropdownMenu" class="headerButtons">Option4</button>
+            </div>
+        </div>
+        <div class=menu>
             <button class="headerButtons">Geschiedenis</button>
+            <div class="expanding">
+            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
+            <button id="dropdownMenu" class="headerButtons">Option2</button>
+            </div>
+        </div>
+        <div class=menu>
             <button class="headerButtons">Foto's</button>
-            <button class="headerButtons">Niews</button>
+            <div class="expanding">
+            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
+            <button id="dropdownMenu" class="headerButtons">Option2</button><br>
+            <button id="dropdownMenu" class="headerButtons">Option3</button>
+            </div>
+        </div>
+        <div class=menu>
+            <button class="headerButtons">Nieuws</button>
+            <div class="expanding">
+            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
+            <button id="dropdownMenu" class="headerButtons">Option2</button>
+            </div>
+        </div>
+        <div class=menu>
             <button class="headerButtons">Contact</button>
-
+            <div class="expanding">
+            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
+            <button id="dropdownMenu" class="headerButtons">Option2</button>
+            </div>
+            </div>
+<script></script>
         </div>
     </div>
     <div class="preface">
 <?php
-$imageId = 2;
-echo "<div class='column'><img class='images' src=../assets/images/pageImages/pageImage_" . $imageId . ".png >";
+echo "<div class='column'><img class='images' src=../assets/images/pageImages/pageImage_2.png >";
 if ($_SESSION['authlevel'] <= 1) {
-    echo "<a href=editImage.php?imageToEdit=" . $imageId . ">Edit Image</a>";
+    echo "<a href=editImage.php?imageToEdit=2>Edit Image</a>";
 }
 echo "</div>";
 
@@ -117,15 +165,118 @@ if ($textfieldId == 1){
     </div></div>
 
 <?php
-echo "<div class='column'><img class='longImage' src=../assets/images/pageImages/pageImage_5.png ></div>";
+echo "<div class='column'><img class='longImage' src=../assets/images/pageImages/pageImage_5.png >";
 if ($_SESSION['authlevel'] <= 1) {
-    echo "<a href=editImage.php?imageToEdit=5>Edit Image</a>";
+    echo "<a href=editImage.php?imageToEdit=5>Edit Image</a></div>";
 }
 echo "</div></div>";
 
 ?>
 
-<div class="theContainer">
+<span  id="algemeen"class="smallHeader">Algemeen</span>
+<div class="containerAlgemeen">
+    <div class="innerContainerAlgemeen">
+    <div class="bulletPoints">
+        <?php
+        require __DIR__ . "/partials/_dbcon.php";
+
+        $query = "SELECT * FROM textfields";
+        $result = $mysqli->query($query);
+        while ($row = $result->fetch_assoc()) {
+        $textfieldId = $row["textfield_id"];
+        $textContent = $row["textContent"];
+        
+        if ($textfieldId == 10){
+        echo "<span class='bulletPointsTitle'>" . $textContent . "</span>";
+        if ($_SESSION['authlevel'] <= 1) {
+            echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+            }
+        }
+        if ($textfieldId == 11){
+            echo "<span class='bulletPointsText'>• " . $textContent . "</span>";
+            if ($_SESSION['authlevel'] <= 1) {
+                echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+                }
+            }
+        if ($textfieldId == 12){
+        echo "<span class='bulletPointsText'>• " . $textContent . "</span>";
+        if ($_SESSION['authlevel'] <= 1) {
+            echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+            }
+        }
+        if ($textfieldId == 13){
+            echo "<span class='bulletPointsText'>• " . $textContent . "</span>";
+            if ($_SESSION['authlevel'] <= 1) {
+                echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+                }
+        }
+    }
+        
+        ?>
+
+    </div>
+    <div class="bulletPoints">
+        <?php
+    require __DIR__ . "/partials/_dbcon.php";
+
+    $query = "SELECT * FROM textfields";
+    $result = $mysqli->query($query);
+    while ($row = $result->fetch_assoc()) {
+    $textfieldId = $row["textfield_id"];
+    $textContent = $row["textContent"];
+    
+    if ($textfieldId == 14){
+    echo "<span class='bulletPointsTitle'>" . $textContent . "</span>";
+    if ($_SESSION['authlevel'] <= 1) {
+        echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+        }
+    }
+    if ($textfieldId == 15){
+        echo "<span class='bulletPointsText'>• " . $textContent . "</span>";
+        if ($_SESSION['authlevel'] <= 1) {
+            echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+            }
+        }
+    if ($textfieldId == 16){
+    echo "<span class='bulletPointsText'>• " . $textContent . "</span>";
+    if ($_SESSION['authlevel'] <= 1) {
+        echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+        }
+    }
+    if ($textfieldId == 17){
+        echo "<span class='bulletPointsText'>• " . $textContent . "</span>";
+        if ($_SESSION['authlevel'] <= 1) {
+            echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+            }
+    }
+    if ($textfieldId == 18){
+        echo "<span class='bulletPointsText'>• " . $textContent . "</span>";
+        if ($_SESSION['authlevel'] <= 1) {
+            echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+            }
+        }
+        if ($textfieldId == 19){
+            echo "<span class='bulletPointsText'>• " . $textContent . "</span>";
+            if ($_SESSION['authlevel'] <= 1) {
+                echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+                }
+    }
+}
+        ?>
+    </div>
+
+    
+
+</div>
+<?php
+echo "<div class='column'><img class='longImage' src=../assets/images/pageImages/pageImage_8.png >";
+if ($_SESSION['authlevel'] <= 1) {
+    echo "<a href=editImage.php?imageToEdit=8>Edit Image</a></div>";
+}
+?>
+
+<div class="informatieLine" style="margin-bottom:30px;"></div>
+<div id="info" class="theContainer">
 <div class="lesInformatieContainer">
 <?php
 echo "<div class='lesInformatie'>";
@@ -206,7 +357,7 @@ echo "</div></div></div>";
 
         <form method="POST" action="index.php">
 
-    <span onclick="window.location.href='blog.php';" class="headerBlog">Laatste nieuws</span>
+    <span  id="news" onclick="window.location.href='blog.php';" class="smallHeader">Laatste nieuws</span>
             <div class='blogIndex'>
                 
 
@@ -259,6 +410,7 @@ echo "</div></div></div>";
             </div>
             </div>
         </form>
+
         <footer>
             <div class="columnFooter">
                 <?php
@@ -286,7 +438,7 @@ if ($_SESSION['authlevel'] <= 1) {
 }
                 ?>
                 </div>
-                <div class="footerContainer">
+                <div id="footer" class="footerContainer">
                     <div class="footer">
                     <div class="footerLine"></div>
                     <div class="footerIcons">

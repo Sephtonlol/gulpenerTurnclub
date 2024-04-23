@@ -26,12 +26,14 @@ if (isset($_POST['logoutsub'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gulpener Turnclub</title>
+    <link rel="stylesheet" href="../styling/style.css">
     <link rel="stylesheet" href="../styling/blog.css">
+
     <script src="../scripts/deletePostConfirm.js"></script>
 </head>
 <body>
 
-<span class="headerBlog">Laatste nieuws</span>
+<span class="smallHeader">Laatste nieuws</span>
 <div class='blog'>
 
         <?php

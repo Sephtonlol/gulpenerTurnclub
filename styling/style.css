@@ -7,3 +7,8 @@
   --quinary-color: #5b7284;
   --senary-color: #66737c;
 }
+html,
+body {
+  scroll-behavior: smooth;
+  overflow: auto;
+}

@@ -73,7 +73,13 @@ body {
   font-size: large;
   height: 1000px;
 }
-
+.row {
+  display: flex;
+  flex-direction: row;
+}
+.button {
+  height: max-content;
+}
 @media screen and (max-width: 1000px) {
   body {
     overflow: scroll;
