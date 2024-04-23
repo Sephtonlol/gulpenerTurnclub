@@ -7,6 +7,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gulpener Turnclub</title>
+    <link rel="stylesheet" href="../styling/style.css">
     <link rel="stylesheet" href="../styling/loginSignUp.css">
 </head>
 <body>
@@ -52,17 +53,40 @@
 
 
             if($rowcount != 0){
-                echo "Invalid";
+                echo "<p>Invalid</p>";
+            exit;
+
             }
             if($getpassword != $confirmgetpassword){
-                echo "Invalid";
+                echo "<p>Invalid</p>";
+            exit;
+
             }
-                if(($rowcount ==0) && ($getpassword == $confirmgetpassword)){;
+            if (is_null($getname) == 1){
+            echo "<p>Invalid</p>";
+            exit;
+
+            }
+            if (is_null($getemail) == 1){
+                echo "<p>Invalid</p>";
+                exit;
+    
+            }
+            if (is_null($getpassword) == 1){
+                echo "<p>Invalid</p>";
+                exit;
+    
+            }
+                if((is_null($getname) == 0) && (is_null($getemail) == 0) && (is_null($getpassword) == 0) && ($rowcount ==0) && ($getpassword == $confirmgetpassword)){
 
                     $sql="insert into users (user_name, email, password) value ('$getname', '$getemail','$getpassword')";
                     $sqlres=mysqli_query($connect, $sql);
 
-                    echo "<span>Account is gemaakt!</span>";
+                    echo "<span class='approved'>Account is gemaakt!</span>";
+                }
+                else {
+                    echo "<p>Invalid</p>";
+                exit;
                 }
             }
             ?>

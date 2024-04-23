@@ -7,10 +7,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
     exit; 
 }
 
-echo '<form method="post">
-        <button type="submit" name="logoutsub">Log out</button>
-    </form>';
-
 if (isset($_POST['logoutsub'])) {
     session_unset();
     session_destroy();
@@ -28,8 +24,10 @@ if (isset($_POST['logoutsub'])) {
     <title>Gulpener Turnclub</title>
     <link rel="stylesheet" href="../styling/header.css">
 
+    <link rel="stylesheet" href="../styling/header.css">
     <link rel="stylesheet" href="../styling/style.css">
     <link rel="stylesheet" href="../styling/blog.css">
+
 
     <script src="../scripts/deletePostConfirm.js"></script>
 </head>
@@ -88,8 +86,10 @@ if (isset($_POST['logoutsub'])) {
             <button id="dropdownMenu" class="headerButtons">Option1</button><br>
             <button id="dropdownMenu" class="headerButtons">Option2</button>
             </div>
-            </div>
-<script></script>
+        </div>
+        <form method="post">
+    <button class="headerButtons" style="margin-top: 2px" type="submit" name="logoutsub">Log out</button>
+</form>
         </div>
     </div>
 

@@ -171,6 +171,84 @@ if ($_SESSION['authlevel'] <= 1) {
 echo "</div></div>";
 
 ?>
+<span  id="info"class="smallHeader">Informatie</span>
+
+<div class="theContainer">
+<div class="lesInformatieContainer">
+<?php
+echo "<div class='lesInformatie'>";
+
+require __DIR__ . "/partials/_dbcon.php";
+
+$query = "SELECT * FROM textfields";
+$result = $mysqli->query($query);
+while ($row = $result->fetch_assoc()) {
+$textfieldId = $row["textfield_id"];
+$textContent = $row["textContent"];
+
+if ($textfieldId == 2){
+echo "<span class='lesInformatieTitle'>" . $textContent . "</span>";
+if ($_SESSION['authlevel'] <= 1) {
+    echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+    }
+}
+if ($textfieldId == 3){
+echo "<span class='lesInformatieText'>" . $textContent . "</span>";
+if ($_SESSION['authlevel'] <= 1) {
+    echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+    }
+}
+if ($textfieldId == 4){
+echo "<span class='lesInformatieText'>" . $textContent . "</span>";
+if ($_SESSION['authlevel'] <= 1) {
+    echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+    }
+}
+if ($textfieldId == 5){
+echo "<span class='lesInformatieText'>" . $textContent . "</span>";
+if ($_SESSION['authlevel'] <= 1) {
+    echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+    }
+}
+}
+echo "<div class='informatieLine'></div>";
+echo "<img class='informatieImage' src='../assets/images/pageImages/pageImage_6.png' alt='pageImage_6'>";   
+if ($_SESSION['authlevel'] <= 1) {
+    echo "<a href=editImage.php?imageToEdit=6>Edit Image</a>";
+}
+echo "</div></div>";
+echo "<div class='lesInformatieContainer'>";
+
+echo "<img class='informatieImage' src=../assets/images/pageImages/pageImage_7.png >";
+if ($_SESSION['authlevel'] <= 1) {
+    echo "<a href=editImage.php?imageToEdit=7>Edit Image</a>";
+}
+require __DIR__ . "/partials/_dbcon.php";
+
+$query = "SELECT * FROM textfields";
+$result = $mysqli->query($query);
+while ($row = $result->fetch_assoc()) {
+$textfieldId = $row["textfield_id"];
+$textContent = $row["textContent"];
+
+if ($textfieldId == 6){
+echo "<span class='lesInformatieText'>" . $textContent . "</span>";
+if ($_SESSION['authlevel'] <= 1) {
+    echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+    }
+}
+if ($textfieldId == 7){
+echo "<span class='lesInformatieText'>" . $textContent . "</span>";
+if ($_SESSION['authlevel'] <= 1) {
+    echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+    }
+}
+}
+echo "<div class='informatieLine'></div>";
+echo "</div></div></div>";
+
+
+?>
 
 <span  id="algemeen"class="smallHeader">Algemeen</span>
 <div class="containerAlgemeen">
@@ -267,89 +345,13 @@ echo "</div></div>";
     
 
 </div>
+
+<div class="informatieLine" style="margin-bottom:30px;"></div>
 <?php
 echo "<div class='column'><img class='longImage' src=../assets/images/pageImages/pageImage_8.png >";
 if ($_SESSION['authlevel'] <= 1) {
     echo "<a href=editImage.php?imageToEdit=8>Edit Image</a></div>";
 }
-?>
-
-<div class="informatieLine" style="margin-bottom:30px;"></div>
-<div id="info" class="theContainer">
-<div class="lesInformatieContainer">
-<?php
-echo "<div class='lesInformatie'>";
-
-require __DIR__ . "/partials/_dbcon.php";
-
-$query = "SELECT * FROM textfields";
-$result = $mysqli->query($query);
-while ($row = $result->fetch_assoc()) {
-$textfieldId = $row["textfield_id"];
-$textContent = $row["textContent"];
-
-if ($textfieldId == 2){
-echo "<span class='lesInformatieTitle'>" . $textContent . "</span>";
-if ($_SESSION['authlevel'] <= 1) {
-    echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
-    }
-}
-if ($textfieldId == 3){
-echo "<span class='lesInformatieText'>" . $textContent . "</span>";
-if ($_SESSION['authlevel'] <= 1) {
-    echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
-    }
-}
-if ($textfieldId == 4){
-echo "<span class='lesInformatieText'>" . $textContent . "</span>";
-if ($_SESSION['authlevel'] <= 1) {
-    echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
-    }
-}
-if ($textfieldId == 5){
-echo "<span class='lesInformatieText'>" . $textContent . "</span>";
-if ($_SESSION['authlevel'] <= 1) {
-    echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
-    }
-}
-}
-echo "<div class='informatieLine'></div>";
-echo "<img class='informatieImage' src='../assets/images/pageImages/pageImage_6.png' alt='pageImage_6'>";   
-if ($_SESSION['authlevel'] <= 1) {
-    echo "<a href=editImage.php?imageToEdit=6>Edit Image</a>";
-}
-echo "</div></div>";
-echo "<div class='lesInformatieContainer'>";
-
-echo "<img class='informatieImage' src=../assets/images/pageImages/pageImage_7.png >";
-if ($_SESSION['authlevel'] <= 1) {
-    echo "<a href=editImage.php?imageToEdit=7>Edit Image</a>";
-}
-require __DIR__ . "/partials/_dbcon.php";
-
-$query = "SELECT * FROM textfields";
-$result = $mysqli->query($query);
-while ($row = $result->fetch_assoc()) {
-$textfieldId = $row["textfield_id"];
-$textContent = $row["textContent"];
-
-if ($textfieldId == 6){
-echo "<span class='lesInformatieText'>" . $textContent . "</span>";
-if ($_SESSION['authlevel'] <= 1) {
-    echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
-    }
-}
-if ($textfieldId == 7){
-echo "<span class='lesInformatieText'>" . $textContent . "</span>";
-if ($_SESSION['authlevel'] <= 1) {
-    echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
-    }
-}
-}
-echo "<div class='informatieLine'></div>";
-echo "</div></div></div>";
-
-
 ?>
 
 </div>

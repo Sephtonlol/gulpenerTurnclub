@@ -80,6 +80,9 @@ body {
 .button {
   height: max-content;
 }
+.hiddenPhone {
+  display: flex;
+}
 @media screen and (max-width: 1000px) {
   body {
     overflow: scroll;
@@ -95,6 +98,7 @@ body {
   .imageContainer {
     flex-direction: column;
     height: 30vh;
+    margin-top: 50px;
   }
   .blogContent {
     height: 60vh;
@@ -117,5 +121,10 @@ body {
     background-color: var(--accent-color);
     height: 100%;
     border-radius: 0px 0px 40px 40px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .hiddenPhone {
+    display: none;
   }
 }

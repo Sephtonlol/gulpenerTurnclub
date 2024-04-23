@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gulpener Turnclub</title>
     <link rel="stylesheet" href="../styling/loginSignUp.css">
+    <link rel="stylesheet" href="../styling/style.css">
+
 
 </head>
 <body>
@@ -50,7 +52,7 @@
             if($countrows == 0 && isset($_POST['getname'])){
                 unset($_POST['getname']);
                 unset($_POST['getpassword']);
-                echo "<p>wachtwoord of naam niet juist</p>";
+                echo "<p>Wachtwoord/Naam onjuist</p>";
 
                 exit;
             }else{
