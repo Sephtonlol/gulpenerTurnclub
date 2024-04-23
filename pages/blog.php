@@ -7,7 +7,9 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
     exit; 
 }
 
-echo '<button type="submit" name="logoutsub">Log out</button> <br>';
+echo '<form method="post">
+        <button type="submit" name="logoutsub">Log out</button>
+    </form>';
 
 if (isset($_POST['logoutsub'])) {
     session_unset();

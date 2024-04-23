@@ -1,0 +1,42 @@
+.theContainer {
+  display: flex;
+  justify-content: space-around;
+  background-color: var(--primary-color);
+}
+.lesInformatieContainer {
+  display: flex;
+  max-width: 40%;
+  flex-direction: column;
+  background-color: var(--primary-color);
+}
+.lesInformatie {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.lesInformatieTitle {
+  font-size: xx-large;
+  font-weight: bolder;
+  font-family: sans-serif;
+  text-align: center;
+  margin: 20px;
+}
+.lesInformatieText {
+  font-size: larger;
+  font-family: sans-serif;
+  margin: 20px;
+}
+.informatieLine {
+  margin-top: 20px;
+  align-self: center;
+  height: 2px;
+  width: 90%;
+  background-color: black;
+}
+.informatieImage {
+  max-width: 70%;
+  align-self: center;
+  max-height: 500px;
+  object-fit: cover;
+  margin: 10px;
+}

@@ -32,6 +32,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
 if(isset($_POST['edited_post'])){
     $edited_post = $_POST["edited_post"];
     $edited_title = $_POST["edited_title"];
+    $edited_post = filter_var($edited_post, FILTER_SANITIZE_STRING);
+    $edited_title = filter_var($edited_title, FILTER_SANITIZE_STRING);
     $sql = "UPDATE blog SET content = '$edited_post', title = '$edited_title' WHERE blog_id = '$postToEdit'";
     $sqlres = mysqli_query($connect, $sql);
 
