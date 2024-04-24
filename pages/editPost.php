@@ -73,7 +73,7 @@ if(isset($_POST['edited_post'])){
       <div class='blogContent'>
         <div>
           <div class='blogTitle'>
-            <input name="edited_title" type="text" maxlength="20" value="<?php echo $title; ?>">
+            <input name="edited_title" type="text" maxlength="50" value="<?php echo $title; ?>">
           </div>
           <div class='blogTextContainer'>
             <div class='blogText'>

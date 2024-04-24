@@ -114,7 +114,7 @@ echo "<div class='blogPost'>";
         if (file_exists($imagePath)) {
             echo "<div class='imageContainer'><img src='$imagePath' alt='$title' class='blogImage'></div>";
         }
-        echo "<div class='blogContent'><div><div class='blogTitle'><span>" . $title .  "</span></div>";
+        echo "<div class='blogContent'><div><div class='blogTitle'><div>" . $title .  "</div></div>";
         echo "<div class='blogTextContainer'><div class='filler2'></div><div class='blogText'><span>" . $content .  "</span></div><div class='filler2'></div></div></div>";
         
         echo "<div class='blogDate'> <span>" . $date . "</span>";

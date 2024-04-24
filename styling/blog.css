@@ -33,7 +33,7 @@ body {
   display: flex;
   flex-direction: row;
   background-color: var(--primary-color);
-  justify-content: start;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   min-width: 1000px;
 }
@@ -72,6 +72,14 @@ body {
   font-weight: bolder;
   padding: 5px;
   margin-top: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.blogTitle span {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-wrap: nowrap;
 }
 .blogText {
   display: -webkit-box;

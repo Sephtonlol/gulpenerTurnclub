@@ -27,6 +27,7 @@ if (isset($_POST['logoutsub'])) {
     <link rel="stylesheet" href="../styling/header.css">
     <link rel="stylesheet" href="../styling/style.css">
     <link rel="stylesheet" href="../styling/blog.css">
+    <link rel="stylesheet" href="../styling/footer.css">
 
 
     <script src="../scripts/deletePostConfirm.js"></script>
@@ -75,7 +76,7 @@ if (isset($_POST['logoutsub'])) {
             </div>
         </div>
         <div class=menu>
-            <button class="headerButtons">Nieuws</button>
+            <button onclick="window.location.href='#news'" class="headerButtons">Nieuws</button>
             <div class="expanding">
             <button id="dropdownMenu" onclick="window.location.href='index.php#news'" class="headerButtons">Recent</button><br>
             <button id="dropdownMenu" onclick="window.location.href='blog.php'" class="headerButtons">Alle nieuws</button>
@@ -147,5 +148,20 @@ while ($row = $result->fetch_assoc()) {
 
         ?>
         </div>
+        <footer>
+
+                <div id="footer" class="footerContainer">
+                    <div class="footer">
+                    <div class="footerLine"></div>
+                    <div class="footerIcons">
+                        <span>volg ons</span>
+                        <a href="https://www.facebook.com/gulpenerturnclub/"><img class="icons" src="../assets/images/icons/facebook.png" alt="facebook"></a>
+                        <a href="https://www.instagram.com/gulpenerturnclub/"><img class="icons" src="../assets/images/icons/instagram.png" alt="instagram"></a>
+
+                    </div>
+                    </div>
+                </div>
+                
+        </footer>
         </body>
 </html>
