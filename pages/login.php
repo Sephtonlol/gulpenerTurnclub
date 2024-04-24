@@ -40,6 +40,8 @@
 
             $getname=$_POST['getname'];
             $getpassword=$_POST['getpassword'];
+            $getname = filter_var($getname, FILTER_SANITIZE_STRING);
+            $getpassword = filter_var($getpassword, FILTER_SANITIZE_STRING);
 
             $query = "select * from users where user_name = '$getname' and password='$getpassword'";
 

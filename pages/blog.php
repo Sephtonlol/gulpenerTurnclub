@@ -32,7 +32,8 @@ if (isset($_POST['logoutsub'])) {
     <script src="../scripts/deletePostConfirm.js"></script>
 </head>
 <body>
-<div class="buttonContainer" style="background-color: var(--quinary-color);">
+<span class="smallHeader">Laatste nieuws</span>
+<div class="buttonContainer" style="background-color: var(--quinary-color); padding-bottom:20px;">
             <div class=menu>
             <button onclick="window.location.href='index.php'" class="headerButtons">HomePage</button>
             <div class="expanding">
@@ -93,7 +94,7 @@ if (isset($_POST['logoutsub'])) {
         </div>
     </div>
 
-<span class="smallHeader">Laatste nieuws</span>
+
 <div class='blog'>
 
         <?php
