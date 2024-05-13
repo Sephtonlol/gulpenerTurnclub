@@ -1,11 +1,6 @@
 <?php
+error_reporting(0);
 session_start();
-
-
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
-    header("location: login.php");
-    exit; 
-}
 
 if (isset($_POST['logoutsub'])) {
     session_unset();
@@ -90,7 +85,9 @@ if (isset($_POST['logoutsub'])) {
             </div>
         </div>
         <form method="post">
-    <button class="headerButtons" style="margin-top: 2px" type="submit" name="logoutsub">Log out</button>
+    <?php 
+    echo '<button class="headerButtons" style="margin-top: 2px" type="submit" name="logoutsub">' . ((!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true)?"Inloggen":"Uitloggen") . '</button>'; 
+    ?>
 </form>
         </div>
     </div>
@@ -106,6 +103,7 @@ $query = "SELECT * FROM blog
 order by blog_id desc";
 
 $result = $mysqli->query($query);
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
 
 if ($_SESSION['authlevel'] <= 1) {
     echo "<a href='newBlog.php';' style='justify-content: center;' class='blogSpecial'>
@@ -114,7 +112,7 @@ if ($_SESSION['authlevel'] <= 1) {
                 </div>
     </a>";
         
-}
+}}
 
 
 while ($row = $result->fetch_assoc()) {
@@ -134,13 +132,14 @@ while ($row = $result->fetch_assoc()) {
     echo "<div class='blogDate'> <span>" . $date . "</span><br>";
     echo "<a class='readPostRedirect' href='blogPost.php?postToView=" . $blogId . "'><div class='readPostContainer'><div class='readPost'>Lees meer</div></div></a>";
 
-
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
     if ($_SESSION['authlevel'] <= 1) {
     echo "<div class='editButtons'><a href=editPost.php?posttoedit=" . $blogId . ">Edit post</a><br>";
     echo "<a onclick='check()' href=deletePost.php/?posttodelete=" . $blogId . ">Delete post</a> </div>";
-    }
-    else {
+}
+else {
     echo "<div class='filler'></div>";
+}
     }
     echo "</div></div>";
 

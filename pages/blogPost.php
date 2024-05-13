@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 include "partials/_dbcon.php";
 session_start();
 
@@ -119,14 +120,14 @@ echo "<div class='blogPost'>";
         
         echo "<div class='blogDate'> <span>" . $date . "</span>";
 
-
+        if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
         if ($_SESSION['authlevel'] <= 1) {
         echo "<div class='editButtons'><a href=editPost.php?posttoedit=" . $blogId . ">Edit post</a><br>";
         echo "<a onclick='check()' href=deletePost.php/?posttodelete=" . $blogId . ">Delete post</a> </div>";
         }
         else {
         echo "<div class='filler'></div>";
-        }
+        }}
         echo "</div></div></div>";
         ?>
 </body>

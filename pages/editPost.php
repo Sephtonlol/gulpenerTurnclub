@@ -1,12 +1,18 @@
 <?php
+error_reporting(0);
+
 include "partials/_dbcon.php";
 
 session_start();
-if ($_SESSION['authlevel'] > 1) {
-    header("location: ../index.php");
-    exit;
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+  if ($_SESSION['authlevel'] > 1) {
+      header("location: ./index.php");
+      exit;
+  }
+} else {
+  header("location: ./index.php");
+      exit;
 }
-
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
 

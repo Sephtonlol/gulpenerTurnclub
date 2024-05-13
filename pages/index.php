@@ -1,13 +1,6 @@
 <?php
+error_reporting(0);
 session_start();
-
-
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
-    header("location: login.php");
-    exit; 
-}
-
-
 
 
 if (isset($_POST['logoutsub'])) {
@@ -59,22 +52,26 @@ require __DIR__ . "/partials/_dbcon.php";
             <div class="column">
             <img src="../assets/images/pageimages/pageImage_3.png" alt="logo" class="simpleImage">
             <?php
-            if ($_SESSION['authlevel'] <= 1) {
+            if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+                if ($_SESSION['authlevel'] <= 1) {
                 echo "<a href=editImage.php?imageToEdit=3>Edit Image</a><br>";
             }
+        }
             ?>
             </div>
             <div class="line"></div>
                 
             <div class="simpleImage">
             <?php
-            echo '<form  method="post">
-            <button class="button" type="submit" name="logoutsub">Log out</button>
-            </form>';
             
+            echo '<form  method="post">
+                <button class="button" type="submit" name="logoutsub">'.((!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true)?"Inloggen":"Uitloggen").'</button>
+                </form>';
+                if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
             if ($_SESSION['authlevel'] <= 1) {
                 echo "<a href=editImage.php?imageToEdit=1>Edit Image</a><br>";
             }
+        }
             
             ?>
             </div>
@@ -141,8 +138,10 @@ require __DIR__ . "/partials/_dbcon.php";
     <div class="preface">
 <?php
 echo "<div class='column'><img class='images' src=../assets/images/pageImages/pageImage_2.png >";
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
 if ($_SESSION['authlevel'] <= 1) {
     echo "<a href=editImage.php?imageToEdit=2>Edit Image</a>";
+}
 }
 echo "</div>";
 
@@ -157,16 +156,20 @@ if ($textfieldId == 1){
     echo "<div class='column'><span class='text'>" . $textContent . "</span>";
     }
 }
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
     if ($_SESSION['authlevel'] <= 1) {
-        echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+        echo "<a href=editTextfield.php?textfieldToEdit=1>Edit textfield</a>";
         }
+    }
 ?>
     </div></div>
 
 <?php
 echo "<div class='column'><img class='longImage' src=../assets/images/pageImages/pageImage_5.png >";
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
 if ($_SESSION['authlevel'] <= 1) {
     echo "<a href=editImage.php?imageToEdit=5>Edit Image</a></div>";
+}
 }
 echo "</div></div>";
 
@@ -188,40 +191,52 @@ $textContent = $row["textContent"];
 
 if ($textfieldId == 2){
 echo "<span class='lesInformatieTitle'>" . $textContent . "</span>";
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
 if ($_SESSION['authlevel'] <= 1) {
     echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
     }
+}
 }
 if ($textfieldId == 3){
 echo "<span class='lesInformatieText'>" . $textContent . "</span>";
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
 if ($_SESSION['authlevel'] <= 1) {
     echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
     }
+}
 }
 if ($textfieldId == 4){
 echo "<span class='lesInformatieText'>" . $textContent . "</span>";
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
 if ($_SESSION['authlevel'] <= 1) {
     echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
     }
+}
 }
 if ($textfieldId == 5){
 echo "<span class='lesInformatieText'>" . $textContent . "</span>";
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
 if ($_SESSION['authlevel'] <= 1) {
     echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
-    }
+    }}
 }
 }
 echo "<div class='informatieLine'></div>";
-echo "<img class='informatieImage' src='../assets/images/pageImages/pageImage_6.png' alt='pageImage_6'>";   
+echo "<img class='informatieImage' src='../assets/images/pageImages/pageImage_6.png' alt='pageImage_6'>";  
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
 if ($_SESSION['authlevel'] <= 1) {
+    
     echo "<a href=editImage.php?imageToEdit=6>Edit Image</a>";
+}
 }
 echo "</div></div>";
 echo "<div class='lesInformatieContainer'>";
 
 echo "<img class='informatieImage' src=../assets/images/pageImages/pageImage_7.png >";
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
 if ($_SESSION['authlevel'] <= 1) {
     echo "<a href=editImage.php?imageToEdit=7>Edit Image</a>";
+}
 }
 require __DIR__ . "/partials/_dbcon.php";
 
@@ -233,14 +248,18 @@ $textContent = $row["textContent"];
 
 if ($textfieldId == 6){
 echo "<span class='lesInformatieText'>" . $textContent . "</span>";
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
 if ($_SESSION['authlevel'] <= 1) {
     echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+}
     }
 }
 if ($textfieldId == 7){
 echo "<span class='lesInformatieText'>" . $textContent . "</span>";
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
 if ($_SESSION['authlevel'] <= 1) {
     echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+}
     }
 }
 }
@@ -265,26 +284,33 @@ echo "</div></div></div>";
         
         if ($textfieldId == 10){
         echo "<span class='bulletPointsTitle'>" . $textContent . "</span>";
+        if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
         if ($_SESSION['authlevel'] <= 1) {
             echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+        }
             }
         }
         if ($textfieldId == 11){
             echo "<span class='bulletPointsText'>• " . $textContent . "</span>";
+            if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
             if ($_SESSION['authlevel'] <= 1) {
                 echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+            }
                 }
             }
         if ($textfieldId == 12){
         echo "<span class='bulletPointsText'>• " . $textContent . "</span>";
+        if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
         if ($_SESSION['authlevel'] <= 1) {
             echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
-            }
+            }}
         }
         if ($textfieldId == 13){
             echo "<span class='bulletPointsText'>• " . $textContent . "</span>";
+            if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
             if ($_SESSION['authlevel'] <= 1) {
                 echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+            }
                 }
         }
     }
@@ -304,40 +330,46 @@ echo "</div></div></div>";
     
     if ($textfieldId == 14){
     echo "<span class='bulletPointsTitle'>" . $textContent . "</span>";
+    if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
     if ($_SESSION['authlevel'] <= 1) {
         echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
-        }
+        }}
     }
     if ($textfieldId == 15){
         echo "<span class='bulletPointsText'>• " . $textContent . "</span>";
+        if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
         if ($_SESSION['authlevel'] <= 1) {
             echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
-            }
+            }}
         }
     if ($textfieldId == 16){
     echo "<span class='bulletPointsText'>• " . $textContent . "</span>";
+    if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
     if ($_SESSION['authlevel'] <= 1) {
         echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
-        }
+        }}
     }
     if ($textfieldId == 17){
         echo "<span class='bulletPointsText'>• " . $textContent . "</span>";
+        if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
         if ($_SESSION['authlevel'] <= 1) {
             echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
-            }
+            }}
     }
     if ($textfieldId == 18){
         echo "<span class='bulletPointsText'>• " . $textContent . "</span>";
+        if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
         if ($_SESSION['authlevel'] <= 1) {
             echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
-            }
+            }}
         }
         if ($textfieldId == 19){
             echo "<span class='bulletPointsText'>• " . $textContent . "</span>";
+            if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
             if ($_SESSION['authlevel'] <= 1) {
                 echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
                 }
-    }
+        }}
 }
         ?>
     </div>
@@ -349,9 +381,10 @@ echo "</div></div></div>";
 <div class="informatieLine" style="margin-bottom:30px;"></div>
 <?php
 echo "<div class='column'><img class='longImage' src=../assets/images/pageImages/pageImage_8.png >";
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
 if ($_SESSION['authlevel'] <= 1) {
     echo "<a href=editImage.php?imageToEdit=8>Edit Image</a></div>";
-}
+}}
 ?>
 
 </div>
@@ -391,11 +424,12 @@ if ($_SESSION['authlevel'] <= 1) {
         echo "<div class='blogDate'> <span>" . $date . "</span><br>";
         echo "<a class='readPostRedirect' href='blogPost.php?postToView=" . $blogId . "'><div class='readPostContainer'><div class='readPost'>Lees meer</div></div></a>";
 
-
+        if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
         if ($_SESSION['authlevel'] <= 1) {
         echo "<div class='editButtons'><a href=editPost.php?posttoedit=" . $blogId . ">Edit post</a><br>";
         echo "<a onclick='check()' href=deletePost.php/?posttodelete=" . $blogId . ">Delete post</a> </div>";
         }
+    }
         else {
         echo "<div class='filler'></div>";
         }
@@ -426,15 +460,19 @@ $textContent = $row["textContent"];
 
 if ($textfieldId == 8){
 echo "<span class='footerTitle'>" . $textContent . "</span>";
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
 if ($_SESSION['authlevel'] <= 1) {
     echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
     }
 }
+}
 if ($textfieldId == 9){
 echo "<span class='footerText'>" . $textContent . "</span>";
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
 if ($_SESSION['authlevel'] <= 1) {
     echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
     }
+}
 }
 }
                 ?>

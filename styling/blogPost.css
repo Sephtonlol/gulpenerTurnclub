@@ -104,7 +104,7 @@ body {
     height: 60vh;
   }
   .blogImage {
-    height: auto;
+    height: 120%;
   }
   .blogContent {
     padding: 0px 0px 0px 0px;

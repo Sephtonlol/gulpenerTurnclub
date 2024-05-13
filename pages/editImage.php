@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 
 require __DIR__ . "/partials/_dbcon.php";
 
@@ -12,6 +13,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_FILES["editedImage"]["name"
         header("Location: ./index.php");
         exit();
     }
+}
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+    if ($_SESSION['authlevel'] > 1) {
+        header("location: ./index.php");
+        exit;
+    }
+} else {
+    header("location: ./index.php");
+        exit;
 }
 
 ?>
