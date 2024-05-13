@@ -1,5 +1,7 @@
 <?php
 error_reporting(0);
+session_start();
+
 
 require __DIR__ . "/partials/_dbcon.php";
 
@@ -14,15 +16,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_FILES["editedImage"]["name"
         exit();
     }
 }
+if ($_SESSION['authlevel'] != 0 || $_SESSION['authlevel'] == null) {
+    header("location: ./index.php");
+    exit;
+}
 if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
-    if ($_SESSION['authlevel'] > 1) {
-        header("location: ./index.php");
-        exit;
-    }
+
 } else {
     header("location: ./index.php");
-        exit;
-}
+    exit;
+    }
 
 ?>
 
@@ -36,6 +39,7 @@ if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
     <script src="../scripts/editPost.js"></script>
 </head>
 <body>
+
     <div class="row">
 <form class="blogPost" method="post" enctype="multipart/form-data">
     <img style="max-height: 100vh;" class="blogImage" src="../assets/images/pageimages/pageImage_<?php echo htmlspecialchars($imageToEdit) . '.png'; ?>" alt="<?php echo htmlspecialchars($imageToEdit) . '.png'?>">
