@@ -4,30 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gulpener Turnclub</title>
+    <link rel="stylesheet" href="../styling/loginSignUp.css">
+    <link rel="stylesheet" href="../styling/style.css">
+
+
 </head>
 <body>
-<form method="POST">
-            
-
-            <span for="">Name: </span><br>
-            <input type="text" name="getname"><br>
-
-            <span for="">Password: </span><br>
-            <input type="password" name="getpassword"><br><br>
-
-          
-            <button type="submit" name="logIn">Log in</button>
-
-            <span>sign up instead</span>
-            <a href='signUp.php'>Sign Up.</a>
-         </form>
+<div class="deContainer">
+    <div>
+<div class="session">
+<div class="left">
+    <?xml version="1.0" encoding="UTF-8"?>
+</div>
+         <form class="log-in" method="POST"> 
+      <h4>Gulpener<span>Turnclub</span></h4>
+      <p>Welcome terug!</p>
+      <div class="floating-label">
+        <input placeholder="Naam" type="text" name="getname" id="email" autocomplete="off">
+        <label for="name">Naam:</label>
+      </div>
+      <div class="floating-label">
+        <input placeholder="Wachtwoord" type="password" name="getpassword" id="password" >
+        <label for="password">Wachtwoord:</label>
+      </div>
+      <button type="submit" name="logIn">Log in</button>
+      <a href='signUp.php' class="discrete">Sign Up</a>
+    </form>
+</div>
+    </div>
+    <div>
 
          <?php
-           if(isset($_POST['logIn'])){
-            require 'partials/_dbcon.php'; //Create a seperate db connection file and link it
-            
+           if(isset($_POST['getname'])){
+            require 'partials/_dbcon.php';
+
             $getname=$_POST['getname'];
             $getpassword=$_POST['getpassword'];
+            $getname = filter_var($getname, FILTER_SANITIZE_STRING);
+            $getpassword = filter_var($getpassword, FILTER_SANITIZE_STRING);
 
             $query = "select * from users where user_name = '$getname' and password='$getpassword'";
 
@@ -36,18 +50,23 @@
             $countrows=mysqli_num_rows($result);
 
             $user_details = $result->fetch_assoc();
-            
-            if($countrows == 0){
+
+            if($countrows == 0 && isset($_POST['getname'])){
+                unset($_POST['getname']);
+                unset($_POST['getpassword']);
+                echo "<p>Wachtwoord/Naam onjuist</p>";
+
                 exit;
             }else{
                 session_start();
                 $_SESSION['loggedin']=true;
                 $_SESSION['sendusername']=$getname;
                 $_SESSION['authlevel'] = $user_details['authlevel'];
-                header("location: index.php"); 
+                header("location: index.php");
             }
            }
          ?>
-
+    </div>
+</div>
 </body>
 </html>

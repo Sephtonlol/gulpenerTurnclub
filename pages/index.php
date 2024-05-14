@@ -1,228 +1,466 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Home Page</title>
-<link rel="stylesheet" href="../styling/style.css"> <!-- Link to external CSS file -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-<script src='Turn.js' defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gulpener Turnclub</title>
+    <link rel="stylesheet" href="../styling/style.css">
+    <link rel="stylesheet" href="../styling/header.css">
+    <link rel="stylesheet" href="../styling/algemeen.css">
+    <link rel="stylesheet" href="../styling/preface.css">
+    <link rel="stylesheet" href="../styling/longImage.css">
+    <link rel="stylesheet" href="../styling/blog.css">
+    <link rel="stylesheet" href="../styling/lesInformatie.css">
+    <link rel="stylesheet" href="../styling/footer.css">
+
+
+    <script src="../scripts/deletePostConfirm.js"></script>
 </head>
-<body>  
-
-<div class="hero-image">
-    <div class="hero-text">
-        <h1 style="font-size:50px">Gulpener</h1>
-        <h1 style="font-size:50px">Turnclub</h1>
-        <p>Landsraderweg 5, 6271 NT Gulpen</p>
-
-
-
-    </div> 
-    <div class="topnav" id="myTopnav2">
-            <a href="#home" class="active">Home</a>
-            <a href="#news">News</a>
-            <a href="#contact">Contact</a>
-            <div class="dropdown">
-                <button class="dropbtn">Dropdown
-                    <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-content">
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
-                </div>
+<body>
+    <div class="container">
+    <div class="header">
+        <div class="upperHeader">
+            <div class="column">
+            <img src="../assets/images/pageimages/pageImage_3.png" alt="logo" class="simpleImage">
+            <?php
+            if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+                if ($_SESSION['authlevel'] <= 1) {
+                echo "<a href=editImage.php?imageToEdit=3>Edit Image</a><br>";
+            }
+        }
+            ?>
             </div>
-            <a href="#about">About</a>
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
-            <div class="container">
+            <div class="line"></div>
+                
+            <div class="simpleImage">
+            <?php
+            
+            echo '<form  method="post">
+                <button class="button" type="submit" name="logoutsub">'.((!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true)?"Inloggen":"Uitloggen").'</button>
+                </form>';
+                if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+            if ($_SESSION['authlevel'] <= 1) {
+                echo "<a href=editImage.php?imageToEdit=1>Edit Image</a><br>";
+            }
+        }
+            
+            ?>
+            </div>
+        </div>
+        <span class="headerTitle">GULPENER TURNCLUB</span>
+        <span class="headerText">Landsraderweg 5, 6271 NT Gulpen</span>
+        <div class="buttonContainer">
+            <div class=menu>
+            <button onclick="window.location.href='index.php'" class="headerButtons">HomePage</button>
+            <div class="expanding">
+            <button id="dropdownMenu" onclick="window.location.href='#info'" class="headerButtons">Info</button><br>
+            <button id="dropdownMenu" onclick="window.location.href='#algemeen'" class="headerButtons">algemeen</button><br>
+            <button id="dropdownMenu" onclick="window.location.href='#news'" class="headerButtons">Nieuws</button><br>
+            <button id="dropdownMenu" onclick="window.location.href='#footer'" class="headerButtons">Ondersteuning</button>
+            </div>
+        </div>
+        <div class=menu>
+            <button class="headerButtons">Vereniging</button>
+            <div class="expanding">
+            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
+            <button id="dropdownMenu" class="headerButtons">Option2</button>
+            </div>
+        </div>
+        <div class=menu>
+            <button class="headerButtons">Groepen</button>
+            <div class="expanding">
+            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
+            <button id="dropdownMenu" class="headerButtons">Option2</button><br>
+            <button id="dropdownMenu" class="headerButtons">Option3</button><br>
+            <button id="dropdownMenu" class="headerButtons">Option4</button>
+            </div>
+        </div>
+        <div class=menu>
+            <button class="headerButtons">Geschiedenis</button>
+            <div class="expanding">
+            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
+            <button id="dropdownMenu" class="headerButtons">Option2</button>
+            </div>
+        </div>
+        <div class=menu>
+            <button class="headerButtons">Foto's</button>
+            <div class="expanding">
+            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
+            <button id="dropdownMenu" class="headerButtons">Option2</button><br>
+            <button id="dropdownMenu" class="headerButtons">Option3</button>
+            </div>
+        </div>
+        <div class=menu>
+            <button onclick="window.location.href='#news'" class="headerButtons">Nieuws</button>
+            <div class="expanding">
+            <button id="dropdownMenu" onclick="window.location.href='#news'" class="headerButtons">Recent</button><br>
+            <button id="dropdownMenu" onclick="window.location.href='blog.php'" class="headerButtons">Alle nieuws</button>
+            </div>
+        </div>
+        <div class=menu>
+            <button class="headerButtons">Contact</button>
+            <div class="expanding">
+            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
+            <button id="dropdownMenu" class="headerButtons">Option2</button>
+            </div>
+            </div>
+        </div>
     </div>
-</div>
-
-<div class="logo">
-<img src="../styling/images/turnclub-logo.png" class="logo"alt="logo">
-</div> 
-</div>
-
-
-<div class="Log-in-icon-text">
-<h2>Inloggen</h2>
-</div>  
-
-<div class="inleiding-content">
-<div class="inleiding-foto-container1">
-    <div class="inleiding-foto">
-    <img src="../styling/images/inleiding.jpg" class="logo"alt="logo">
-    </div> 
-</div>
-
-<div class="inleiding-text-container1">
-    <div class="inleiding-text">
-    <p>
-    Welkom bij de Gulpener Turnclub (GTC)! Ontdek de opwinding van<br>
-    gymnastiek en turnen in onze gemeenschap van passie en prestatie.<br>
-    Of je nu een beginner of een ervaren turner bent, bij GTC vind je een<br>
-    thuis om je potentieel te ontdekken en te ontwikkelen.<br>
-    </p>
-    </div> 
-</div>
-</div>
-
-<div class="banner-foto-container2">
-    <div class="banner-foto">
-    <img src="../styling/images/banner.jpeg" class="banner"alt="banner">
-    </div> 
-</div>
-
-<div class="samenvatting-text-container1">
-    <div class="samenvatting-text">
-    <h1> Gezond bewegen voor ouderen bij de Gulpener Turnclub</h1>
-
-    <div class="ouderen-foto-container">
-    <div class="ouderen-foto">
-    <img src="../styling/images/ouderen.png" class="ouderen"alt="ouderen">
-    </div> 
-    </div>
-    
-    <div class="samenvatting-text-1">
-    <p>Bij de Gulpener Turnclub worden al een aantal jaren op dinsdagavond van 19.30 – 20.30 uur in Sporthal het Gulpdal bewegingslessen speciaal voor ouderen (v.a. 55 jaar) gegeven.
-        <br>
-        De contributie voor deze lessen is € 15,00 per maand.
-        <br>
-        De manier waarop de lessen door onze deskundige trainer Pierre de Bie worden gegeven, wordt door de leden als zeer prettig ervaren. Niet alleen wordt er tijdens de les samen met de groep op een gezonde en verantwoorde manier gesport, ook het gezellig samenzijn ná de les wordt – voor wie dat wil - erg op prijs gesteld.
-    </p>
-    </div>
-
-
-    <div class="samenvatting-text-2">
-    <p>
-    Niet alleen wordt er tijdens de les samen met de groep op een gezonde en verantwoorde manier gesport, ook het gezellig samenzijn ná de les wordt – voor wie dat wil - erg op prijs gesteld.
-    De leden organiseren ook regelmatig buiten de lessen om zélf leuke activiteiten.
-    <br>
-    Bent u nieuwsgierig geworden, kom dan een keer kijken of een proefles bijwonen! Voor vragen kunt u altijd een mailtje sturen naar gtcgulpen@gmail.com.
-    </p>
-    </div> 
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="container">
-    <div class="column footer">
-        <h1>Volg ons</h1>
-        <img src="instagram_2111463.png" <a="https://www.instagram.com/gulpenerturnclub/" height=30></a> <img src="facebook_5968764.png" height=30> <img src="twitter_5968830.png" height=30>
-    </div>
-</div>
-
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- php -->
+    <div class="preface">
 <?php
-session_start();
-
-
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
-    header("location: login.php");
-    exit; 
-}
-
-echo "Welkom " . $_SESSION['sendusername'];
-
+echo "<div class='column'><img class='images' src=../assets/images/pageImages/pageImage_2.png >";
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
 if ($_SESSION['authlevel'] <= 1) {
-    echo '<form method="post" class="banner">
-            <button type="submit" name="editPage">Edit Page</button>
-        </form>';
-
-    echo '<form method="post" class="banner">
-            <button type="submit" name="newBlog">nieuw blogpost</button>
-        </form>';
+    echo "<a href=editImage.php?imageToEdit=2>Edit Image</a>";
 }
-
-
-if (isset($_POST['logoutsub'])) {
-    session_unset();
-    session_destroy();
-    header("location: login.php");
-    exit;
 }
+echo "</div>";
 
-if (isset($_POST['editPage'])) {
-    header("location: editPage.php");
-    exit;
+require __DIR__ . "/partials/_dbcon.php";
+
+$query = "SELECT * FROM textfields";
+$result = $mysqli->query($query);
+while ($row = $result->fetch_assoc()) {
+$textfieldId = $row["textfield_id"];
+$textContent = $row["textContent"];
+if ($textfieldId == 1){
+    echo "<div class='column'><span class='text'>" . $textContent . "</span>";
+    }
 }
-if (isset($_POST['newBlog'])) {
-    header("location: newBlog.php");
-    exit;
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+    if ($_SESSION['authlevel'] <= 1) {
+        echo "<a href=editTextfield.php?textfieldToEdit=1>Edit textfield</a>";
+        }
+    }
+?>
+    </div></div>
+
+<?php
+echo "<div class='column'><img class='longImage' src=../assets/images/pageImages/pageImage_5.png >";
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+if ($_SESSION['authlevel'] <= 1) {
+    echo "<a href=editImage.php?imageToEdit=5>Edit Image</a></div>";
 }
+}
+echo "</div></div>";
+
+?>
+<span  id="info"class="smallHeader">Informatie</span>
+
+<div class="theContainer">
+<div class="lesInformatieContainer">
+<?php
+echo "<div class='lesInformatie'>";
+
+require __DIR__ . "/partials/_dbcon.php";
+
+$query = "SELECT * FROM textfields";
+$result = $mysqli->query($query);
+while ($row = $result->fetch_assoc()) {
+$textfieldId = $row["textfield_id"];
+$textContent = $row["textContent"];
+
+if ($textfieldId == 2){
+echo "<span class='lesInformatieTitle'>" . $textContent . "</span>";
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+if ($_SESSION['authlevel'] <= 1) {
+    echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+    }
+}
+}
+if ($textfieldId == 3){
+echo "<span class='lesInformatieText'>" . $textContent . "</span>";
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+if ($_SESSION['authlevel'] <= 1) {
+    echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+    }
+}
+}
+if ($textfieldId == 4){
+echo "<span class='lesInformatieText'>" . $textContent . "</span>";
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+if ($_SESSION['authlevel'] <= 1) {
+    echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+    }
+}
+}
+if ($textfieldId == 5){
+echo "<span class='lesInformatieText'>" . $textContent . "</span>";
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+if ($_SESSION['authlevel'] <= 1) {
+    echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+    }}
+}
+}
+echo "<div class='informatieLine'></div>";
+echo "<img class='informatieImage' src='../assets/images/pageImages/pageImage_6.png' alt='pageImage_6'>";  
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+if ($_SESSION['authlevel'] <= 1) {
+    
+    echo "<a href=editImage.php?imageToEdit=6>Edit Image</a>";
+}
+}
+echo "</div></div>";
+echo "<div class='lesInformatieContainer'>";
+
+echo "<img class='informatieImage' src=../assets/images/pageImages/pageImage_7.png >";
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+if ($_SESSION['authlevel'] <= 1) {
+    echo "<a href=editImage.php?imageToEdit=7>Edit Image</a>";
+}
+}
+require __DIR__ . "/partials/_dbcon.php";
+
+$query = "SELECT * FROM textfields";
+$result = $mysqli->query($query);
+while ($row = $result->fetch_assoc()) {
+$textfieldId = $row["textfield_id"];
+$textContent = $row["textContent"];
+
+if ($textfieldId == 6){
+echo "<span class='lesInformatieText'>" . $textContent . "</span>";
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+if ($_SESSION['authlevel'] <= 1) {
+    echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+}
+    }
+}
+if ($textfieldId == 7){
+echo "<span class='lesInformatieText'>" . $textContent . "</span>";
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+if ($_SESSION['authlevel'] <= 1) {
+    echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+}
+    }
+}
+}
+echo "<div class='informatieLine'></div>";
+echo "</div></div></div>";
+
 
 ?>
 
-<!-- nog meer php -->
+<span  id="algemeen"class="smallHeader">Algemeen</span>
+<div class="containerAlgemeen">
+    <div class="innerContainerAlgemeen">
+    <div class="bulletPoints">
+        <?php
+        require __DIR__ . "/partials/_dbcon.php";
 
- <form method="POST" action="index.php">
-    <button type="submit" name="logoutsub">Log out</button> <br>
-
-    <form>
-        <span>Blog</span> <br>
-
-    <?php
-
-    require __DIR__ . "\partials\_dbcon.php";
-
-    $query = "Select * from blog";
+        $query = "SELECT * FROM textfields";
+        $result = $mysqli->query($query);
+        while ($row = $result->fetch_assoc()) {
+        $textfieldId = $row["textfield_id"];
+        $textContent = $row["textContent"];
         
-    $result = $mysqli->query($query);
-        
-    while ($row = $result->fetch_assoc()) {
-        echo $row["title"] . "<br>";
-        echo $row["content"] . "<br>";
+        if ($textfieldId == 10){
+        echo "<span class='bulletPointsTitle'>" . $textContent . "</span>";
+        if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+        if ($_SESSION['authlevel'] <= 1) {
+            echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+        }
+            }
+        }
+        if ($textfieldId == 11){
+            echo "<span class='bulletPointsText'>• " . $textContent . "</span>";
+            if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+            if ($_SESSION['authlevel'] <= 1) {
+                echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+            }
+                }
+            }
+        if ($textfieldId == 12){
+        echo "<span class='bulletPointsText'>• " . $textContent . "</span>";
+        if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+        if ($_SESSION['authlevel'] <= 1) {
+            echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+            }}
+        }
+        if ($textfieldId == 13){
+            echo "<span class='bulletPointsText'>• " . $textContent . "</span>";
+            if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+            if ($_SESSION['authlevel'] <= 1) {
+                echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+            }
+                }
+        }
     }
-    ?>
-    </form>
-</form>
+        
+        ?>
 
+    </div>
+    <div class="bulletPoints">
+        <?php
+    require __DIR__ . "/partials/_dbcon.php";
+
+    $query = "SELECT * FROM textfields";
+    $result = $mysqli->query($query);
+    while ($row = $result->fetch_assoc()) {
+    $textfieldId = $row["textfield_id"];
+    $textContent = $row["textContent"];
+    
+    if ($textfieldId == 14){
+    echo "<span class='bulletPointsTitle'>" . $textContent . "</span>";
+    if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+    if ($_SESSION['authlevel'] <= 1) {
+        echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+        }}
+    }
+    if ($textfieldId == 15){
+        echo "<span class='bulletPointsText'>• " . $textContent . "</span>";
+        if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+        if ($_SESSION['authlevel'] <= 1) {
+            echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+            }}
+        }
+    if ($textfieldId == 16){
+    echo "<span class='bulletPointsText'>• " . $textContent . "</span>";
+    if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+    if ($_SESSION['authlevel'] <= 1) {
+        echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+        }}
+    }
+    if ($textfieldId == 17){
+        echo "<span class='bulletPointsText'>• " . $textContent . "</span>";
+        if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+        if ($_SESSION['authlevel'] <= 1) {
+            echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+            }}
+    }
+    if ($textfieldId == 18){
+        echo "<span class='bulletPointsText'>• " . $textContent . "</span>";
+        if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+        if ($_SESSION['authlevel'] <= 1) {
+            echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+            }}
+        }
+        if ($textfieldId == 19){
+            echo "<span class='bulletPointsText'>• " . $textContent . "</span>";
+            if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+            if ($_SESSION['authlevel'] <= 1) {
+                echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+                }
+        }}
+}
+        ?>
+    </div>
+
+    
+
+</div>
+
+<div class="informatieLine" style="margin-bottom:30px;"></div>
+<?php
+echo "<div class='column'><img class='longImage' src=../assets/images/pageImages/pageImage_8.png >";
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+if ($_SESSION['authlevel'] <= 1) {
+    echo "<a href=editImage.php?imageToEdit=8>Edit Image</a></div>";
+}}
+?>
+
+</div>
+
+        <form method="POST" action="index.php">
+
+    <span  id="news" onclick="window.location.href='blog.php';" class="smallHeader">Laatste nieuws</span>
+            <div class='blogIndex'>
+                
+
+            <?php
+
+    require __DIR__ . "/partials/_dbcon.php";
+
+    $query = "SELECT * FROM blog
+    order by blog_id desc";
+
+    $result = $mysqli->query($query);
+
+
+    $count = 0;
+    while (($row = $result->fetch_assoc()) && $count < 3) {
+        $count++;
+        $blogId = $row["blog_id"];
+        $title = $row["title"];
+        $content = $row["content"];
+        $date = $row["date"];
+        
+        echo "<div class='blogPost'>";
+        $imagePath = "../assets/images/blogimages/$blogId.png";
+        if (file_exists($imagePath)) {
+            echo "<div><img src='$imagePath' alt='$title' class='blogImage' ><br>";
+        }
+        echo "<div class='blogTitle'><span>" . $title .  "</span></div>";
+        echo "<div class='blogTextContainer'><div class='filler2'></div><div class='blogText'><span>" . $content .  "</span></div><div class='filler2'></div></div></div>";
+        
+        echo "<div class='blogDate'> <span>" . $date . "</span><br>";
+        echo "<a class='readPostRedirect' href='blogPost.php?postToView=" . $blogId . "'><div class='readPostContainer'><div class='readPost'>Lees meer</div></div></a>";
+
+        if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+        if ($_SESSION['authlevel'] <= 1) {
+        echo "<div class='editButtons'><a href=editPost.php?posttoedit=" . $blogId . ">Edit post</a><br>";
+        echo "<a onclick='check()' href=deletePost.php/?posttodelete=" . $blogId . ">Delete post</a> </div>";
+        }
+    }
+        else {
+        echo "<div class='filler'></div>";
+        }
+        echo "</div></div>";
+
+    }
+
+            ?>
+            <div onclick="window.location.href='blog.php';" style="justify-content: center;" class="blogSpecial">
+            <div class="specialTextContainer">
+                <span class="blogTitle">alles zien</span>
+                </div>
+            </div>
+            </div>
+        </form>
+
+        <footer>
+            <div class="columnFooter">
+                <?php
+
+require __DIR__ . "/partials/_dbcon.php";
+
+$query = "SELECT * FROM textfields";
+$result = $mysqli->query($query);
+while ($row = $result->fetch_assoc()) {
+$textfieldId = $row["textfield_id"];
+$textContent = $row["textContent"];
+
+if ($textfieldId == 8){
+echo "<span class='footerTitle'>" . $textContent . "</span>";
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+if ($_SESSION['authlevel'] <= 1) {
+    echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+    }
+}
+}
+if ($textfieldId == 9){
+echo "<span class='footerText'>" . $textContent . "</span>";
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+if ($_SESSION['authlevel'] <= 1) {
+    echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+    }
+}
+}
+}
+                ?>
+                </div>
+                <div id="footer" class="footerContainer">
+                    <div class="footer">
+                    <div class="footerLine"></div>
+                    <div class="footerIcons">
+                        <span>volg ons</span>
+                        <a href="https://www.facebook.com/gulpenerturnclub/"><img class="icons" src="../assets/images/icons/facebook.png" alt="facebook"></a>
+                        <a href="https://www.instagram.com/gulpenerturnclub/"><img class="icons" src="../assets/images/icons/instagram.png" alt="instagram"></a>
+
+                    </div>
+                    </div>
+                </div>
+                
+        </footer>
+    </div>
 </body>
 </html>
