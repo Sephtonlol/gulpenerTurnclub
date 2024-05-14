@@ -41,3 +41,11 @@
   object-fit: cover;
   margin: 10px;
 }
+@media only screen and (max-width: 750px) {
+  .theContainer {
+    flex-direction: column;
+  }
+  .lesInformatieContainer {
+    max-width: 100%;
+  }
+}

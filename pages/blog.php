@@ -18,17 +18,25 @@ if (isset($_POST['logoutsub'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gulpener Turnclub</title>
     <link rel="stylesheet" href="../styling/header.css">
-
-    <link rel="stylesheet" href="../styling/header.css">
     <link rel="stylesheet" href="../styling/style.css">
     <link rel="stylesheet" href="../styling/blog.css">
     <link rel="stylesheet" href="../styling/footer.css">
+    
 
-
-    <script src="../scripts/deletePostConfirm.js"></script>
+    <script src="../scripts/header.js" defer></script>
+    <script src="../scripts/deletePostConfirm.js"> defer</script>
 </head>
-<body>
-<span class="smallHeader">Laatste nieuws</span>
+<body><div class="smallHeader">
+    <svg id="hamburger" class="Header__toggle-svg" viewbox="0 0 60 40">
+                    <g stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                        <path id="top-line" d="M10,10 L50,10 Z"></path>
+                        <path id="middle-line" d="M10,20 L50,20 Z"></path>
+                        <path id="bottom-line" d="M10,30 L50,30 Z"></path>
+                    </g>
+                </svg>
+    <span class="smallHeader">Laatste nieuws</span>
+                </div>
+
 <div class="buttonContainer" style="background-color: var(--quinary-color); padding-bottom:20px;">
             <div  class="menu">
             <button onclick="window.location.href='index.php'" class="headerButtons">HomePage</button>
@@ -84,7 +92,7 @@ if (isset($_POST['logoutsub'])) {
             <button id="dropdownMenu" class="headerButtons">Option2</button>
             </div>
         </div>
-        <form method="post">
+        <form method="post" class="menu">
     <?php 
     echo '<button class="headerButtons" style="margin-top: 2px" type="submit" name="logoutsub">' . ((!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true)?"Inloggen":"Uitloggen") . '</button>'; 
     ?>

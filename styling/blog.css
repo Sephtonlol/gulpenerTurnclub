@@ -19,7 +19,7 @@ body {
 .smallHeader {
   display: flex;
   justify-content: center;
-  font-size: 50px;
+  font-size: 7vw;
   font-family: sans-serif;
   font-weight: 800;
   background-color: var(--quinary-color);
@@ -39,13 +39,13 @@ body {
 }
 
 .blogIndex {
+  overflow-x: scroll;
   display: flex;
   flex-direction: row;
   background-color: var(--primary-color);
   justify-content: center;
   flex-wrap: nowrap;
-  overflow: hidden;
-  min-width: 1400px;
+  width: 100%;
 }
 
 .blogPost {
@@ -177,9 +177,17 @@ body {
   .blogGrid {
     grid-template-columns: auto auto auto;
   }
+  .blogIndex {
+    justify-content: start;
+  }
   @media only screen and (max-width: 1000px) {
     .blogGrid {
       grid-template-columns: auto auto;
+    }
+  }
+  @media only screen and (max-width: 650px) {
+    .blogGrid {
+      grid-template-columns: auto;
     }
   }
 }
