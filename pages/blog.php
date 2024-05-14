@@ -30,7 +30,7 @@ if (isset($_POST['logoutsub'])) {
 <body>
 <span class="smallHeader">Laatste nieuws</span>
 <div class="buttonContainer" style="background-color: var(--quinary-color); padding-bottom:20px;">
-            <div class=menu>
+            <div  class="menu">
             <button onclick="window.location.href='index.php'" class="headerButtons">HomePage</button>
             <div class="expanding">
             <button id="dropdownMenu" onclick="window.location.href='index.php#info'" class="headerButtons">Info</button><br>
@@ -39,14 +39,14 @@ if (isset($_POST['logoutsub'])) {
             <button id="dropdownMenu" onclick="window.location.href='index.php#footer'" class="headerButtons">Ondersteuning</button>
             </div>
         </div>
-        <div class=menu>
+        <div class="menu">
             <button class="headerButtons">Vereniging</button>
             <div class="expanding">
             <button id="dropdownMenu" class="headerButtons">Option1</button><br>
             <button id="dropdownMenu" class="headerButtons">Option2</button>
             </div>
         </div>
-        <div class=menu>
+        <div class="menu">
             <button class="headerButtons">Groepen</button>
             <div class="expanding">
             <button id="dropdownMenu" class="headerButtons">Option1</button><br>
@@ -55,14 +55,14 @@ if (isset($_POST['logoutsub'])) {
             <button id="dropdownMenu" class="headerButtons">Option4</button>
             </div>
         </div>
-        <div class=menu>
+        <div class="menu">
             <button class="headerButtons">Geschiedenis</button>
             <div class="expanding">
             <button id="dropdownMenu" class="headerButtons">Option1</button><br>
             <button id="dropdownMenu" class="headerButtons">Option2</button>
             </div>
         </div>
-        <div class=menu>
+        <div class="menu">
             <button class="headerButtons">Foto's</button>
             <div class="expanding">
             <button id="dropdownMenu" class="headerButtons">Option1</button><br>
@@ -70,14 +70,14 @@ if (isset($_POST['logoutsub'])) {
             <button id="dropdownMenu" class="headerButtons">Option3</button>
             </div>
         </div>
-        <div class=menu>
+        <div class="menu">
             <button onclick="window.location.href='#news'" class="headerButtons">Nieuws</button>
             <div class="expanding">
             <button id="dropdownMenu" onclick="window.location.href='index.php#news'" class="headerButtons">Recent</button><br>
             <button id="dropdownMenu" onclick="window.location.href='blog.php'" class="headerButtons">Alle nieuws</button>
             </div>
         </div>
-        <div class=menu>
+        <div class="menu">
             <button class="headerButtons">Contact</button>
             <div class="expanding">
             <button id="dropdownMenu" class="headerButtons">Option1</button><br>
@@ -93,7 +93,7 @@ if (isset($_POST['logoutsub'])) {
     </div>
 
 
-<div class='blog'>
+<div class='blogGrid'>
 
         <?php
 
@@ -137,11 +137,8 @@ if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
     echo "<div class='editButtons'><a href=editPost.php?posttoedit=" . $blogId . ">Edit post</a><br>";
     echo "<a onclick='check()' href=deletePost.php/?posttodelete=" . $blogId . ">Delete post</a> </div>";
 }
-else {
-    echo "<div class='filler'></div>";
 }
-    }
-    echo "</div></div>";
+echo "<div class='filler'></div></div></div>";
 
 }
 

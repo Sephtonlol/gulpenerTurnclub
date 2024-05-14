@@ -1,19 +1,19 @@
 html {
   min-height: 100vh;
   width: 100%;
-  min-width: 1500px;
+  /* min-width: 1500px; */
 }
 
 body {
   position: relative;
   overflow-x: hidden;
   width: 100%;
-  min-width: 1500px;
+  /* min-width: 1500px; */
 }
 
 .container {
   width: 100%;
-  min-width: 1500px;
+  /* min-width: 1500px; */
 }
 
 .smallHeader {
@@ -167,4 +167,19 @@ body {
   font-weight: bolder;
   padding: 5px;
   margin-top: 5px;
+}
+.blogGrid {
+  justify-content: center;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+}
+@media only screen and (max-width: 1300px) {
+  .blogGrid {
+    grid-template-columns: auto auto auto;
+  }
+  @media only screen and (max-width: 1000px) {
+    .blogGrid {
+      grid-template-columns: auto auto;
+    }
+  }
 }
