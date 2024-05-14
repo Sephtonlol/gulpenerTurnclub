@@ -105,7 +105,9 @@ else {
             </div>
         </div>
         <form method="post">
-    <button class="headerButtons" style="margin-top: 2px" type="submit" name="logoutsub">Log out</button>
+        <?php 
+    echo '<button class="headerButtons" style="margin-top: 2px" type="submit" name="logoutsub">' . ((!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true)?"Inloggen":"Uitloggen") . '</button>'; 
+    ?>
 </form>
         </div>
     </div>

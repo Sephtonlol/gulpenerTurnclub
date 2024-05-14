@@ -261,13 +261,12 @@ require __DIR__ . "/partials/_dbcon.php";
         if ($_SESSION['authlevel'] <= 1) {
         echo "<div class='editButtons'><a href=editPost.php?posttoedit=" . $blogId . ">Edit post</a><br>";
         echo "<a onclick='check()' href=deletePost.php/?posttodelete=" . $blogId . ">Delete post</a> </div>";
-        }
-        else {
-        echo "<div class='filler'></div>";
-        }
-        echo "</div></div>";
-
+    
     }
+        }
+        echo "<div class='filler'></div></div></div>";
+
+    
 
             ?>
             <div onclick="window.location.href='blog.php';" style="justify-content: center;" class="blogSpecial">
