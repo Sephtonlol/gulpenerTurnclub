@@ -55,7 +55,7 @@ require __DIR__ . "/partials/_dbcon.php";
                         <path id="bottom-line" d="M10,30 L50,30 Z"></path>
                     </g>
                 </svg>
-    <span class="smallHeader">Laatste nieuws</span>
+    <span class="smallHeader">GulpenerTurnclub</span>
                 </div>
 
 <div class="buttonContainer" style="background-color: var(--quinary-color); padding-bottom:20px;">
