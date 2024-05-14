@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gulpener Turnclub</title>
-    <meta charset="UTF-8">
     <link rel="stylesheet" href="../styling/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,20 +11,26 @@
 </head>
 <body>
 
+<!-- Log in icon -->
+<div class="rectangle-container">
+<div class="rectangle">
+<h2 class="text-rectangle">Inloggen</h2>
+</div>
+</div>
+
 <!--Logo-->
 <div id="Logo">
 <img src="../styling/images/turnclub-logo.png" alt="Logo">
 </div> 
 
-<!-- Log in icon -->
-<div class="rectangle"></div>
-<h2 class="text-rectangle">Inloggen</h2>
-
 
 <!-- Begin pagina Text -->
-<div id="text">
+<div class="containerbegintext">
+  <div class="line"></div>
+  <div id="texthome">
     <h1>Gulpener<br>Turnclub</h1>
     <p>Landsraderweg 5, 6271 NT Gulpen</p>
+  </div>
 </div>
 
 <!-- Navigatie Balk-->
@@ -41,9 +46,103 @@
     </ul>  
 </div>
 
-<div class="block1">
+<!-- Inleiding image -->
+<div id=inleidingstuk>
 
-<!-- banaan php -->
+    <div id="inleidingfoto">
+    <img src="../styling/images/inleiding.jpg" alt="inleidingfoto">
+    </div>
+
+<!-- Inleding text -->
+    <div id="inleiding">
+    <p>
+    Welkom bij de Gulpener Turnclub (GTC)! Ontdek de opwinding van<br>
+    gymnastiek en turnen in onze gemeenschap van passie en prestatie.<br>
+    Of je nu een beginner of een ervaren turner bent, bij GTC vind je een<br> 
+    thuis om je potentieel te ontdekken en te ontwikkelen.<br>
+    </p>
+    </div>
+
+</div>
+
+<!-- banner na de inleiding -->
+<div id="banner">
+    <img src="../styling/images/banner.jpeg" alt="banner">
+</div>
+
+<!-- samenvatting title -->
+<div id="samenvatting">
+<h1>
+    Gezond bewegen voor ouderen bij de <br>
+    Gulpener Turnclub
+</h1>
+</div>
+
+<div id="samenvatting1">
+    <p>
+    Bij de Gulpener Turnclub worden al een aantal jaren op
+    dinsdagavond van 19.30 – 20.30 uur in Sporthal het
+    Gulpdal bewegingslessen speciaal voor ouderen (v.a. 55
+    jaar) gegeven.<br>
+    <br>
+    De contributie voor deze lessen is € 15,00 per maand.<br>
+    <br>
+    De manier waarop de lessen door onze deskundige
+    trainer Pierre de Bie worden gegeven, wordt door de
+    leden als zeer prettig ervaren. Niet alleen wordt er
+    tijdens de les samen met de groep op een gezonde en
+    verantwoorde manier gesport, ook het gezellig
+    samenzijn ná de les wordt – voor wie dat wil - erg op
+    prijs gesteld.<br>
+</p>
+</div>
+
+<!-- samenvatting foto-->
+<div id="ouderen">
+    <img src="../styling/images/ouderen.png" alt="banner">
+</div>
+
+<div id="samenvatting2">
+    <p>
+    Niet alleen wordt er tijdens de les samen met<br>
+    de groep op een gezonde en verantwoorde<br>
+    manier gesport, ook het gezellig samenzijn ná<br>
+    de les wordt – voor wie dat wil - erg op prijs<br>
+    gesteld.<br>
+    De leden organiseren ook regelmatig buiten<br>
+    de lessen om zélf leuke activiteiten.<br>
+    <br>
+    Bent u nieuwsgierig geworden, kom dan een<br>
+    keer kijken of een proefles bijwonen! Voor<br>
+    vragen kunt u altijd een mailtje sturen naar<br>
+    gtcgulpen@gmail.com.<br>
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- php -->
 <?php
 session_start();
 
@@ -84,8 +183,7 @@ if (isset($_POST['newBlog'])) {
 
 ?>
 
-
-<!-- extra php -->
+<!-- nog meer php -->
 
  <form method="POST" action="index.php">
     <button type="submit" name="logoutsub">Log out</button> <br>
