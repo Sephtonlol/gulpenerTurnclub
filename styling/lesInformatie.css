@@ -48,4 +48,7 @@
   .lesInformatieContainer {
     max-width: 100%;
   }
+  .informatieImage {
+    max-width: 90%;
+  }
 }
