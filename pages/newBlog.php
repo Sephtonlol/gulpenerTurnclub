@@ -22,7 +22,7 @@ include "partials/_dbcon.php"
         <div class='blogContent'>
             <div>
                 <div class='blogTitle'>
-                    <input name="title" type="text" maxlength="20" placeholder="Enter title">
+                    <input name="title" type="text" maxlength="50" placeholder="Enter title">
                 </div>
                 <div class='blogTextContainer'>
                     <div class='blogText'>

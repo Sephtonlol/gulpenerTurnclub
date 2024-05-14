@@ -25,6 +25,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $title=$_REQUEST["title"];
         $content=$_REQUEST["content"];
 
+        $title = filter_var($title, FILTER_SANITIZE_STRING);
+        $content = filter_var($content, FILTER_SANITIZE_STRING);
+
         $sql="insert into blog (blog_id, title, content) value ('$id', '$title', '$content')";
         $sqlres=mysqli_query($connect, $sql);
         header("location: index.php");

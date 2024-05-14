@@ -14,6 +14,6 @@ $delete = mysqli_query($connect, "DELETE FROM `blog` WHERE `blog_id`='$postToDel
 
 unlink( "../assets/images/blogimages/". $postToDelete .".png");
 
-header("Location: ../index.php");
+header("Location: ../blog.php");
 
 ?>

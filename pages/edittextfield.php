@@ -1,11 +1,20 @@
 <?php
 include "partials/_dbcon.php";
-
 session_start();
-if ($_SESSION['authlevel'] > 1) {
-    header("location: ../index.php");
+
+error_reporting(0);
+
+if ($_SESSION['authlevel'] != 0 || $_SESSION['authlevel'] == null) {
+    header("location: ./index.php");
     exit;
 }
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+
+} else {
+    header("location: ./index.php");
+    exit;
+    }
+
 
 $textfieldToEdit = $_GET['textfieldToEdit'];
 $query = "SELECT * FROM textfields WHERE textfield_id = '$textfieldToEdit'";
@@ -20,6 +29,7 @@ if ($result && mysqli_num_rows($result) > 0) {
 
 if(isset($_POST['edited_text'])){
     $edited_text = $_POST["edited_text"];
+    $edited_text = filter_var($edited_text, FILTER_SANITIZE_STRING);
     $sql = "UPDATE textfields SET textContent = '$edited_text' WHERE textfield_id = '$textfieldToEdit'";
     $sqlres = mysqli_query($connect, $sql);
     if($sqlres){
@@ -36,13 +46,22 @@ if(isset($_POST['edited_text'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styling/blogPost.css">
     <title>Edit Text</title>
 </head>
 <body>
-    <form method="post">
-        <input type="hidden" name="textfieldToEdit" value="<?php echo $textfieldToEdit;?>">
-        <input name="edited_text" type="text" value="<?php echo $textContent; ?>">
+    <form class="blogPost" method="post">
+      <div class='blogContent'>
+        <div>
+          <div class='blogTextContainer'>
+            <div class='blogText'>
+              <textarea style='margin-top: 30px;' name="edited_text" rows="35" cols="50" ><?php echo $textContent; ?></textarea>
+            
+        </div>
         <button type="submit" name="editTextfield">Apply Changes</button>
+        <input type="hidden" name="textfieldToEdit" value="<?php echo $textfieldToEdit;?>">
+        <button onclick="window.location.href='index.php'">Cancel</button>
+      </div>
     </form>
 </body>
 </html>

@@ -1,3 +1,6 @@
+            <?php
+            require __DIR__ . "\partials\_dbcon.php";
+            ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel='stylesheet' href="..\styling\login.css" />
     <title>Gulpener Turnclub</title>
+    <link rel="stylesheet" href="../styling/style.css">
+    <link rel="stylesheet" href="../styling/loginSignUp.css">
 </head>
 <body>
-
-<div class='card'>
     <div class="containerIndex">
         <h1>Sign up</h1>
         <form action="" method="POST">
@@ -28,9 +31,6 @@
 
             <a href='login.php'>log in.</a>
         </form>
-</div>
-
-<div class="card2"></div>
     
         <?php
         if(isset($_POST["signUp"])){
@@ -40,25 +40,53 @@
             $getpassword=$_POST["getpassword"];
             $confirmgetpassword=$_POST["confirmgetpassword"];
 
-            $sql="select user_name from users where user_name ='$getname'";
-            $sqlres=mysqli_query($connect, $sql);
-            $rowcount=mysqli_num_rows($sqlres);
+                $sql="select user_name from users where user_name ='$getname'";
+                $sqlres=mysqli_query($connect, $sql);
+                $rowcount=mysqli_num_rows($sqlres);
+
 
             if($rowcount != 0){
-                echo "User name not available or password is not equal to password confirmation";
+                echo "<p>Onvolledige of onjuiste informatie</p>";
+            exit;
+
             }
             if($getpassword != $confirmgetpassword){
-                echo "User name not available or password is not equal to password confirmation";
+                echo "<p>Onvolledige of onjuiste informatie</p>";
+            exit;
+
             }
-            if(($rowcount ==0) && ($getpassword == $confirmgetpassword)){;
-                
-                $sql="insert into users (user_name, email, password) value ('$getname', '$getemail','$getpassword')";
-                $sqlres=mysqli_query($connect, $sql);
-                
-                echo "<span>Account is gemaakt!</span>";
+            if (empty($getname) == 1){
+            echo "<p>Onvolledige of onjuiste informatie</p>";
+            exit;
+
             }
-        }
-        ?>
+            if (empty($getemail) == 1){
+                echo "<p>Onvolledige of onjuiste informatie</p>";
+                exit;
+    
+            }
+            if (empty($getpassword) == 1){
+                echo "<p>Onvolledige of onjuiste informatie</p>";
+                exit;
+    
+            }
+                if((empty($getname) == 0) && (empty($getemail) == 0) && (empty($getpassword) == 0) && ($rowcount ==0) && ($getpassword == $confirmgetpassword)){
+
+                    $sql="insert into users (user_name, email, password) value ('$getname', '$getemail','$getpassword')";
+                    $sqlres=mysqli_query($connect, $sql);
+
+                    echo "<span class='approved'>Account is gemaakt</span>";
+                }
+                else {
+                    echo "<p>Onvolledige of onjuiste informatie</p>";
+                exit;
+                }
+            }
+            ?>
+        </form>
+        </div>
+        <div>
+    
     </div>
 </body>
 </html>

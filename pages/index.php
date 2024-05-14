@@ -144,6 +144,7 @@
 
 <!-- php -->
 <?php
+error_reporting(0);
 session_start();
 
 
@@ -152,16 +153,15 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
     exit; 
 }
 
-echo "Welkom " . $_SESSION['sendusername'];
+echo '<form method="post">
+        <button type="submit" name="logoutsub">Log out</button>
+    </form>';
 
 if ($_SESSION['authlevel'] <= 1) {
-    echo '<form method="post" class="banner">
+    echo '<form method="post">
             <button type="submit" name="editPage">Edit Page</button>
         </form>';
 
-    echo '<form method="post" class="banner">
-            <button type="submit" name="newBlog">nieuw blogpost</button>
-        </form>';
 }
 
 
@@ -176,20 +176,58 @@ if (isset($_POST['editPage'])) {
     header("location: editPage.php");
     exit;
 }
+
+
 if (isset($_POST['newBlog'])) {
     header("location: newBlog.php");
     exit;
 }
 
+require __DIR__ . "/partials/_dbcon.php";
+
+            $query = "SELECT * FROM textfields";
+
+            $result = $mysqli->query($query);
+            while ($row = $result->fetch_assoc()) {
+            $textfieldId = $row["textfield_id"];
+            $textContent = $row["textContent"];
+            }
 ?>
 
-<!-- nog meer php -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gulpener Turnclub</title>
+    <link rel="stylesheet" href="../styling/blog.css">
+    <script src="../scripts/deletePostConfirm.js"></script>
+</head>
+<body>
+    <div class="container">
+        <form method="POST" action="index.php">
 
- <form method="POST" action="index.php">
-    <button type="submit" name="logoutsub">Log out</button> <br>
 
-    <form>
-        <span>Blog</span> <br>
+            <?php
+            require __DIR__ . "/partials/_dbcon.php";
+
+            $query = "SELECT * FROM textfields";
+
+            $result = $mysqli->query($query);
+            while ($row = $result->fetch_assoc()) {
+            $textfieldId = $row["textfield_id"];
+            $textContent = $row["textContent"];
+            }
+            if ($textfieldId == 1){
+            echo $textContent . "<br>";
+            }
+            if ($_SESSION['authlevel'] <= 1) {
+                echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a><br>";
+                }
+            ?>
+    <span onclick="window.location.href='blog.php';" class="headerBlog">Laatste nieuws</span>
+            <div class='blogIndex'>
+                
 
     <?php
 
@@ -198,17 +236,47 @@ if (isset($_POST['newBlog'])) {
     $query = "Select * from blog";
         
     $result = $mysqli->query($query);
+
+
+    $count = 0;
+    while (($row = $result->fetch_assoc()) && $count < 3) {
+        $count++;
+        $blogId = $row["blog_id"];
+        $title = $row["title"];
+        $content = $row["content"];
+        $date = $row["date"];
         
-    while ($row = $result->fetch_assoc()) {
-        echo $row["title"] . "<br>";
-        echo $row["content"] . "<br>";
+        echo "<div class='blogPost'>";
+        $imagePath = "../assets/images/blogimages/$blogId.png";
+        if (file_exists($imagePath)) {
+            echo "<div><img src='$imagePath' alt='$title' class='blogImage' ><br>";
+        }
+        echo "<div class='blogTitle'><span>" . $title .  "</span></div>";
+        echo "<div class='blogTextContainer'><div class='filler2'></div><div class='blogText'><span>" . $content .  "</span></div><div class='filler2'></div></div></div>";
+        
+        echo "<div class='blogDate'> <span>" . $date . "</span><br>";
+        echo "<a class='readPostRedirect' href='blogPost.php?postToView=" . $blogId . "'><div class='readPostContainer'><div class='readPost'>Lees meer</div></div></a>";
+
+
+        if ($_SESSION['authlevel'] <= 1) {
+        echo "<div class='editButtons'><a href=editPost.php?posttoedit=" . $blogId . ">Edit post</a><br>";
+        echo "<a onclick='check()' href=deletePost.php/?posttodelete=" . $blogId . ">Delete post</a> </div>";
+        }
+        else {
+        echo "<div class='filler'></div>";
+        }
+        echo "</div></div>";
+
     }
-    ?>
-    </form>
-</form>
 
-
-
-
+            ?>
+            <div onclick="window.location.href='blog.php';" style="justify-content: center;" class="blogSpecial">
+            <div class="specialTextContainer">
+                <span class="blogTitle">alles zien</span>
+                </div>
+            </div>
+            </div>
+        </form>
+    </div>
 </body>
 </html>

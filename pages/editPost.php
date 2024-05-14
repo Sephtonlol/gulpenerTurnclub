@@ -1,11 +1,20 @@
 <?php
+error_reporting(0);
+session_start();
+
+
 include "partials/_dbcon.php";
 
-session_start();
-if ($_SESSION['authlevel'] > 1) {
-    header("location: ../index.php");
-    exit;
+if ($_SESSION['authlevel'] != 0 || $_SESSION['authlevel'] == null) {
+  header("location: ./index.php");
+  exit;
 }
+if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+
+} else {
+  header("location: ./index.php");
+  exit;
+  }
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -32,6 +41,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
 if(isset($_POST['edited_post'])){
     $edited_post = $_POST["edited_post"];
     $edited_title = $_POST["edited_title"];
+    $edited_post = filter_var($edited_post, FILTER_SANITIZE_STRING);
+    $edited_title = filter_var($edited_title, FILTER_SANITIZE_STRING);
     $sql = "UPDATE blog SET content = '$edited_post', title = '$edited_title' WHERE blog_id = '$postToEdit'";
     $sqlres = mysqli_query($connect, $sql);
 
@@ -71,7 +82,7 @@ if(isset($_POST['edited_post'])){
       <div class='blogContent'>
         <div>
           <div class='blogTitle'>
-            <input name="edited_title" type="text" maxlength="20" value="<?php echo $title; ?>">
+            <input name="edited_title" type="text" maxlength="50" value="<?php echo $title; ?>">
           </div>
           <div class='blogTextContainer'>
             <div class='blogText'>
