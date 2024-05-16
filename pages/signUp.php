@@ -1,6 +1,8 @@
-            <?php
-            require __DIR__ . "\partials\_dbcon.php";
-            ?>
+<?php
+	error_reporting(E_ALL);
+	ini_set("display_errors", "on");
+	require_once "partials/_dbcon.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,6 +86,7 @@
             }
                 if((empty($getname) == 0) && (empty($getemail) == 0) && (empty($getpassword) == 0) && ($rowcount ==0) && ($getpassword == $confirmgetpassword)){
 
+					$getpassword = password_hash($getpassword, PASSWORD_DEFAULT);
                     $sql="insert into users (user_name, email, password) value ('$getname', '$getemail','$getpassword')";
                     $sqlres=mysqli_query($connect, $sql);
 

@@ -44,73 +44,15 @@ else {
     <link rel="stylesheet" href="../styling/style.css">
     <link rel="stylesheet" href="../styling/header.css">
     <link rel="stylesheet" href="../styling/blogPost.css">
-    <script src="../scripts/deletePostConfirm.js"></script>
+	
+	
+	    <script src="../scripts/header.js" defer></script>
+    <script src="../scripts/deletePostConfirm.js" defer></script>
 </head>
 <body>
-<div class="buttonContainer" style="background-color: var(--quinary-color);">
-            <div class=menu>
-            <button onclick="window.location.href='index.php'" class="headerButtons">HomePage</button>
-            <div class="expanding">
-            <button id="dropdownMenu" onclick="window.location.href='index.php#info'" class="headerButtons">Info</button><br>
-            <button id="dropdownMenu" onclick="window.location.href='index.php#algemeen'" class="headerButtons">algemeen</button><br>
-            <button id="dropdownMenu" onclick="window.location.href='index.php#news'" class="headerButtons">Nieuws</button><br>
-            <button id="dropdownMenu" onclick="window.location.href='index.php#footer'" class="headerButtons">Ondersteuning</button>
-            </div>
-        </div>
-        <div class="hiddenPhone">
-        <div class=menu>
-            <button class="headerButtons">Vereniging</button>
-            <div class="expanding">
-            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option2</button>
-            </div>
-        </div>
-        <div class=menu>
-            <button class="headerButtons">Groepen</button>
-            <div class="expanding">
-            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option2</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option3</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option4</button>
-            </div>
-        </div>
-        <div class=menu>
-            <button class="headerButtons">Geschiedenis</button>
-            <div class="expanding">
-            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option2</button>
-            </div>
-        </div>
-        <div class=menu>
-            <button class="headerButtons">Foto's</button>
-            <div class="expanding">
-            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option2</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option3</button>
-            </div>
-        </div>
-        </div>
-        <div class=menu>
-            <button class="headerButtons">Nieuws</button>
-            <div class="expanding">
-            <button id="dropdownMenu" onclick="window.location.href='index.php#news'" class="headerButtons">Recent</button><br>
-            <button id="dropdownMenu" onclick="window.location.href='blog.php'" class="headerButtons">Alle nieuws</button>
-            </div>
-        </div>
-        <div class=menu>
-            <button class="headerButtons">Contact</button>
-            <div class="expanding">
-            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option2</button>
-            </div>
-        </div>
-        <form method="post">
-        <?php 
-    echo '<button class="headerButtons" style="margin-top: 2px" type="submit" name="logoutsub">' . ((!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true)?"Inloggen":"Uitloggen") . '</button>'; 
-    ?>
-</form>
-        </div>
-    </div>
+<?php require __DIR__ . "/partials/smallHeader.php"; ?>
+
+
     <?php
 echo "<div class='blogPost'>";
         $imagePath = "../assets/images/blogimages/{$blogId}.png";
@@ -132,6 +74,7 @@ echo "<div class='blogPost'>";
         }}
         echo "</div></div></div>";
         ?>
+        <?php require __DIR__ . "/partials/footer.php"; ?>
 </body>
 </html>
 

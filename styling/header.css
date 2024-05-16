@@ -2,6 +2,20 @@ html,
 body {
   margin: 0;
 }
+
+.smallHeader {
+  display: flex;
+  justify-content: center;
+  font-size: 7vw;
+  font-family: sans-serif;
+  font-weight: 800;
+  background-color: var(--quinary-color);
+  color: var(--primary-color);
+  padding: 20px;
+}
+.smallHeader:hover {
+  cursor: pointer;
+}
 .phoneHeader {
   display: none;
   flex-direction: column;
@@ -43,7 +57,7 @@ body {
   background-color: var(--primary-color);
   width: 500px;
   height: 2px;
-  margin-top: 200px;
+  margin-top: 250px;
 }
 .button {
   padding: 5px;
@@ -131,6 +145,7 @@ body {
   z-index: 1;
   animation: expand 300ms ease-in-out forwards;
   transform-origin: top center;
+  width: 100%;
 }
 
 .menu:hover .expanding {
@@ -221,5 +236,9 @@ svg {
   }
   .phoneHeader {
     display: flex;
+  }
+  #dropdownMenu {
+    min-width: 100%;
+    background-color: #5b7284;
   }
 }

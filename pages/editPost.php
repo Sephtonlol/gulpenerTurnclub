@@ -80,20 +80,22 @@ if(isset($_POST['edited_post'])){
         
       </div>
       <div class='blogContent'>
-        <div>
-          <div class='blogTitle'>
-            <input name="edited_title" type="text" maxlength="50" value="<?php echo $title; ?>">
+        <div >
+          <div class='blogTitle' style="display: flex; justify-content: center;">
+            <input name="edited_title"  style='min-width: 1px; flex-shrink: 2;' 1px; type="text" maxlength="50" value="<?php echo $title; ?>">
           </div>
-          <div class='blogTextContainer'>
-            <div class='blogText'>
-              <textarea name="edited_post" rows="35" cols="50" ><?php echo $content; ?></textarea>
+          <div class='blogTextContainer' >
+            <div class='blogText' style='display: flex; justify-content: center;'>
+              <textarea style='display:flex; flex-grow: 1; margin: 20px;'name="edited_post" rows="35" max-cols="50" ><?php echo $content; ?></textarea>
             </div>
             <input type="file" name="image" id="image" onchange="previewImage()" accept=".jpg, .jpeg, .png">
           </div>
         </div>
+		  <div style="display: flex; justify-content: center;">
         <button type="submit" name="editBlogPost">Apply Changes</button>
         <input type="hidden" name="postToEdit" value="<?php echo $postToEdit;?>">
         <button onclick="window.location.href='index.php'">Cancel</button>
+			  </div>
       </div>
     </form>
 </body>

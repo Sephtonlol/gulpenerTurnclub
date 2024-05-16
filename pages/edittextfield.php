@@ -1,43 +1,46 @@
 <?php
-include "partials/_dbcon.php";
+include __DIR__ . DIRECTORY_SEPARATOR . "partials" . DIRECTORY_SEPARATOR . "_dbcon.php";
 session_start();
 
-error_reporting(0);
+error_reporting(E_ALL);
 
-if ($_SESSION['authlevel'] != 0 || $_SESSION['authlevel'] == null) {
-    header("location: ./index.php");
+if ($_SESSION['authlevel'] != 0 || !isset($_SESSION['authlevel'])) {
+    header("Location: ./index.php");
     exit;
 }
-if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
 
-} else {
-    header("location: ./index.php");
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header("Location: ./index.php");
     exit;
-    }
+}
 
-
-$textfieldToEdit = $_GET['textfieldToEdit'];
-$query = "SELECT * FROM textfields WHERE textfield_id = '$textfieldToEdit'";
+$textfieldToEdit = isset($_GET['textfieldToEdit']) ? intval($_GET['textfieldToEdit']) : 0;
+$query = "SELECT * FROM textfields WHERE textfield_id = $textfieldToEdit";
 $result = mysqli_query($connect, $query);
 
 if ($result && mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
-    $textContent = $row['textContent'];
+    $textContent = htmlspecialchars($row['textContent']);
 } else {
     $textContent = "Text not found";
 }
 
-if(isset($_POST['edited_text'])){
-    $edited_text = $_POST["edited_text"];
-    $edited_text = filter_var($edited_text, FILTER_SANITIZE_STRING);
-    $sql = "UPDATE textfields SET textContent = '$edited_text' WHERE textfield_id = '$textfieldToEdit'";
-    $sqlres = mysqli_query($connect, $sql);
-    if($sqlres){
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['edited_text'])) {
+    $edited_text = filter_var($_POST["edited_text"], FILTER_SANITIZE_STRING);
+    $textfieldToEdit = intval($_POST['textfieldToEdit']);
+    $sql = "UPDATE textfields SET textContent = ? WHERE textfield_id = ?";
+    $stmt = mysqli_prepare($connect, $sql);
+    mysqli_stmt_bind_param($stmt, 'si', $edited_text, $textfieldToEdit);
+    $sqlres = mysqli_stmt_execute($stmt);
+    
+    if ($sqlres) {
         echo "Text edited successfully";
         header("Location: ./index.php");
+        exit;
     } else {
         echo "Error editing text";
     }
+    mysqli_stmt_close($stmt);
 }
 ?>
 
@@ -50,18 +53,25 @@ if(isset($_POST['edited_text'])){
     <title>Edit Text</title>
 </head>
 <body>
-    <form class="blogPost" method="post">
-      <div class='blogContent'>
-        <div>
-          <div class='blogTextContainer'>
-            <div class='blogText'>
-              <textarea style='margin-top: 30px;' name="edited_text" rows="35" cols="50" ><?php echo $textContent; ?></textarea>
-            
+    <form class="blogPost" method="post" style="width: 100vw;">
+        <div class='blogContent' style='min-height: 90vh; align-items: center; min-width: 80vw;'>
+            <div style="width: 85%; margin-top: 20px">
+                <div class='blogTextContainer' >
+                    <div class='blogText' style="display: flex;">
+                        <textarea id="dynamicTextarea" style='display:flex; flex-grow: 1; margin-top: 30px;' name="edited_text" rows="35" max-cols="50"><?php echo $textContent; ?></textarea>
+                    </div>
+                </div>
+            </div>
+			<div>
+        <button style='max-height: 30px;' type="submit" name="editTextfield">Apply Changes</button>
+        <input type="hidden" name="textfieldToEdit" value="<?php echo $textfieldToEdit; ?>">
+        <button style='max-height: 30px;' type="button" onclick="window.location.href='index.php'">Cancel</button>
+			</div>
         </div>
-        <button type="submit" name="editTextfield">Apply Changes</button>
-        <input type="hidden" name="textfieldToEdit" value="<?php echo $textfieldToEdit;?>">
-        <button onclick="window.location.href='index.php'">Cancel</button>
-      </div>
+		
     </form>
 </body>
 </html>
+
+
+

@@ -32,187 +32,26 @@ require __DIR__ . "/partials/_dbcon.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Gulpener Turnclub</title>
     <link rel="stylesheet" href="../styling/style.css">
-    <link rel="stylesheet" href="../styling/header.css">
     <link rel="stylesheet" href="../styling/algemeen.css">
     <link rel="stylesheet" href="../styling/preface.css">
     <link rel="stylesheet" href="../styling/longImage.css">
     <link rel="stylesheet" href="../styling/blog.css">
     <link rel="stylesheet" href="../styling/lesInformatie.css">
-    <link rel="stylesheet" href="../styling/footer.css">
 
     <script src="../scripts/header.js" defer></script>
     <script src="../scripts/deletePostConfirm.js"> defer</script>
 </head>
 <body>
-    <div class="phoneHeader">
-<div class="smallHeader">
-    <svg id="hamburger" class="Header__toggle-svg" viewbox="0 0 60 40">
-                    <g stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-                        <path id="top-line" d="M10,10 L50,10 Z"></path>
-                        <path id="middle-line" d="M10,20 L50,20 Z"></path>
-                        <path id="bottom-line" d="M10,30 L50,30 Z"></path>
-                    </g>
-                </svg>
-    <span class="smallHeader">GulpenerTurnclub</span>
-                </div>
-
-<div class="buttonContainer" style="background-color: var(--quinary-color); padding-bottom:20px;">
-            <div  class="menu">
-            <button onclick="window.location.href='index.php'" class="headerButtons">HomePage</button>
-            <div class="expanding">
-            <button id="dropdownMenu" onclick="window.location.href='index.php#info'" class="headerButtons">Info</button><br>
-            <button id="dropdownMenu" onclick="window.location.href='index.php#algemeen'" class="headerButtons">algemeen</button><br>
-            <button id="dropdownMenu" onclick="window.location.href='index.php#news'" class="headerButtons">Nieuws</button><br>
-            <button id="dropdownMenu" onclick="window.location.href='index.php#footer'" class="headerButtons">Ondersteuning</button>
-            </div>
-        </div>
-        <div class="menu">
-            <button class="headerButtons">Vereniging</button>
-            <div class="expanding">
-            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option2</button>
-            </div>
-        </div>
-        <div class="menu">
-            <button class="headerButtons">Groepen</button>
-            <div class="expanding">
-            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option2</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option3</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option4</button>
-            </div>
-        </div>
-        <div class="menu">
-            <button class="headerButtons">Geschiedenis</button>
-            <div class="expanding">
-            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option2</button>
-            </div>
-        </div>
-        <div class="menu">
-            <button class="headerButtons">Foto's</button>
-            <div class="expanding">
-            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option2</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option3</button>
-            </div>
-        </div>
-        <div class="menu">
-            <button onclick="window.location.href='#news'" class="headerButtons">Nieuws</button>
-            <div class="expanding">
-            <button id="dropdownMenu" onclick="window.location.href='index.php#news'" class="headerButtons">Recent</button><br>
-            <button id="dropdownMenu" onclick="window.location.href='blog.php'" class="headerButtons">Alle nieuws</button>
-            </div>
-        </div>
-        <div class="menu">
-            <button class="headerButtons">Contact</button>
-            <div class="expanding">
-            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option2</button>
-            </div>
-        </div>
-        <form method="post" class="menu">
-    <?php 
-    echo '<button class="headerButtons" style="margin-top: 2px" type="submit" name="logoutsub">' . ((!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true)?"Inloggen":"Uitloggen") . '</button>'; 
-    ?>
-</form>
-        </div>
-    </div>
-        </div>
-    <div class="container">
-    <div class="header">
-        <div class="upperHeader">
-            <div class="column">
-            <img src="../assets/images/pageimages/pageImage_3.png" alt="logo" class="simpleImage">
-            <?php
-            if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
-                if ($_SESSION['authlevel'] <= 1) {
-                echo "<a href=editImage.php?imageToEdit=3>Edit Image</a><br>";
-            }
-        }
-            ?>
-            </div>
-            <div class="line"></div>
-                
-            <div class="simpleImage">
-            <?php
-            
-            echo '<form  method="post">
-                <button class="button" type="submit" name="logoutsub">'.((!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true)?"Inloggen":"Uitloggen").'</button>
-                </form>';
-                if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
-            if ($_SESSION['authlevel'] <= 1) {
-                echo "<a href=editImage.php?imageToEdit=1>Edit Image</a><br>";
-            }
-        }
-            
-            ?>
-            </div>
-        </div>
-        <span class="headerTitle">GULPENER TURNCLUB</span>
-        <span class="headerText">Landsraderweg 5, 6271 NT Gulpen</span>
-        <div class="buttonContainer">
-            <div class=menu>
-            <button onclick="window.location.href='index.php'" class="headerButtons">HomePage</button>
-            <div class="expanding">
-            <button id="dropdownMenu" onclick="window.location.href='#info'" class="headerButtons">Info</button><br>
-            <button id="dropdownMenu" onclick="window.location.href='#algemeen'" class="headerButtons">algemeen</button><br>
-            <button id="dropdownMenu" onclick="window.location.href='#news'" class="headerButtons">Nieuws</button><br>
-            <button id="dropdownMenu" onclick="window.location.href='#footer'" class="headerButtons">Ondersteuning</button>
-            </div>
-        </div>
-        <div class=menu>
-            <button class="headerButtons">Vereniging</button>
-            <div class="expanding">
-            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option2</button>
-            </div>
-        </div>
-        <div class=menu>
-            <button class="headerButtons">Groepen</button>
-            <div class="expanding">
-            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option2</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option3</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option4</button>
-            </div>
-        </div>
-        <div class=menu>
-            <button class="headerButtons">Geschiedenis</button>
-            <div class="expanding">
-            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option2</button>
-            </div>
-        </div>
-        <div class=menu>
-            <button class="headerButtons">Foto's</button>
-            <div class="expanding">
-            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option2</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option3</button>
-            </div>
-        </div>
-        <div class=menu>
-            <button onclick="window.location.href='#news'" class="headerButtons">Nieuws</button>
-            <div class="expanding">
-            <button id="dropdownMenu" onclick="window.location.href='#news'" class="headerButtons">Recent</button><br>
-            <button id="dropdownMenu" onclick="window.location.href='blog.php'" class="headerButtons">Alle nieuws</button>
-            </div>
-        </div>
-        <div class=menu>
-            <button class="headerButtons">Contact</button>
-            <div class="expanding">
-            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option2</button>
-            </div>
-            </div>
-        </div>
-    </div>
+<?php require __DIR__ . "/partials/largeHeader.php"; ?>
+    
+        
+    
     <div class="preface">
 <?php
-echo "<div class='column'><img class='images' src=../assets/images/pageImages/pageImage_2.png >";
+echo "<div class='column'><img class='images' src=../assets/images/pageimages/pageImage_2.png >";
 if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
 if ($_SESSION['authlevel'] <= 1) {
     echo "<a href=editImage.php?imageToEdit=2>Edit Image</a>";
@@ -226,7 +65,8 @@ $query = "SELECT * FROM textfields";
 $result = $mysqli->query($query);
 while ($row = $result->fetch_assoc()) {
 $textfieldId = $row["textfield_id"];
-$textContent = $row["textContent"];
+$textContent = $row["textContent"];	
+	
 if ($textfieldId == 1){
     echo "<div class='column'><span class='text'>" . $textContent . "</span>";
     }
@@ -240,7 +80,7 @@ if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
     </div></div>
 
 <?php
-echo "<div class='column'><img class='longImage' src=../assets/images/pageImages/pageImage_5.png >";
+echo "<div class='column'><img class='longImage' src=../assets/images/pageimages/pageImage_5.png >";
 if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
 if ($_SESSION['authlevel'] <= 1) {
     echo "<a href=editImage.php?imageToEdit=5>Edit Image</a></div>";
@@ -260,6 +100,7 @@ require __DIR__ . "/partials/_dbcon.php";
 
 $query = "SELECT * FROM textfields";
 $result = $mysqli->query($query);
+	
 while ($row = $result->fetch_assoc()) {
 $textfieldId = $row["textfield_id"];
 $textContent = $row["textContent"];
@@ -297,7 +138,7 @@ if ($_SESSION['authlevel'] <= 1) {
 }
 }
 echo "<div class='informatieLine'></div>";
-echo "<img class='informatieImage' src='../assets/images/pageImages/pageImage_6.png' alt='pageImage_6'>";  
+echo "<img class='informatieImage' src='../assets/images/pageimages/pageImage_6.png' alt='pageImage_6'>";  
 if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
 if ($_SESSION['authlevel'] <= 1) {
     
@@ -307,7 +148,7 @@ if ($_SESSION['authlevel'] <= 1) {
 echo "</div></div>";
 echo "<div class='lesInformatieContainer'>";
 
-echo "<img class='informatieImage' src=../assets/images/pageImages/pageImage_7.png >";
+echo "<img class='informatieImage' src=../assets/images/pageimages/pageImage_7.png >";
 if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
 if ($_SESSION['authlevel'] <= 1) {
     echo "<a href=editImage.php?imageToEdit=7>Edit Image</a>";
@@ -455,7 +296,7 @@ echo "</div></div></div>";
 
 <div class="informatieLine" style="margin-bottom:30px;"></div>
 <?php
-echo "<div class='column'><img class='longImage' src=../assets/images/pageImages/pageImage_8.png >";
+echo "<div class='column'><img class='longImage' src=../assets/images/pageimages/pageImage_8.png >";
 if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
 if ($_SESSION['authlevel'] <= 1) {
     echo "<a href=editImage.php?imageToEdit=8>Edit Image</a></div>";
@@ -550,17 +391,7 @@ if ($_SESSION['authlevel'] <= 1) {
 }
                 ?>
                 </div>
-                <div id="footer" class="footerContainer">
-                    <div class="footer">
-                    <div class="footerLine"></div>
-                    <div class="footerIcons">
-                        <span>volg ons</span>
-                        <a href="https://www.facebook.com/gulpenerturnclub/"><img class="icons" src="../assets/images/icons/facebook.png" alt="facebook"></a>
-                        <a href="https://www.instagram.com/gulpenerturnclub/"><img class="icons" src="../assets/images/icons/instagram.png" alt="instagram"></a>
-
-                    </div>
-                    </div>
-                </div>
+                <?php require __DIR__ . "/partials/footer.php"; ?>
                 
         </footer>
     </div>

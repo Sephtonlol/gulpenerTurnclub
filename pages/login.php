@@ -35,6 +35,7 @@
     <div>
 
          <?php
+	
            if(isset($_POST['getname'])){
             require 'partials/_dbcon.php';
 
@@ -43,7 +44,7 @@
             $getname = filter_var($getname, FILTER_SANITIZE_STRING);
             $getpassword = filter_var($getpassword, FILTER_SANITIZE_STRING);
 
-            $query = "select * from users where user_name = '$getname' and password='$getpassword'";
+            $query = "select * from users where user_name = '$getname'";
 
             $result = $mysqli->query($query);
 
@@ -51,18 +52,23 @@
 
             $user_details = $result->fetch_assoc();
 
-            if($countrows == 0 && isset($_POST['getname'])){
-                unset($_POST['getname']);
+			 $passwordHash = $user_details['password'];
+			 $bool = password_verify($getpassword, $passwordHash);
+			   
+			  
+			   if($bool === true){
+                session_start();
+                $_SESSION['loggedin']=true;
+                $_SESSION['sendusername']=$getname;
+                $_SESSION['authlevel']=$user_details['authlevel'];
+
+                header("location: index.php");
+            }else{  
+				unset($_POST['getname']);
                 unset($_POST['getpassword']);
                 echo "<p>Wachtwoord/Naam onjuist</p>";
 
                 exit;
-            }else{
-                session_start();
-                $_SESSION['loggedin']=true;
-                $_SESSION['sendusername']=$getname;
-                $_SESSION['authlevel'] = $user_details['authlevel'];
-                header("location: index.php");
             }
            }
          ?>
