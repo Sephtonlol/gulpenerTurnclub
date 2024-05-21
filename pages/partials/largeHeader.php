@@ -50,15 +50,7 @@
             <button id="dropdownMenu" class="headerButtons">Option2</button>
             </div>
         </div>
-        <div class=menu>
-            <button class="headerButtons">Groepen</button>
-            <div class="expanding">
-            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option2</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option3</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option4</button>
-            </div>
-        </div>
+        
         <div class=menu>
             <button class="headerButtons">Geschiedenis</button>
             <div class="expanding">
@@ -88,6 +80,9 @@
             <button id="dropdownMenu" class="headerButtons">Option2</button>
             </div>
             </div>
+			<div class=menu>
+            <button onclick="window.location.href='profile.php'" class="headerButtons">Profiel</button>
+        </div>
         </div>
     </div>
 

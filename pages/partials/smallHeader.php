@@ -29,15 +29,6 @@
             </div>
         </div>
         <div class="menu">
-            <button class="headerButtons">Groepen</button>
-            <div class="expanding">
-            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option2</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option3</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option4</button>
-            </div>
-        </div>
-        <div class="menu">
             <button class="headerButtons">Geschiedenis</button>
             <div class="expanding">
             <button id="dropdownMenu" class="headerButtons">Option1</button><br>
@@ -53,7 +44,7 @@
             </div>
         </div>
         <div class="menu">
-            <button onclick="window.location.href='blog.php'" class="headerButtons">Nieuws</button>
+            <button  class="headerButtons">Nieuws</button>
             <div class="expanding">
             <button id="dropdownMenu" onclick="window.location.href='index.php#news'" class="headerButtons">Recent</button><br>
             <button id="dropdownMenu" onclick="window.location.href='blog.php'" class="headerButtons">Alle nieuws</button>
@@ -65,12 +56,26 @@
             <button id="dropdownMenu" class="headerButtons">Option1</button><br>
             <button id="dropdownMenu" class="headerButtons">Option2</button>
             </div>
+			</div>
+			<div class="menu">
+            <button onclick="window.location.href='profile.php'" class="headerButtons">Profiel</button>
         </div>
+
+
         <form method="post" class="menu">
     <?php 
-    echo '<button class="headerButtons" style="margin-top: 2px" type="submit" name="logoutsub">' . ((!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true)?"Inloggen":"Uitloggen") . '</button>'; 
+    echo '<button class="headerButtons" style="margin-top: 2px" type="submit" name="logoutsub">' . ((!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true)?"Inloggen":"Uitloggen") . '</button>        </div>'; 
+			
+			if (isset($_POST['logoutsub'])) {
+    session_unset();
+    session_destroy();
+				echo "<script> window.location.href='./login.php';</script>";
+    header("location: login.php");
+    exit;
+}
     ?>
 </form>
         </div>
 
     <link rel="stylesheet" href="../styling/header.css">
+

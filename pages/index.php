@@ -34,6 +34,8 @@ require __DIR__ . "/partials/_dbcon.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Gulpener Turnclub</title>
+	  <link rel="icon" type="x-icon" href="../assets/images/favicon.png">
+	
     <link rel="stylesheet" href="../styling/style.css">
     <link rel="stylesheet" href="../styling/algemeen.css">
     <link rel="stylesheet" href="../styling/preface.css">
@@ -45,7 +47,9 @@ require __DIR__ . "/partials/_dbcon.php";
     <script src="../scripts/deletePostConfirm.js"> defer</script>
 </head>
 <body>
-<?php require __DIR__ . "/partials/largeHeader.php"; ?>
+<?php require __DIR__ . "/partials/largeHeader.php"; 
+	?>
+	
     
         
     

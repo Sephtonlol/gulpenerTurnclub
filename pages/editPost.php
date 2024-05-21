@@ -70,6 +70,8 @@ if(isset($_POST['edited_post'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gulpener Turnclub</title>
+	<link rel="icon" type="x-icon" href="../assets/images/favicon.png">
+	
     <link rel="stylesheet" href="../styling/blogPost.css">
     <script src="../scripts/editPost.js"></script>
 </head>
@@ -79,10 +81,10 @@ if(isset($_POST['edited_post'])){
         <img class="blogImage" src="../assets/images/blogimages/<?php echo $postToEdit . '.png'; ?>" alt="<?php echo $title . '.png'?>">
         
       </div>
-      <div class='blogContent'>
+      <div class='blogContent' style="height: 100%; max-width: 90vw;">
         <div >
           <div class='blogTitle' style="display: flex; justify-content: center;">
-            <input name="edited_title"  style='min-width: 1px; flex-shrink: 2;' 1px; type="text" maxlength="50" value="<?php echo $title; ?>">
+            <input name="edited_title"  style='min-width: 1px; flex-shrink: 2; flex-grow: 1;' 1px; type="text" maxlength="50" value="<?php echo $title; ?>">
           </div>
           <div class='blogTextContainer' >
             <div class='blogText' style='display: flex; justify-content: center;'>

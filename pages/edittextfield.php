@@ -51,6 +51,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['edited_text'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styling/blogPost.css">
     <title>Edit Text</title>
+	<link rel="icon" type="x-icon" href="../assets/images/favicon.png">
+	
 </head>
 <body>
     <form class="blogPost" method="post" style="width: 100vw;">

@@ -159,8 +159,14 @@ input:focus {
 .left2 {
   width: 600px;
 }
+.deContainer {
+	align-items: center;
+	display:flex;
+	flex-direction: column;
+	
+}
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 880px) {
   .left,
   .left2 {
     display: none;

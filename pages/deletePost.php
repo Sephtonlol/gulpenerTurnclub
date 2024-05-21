@@ -2,8 +2,13 @@
 include "partials/_dbcon.php";
 
 session_start();
-if ($_SESSION['authlevel'] > 1) {
-    header("location: ../index.php");
+if ($_SESSION['authlevel'] != 0 || !isset($_SESSION['authlevel'])) {
+    header("Location: ./index.php");
+    exit;
+}
+
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header("Location: ./index.php");
     exit;
 }
 

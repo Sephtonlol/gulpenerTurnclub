@@ -41,6 +41,8 @@ else {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gulpener Turnclub</title>
+	<link rel="icon" type="x-icon" href="../assets/images/favicon.png">
+	
     <link rel="stylesheet" href="../styling/style.css">
     <link rel="stylesheet" href="../styling/header.css">
     <link rel="stylesheet" href="../styling/blogPost.css">
@@ -49,18 +51,18 @@ else {
 	    <script src="../scripts/header.js" defer></script>
     <script src="../scripts/deletePostConfirm.js" defer></script>
 </head>
-<body>
+<body style="display: flex; flex-direction: column;">
 <?php require __DIR__ . "/partials/smallHeader.php"; ?>
 
 
     <?php
-echo "<div class='blogPost'>";
+echo "<div class='blogPost' style='max-height: 700vh; '> ";
         $imagePath = "../assets/images/blogimages/{$blogId}.png";
         if (file_exists($imagePath)) {
-            echo "<div class='imageContainer'><img src='$imagePath' alt='$title' class='blogImage'></div>";
+            echo "<div class='imageContainer' style='flex-shrink: 0.1;'><img src='$imagePath' alt='$title' class='blogImage'></div>";
         }
-        echo "<div class='blogContent'><div><div class='blogTitle'><div>" . $title .  "</div></div>";
-        echo "<div class='blogTextContainer'><div class='filler2'></div><div class='blogText'><span>" . $content .  "</span></div><div class='filler2'></div></div></div>";
+        echo "<div class='blogContent' style='height: 100%; margin-bottom: 20px; overflow: hidden;'><div><div class='blogTitle'><div>" . $title .  "</div></div>";
+        echo "<div class='blogTextContainer' style='padding: 10px;'><div class='filler2'></div><div class='blogText'><span>" . $content .  "</span></div><div class='filler2'></div></div></div>";
         
         echo "<div class='blogDate'> <span>" . $date . "</span>";
 

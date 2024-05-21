@@ -145,7 +145,7 @@ body {
   z-index: 1;
   animation: expand 300ms ease-in-out forwards;
   transform-origin: top center;
-  width: 100%;
+  
 }
 
 .menu:hover .expanding {
@@ -241,4 +241,7 @@ svg {
     min-width: 100%;
     background-color: #5b7284;
   }
+	.expanding {
+	width: 100%;
+	}
 }

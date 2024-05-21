@@ -40,7 +40,7 @@
 
             <button id="signUpButton" name="signUp">Confirm</button>
 
-            <a class='discrete' href='login.php'>log in.</a>
+            <a class='discrete' href='login.php'>Inloggen</a>
         </div>
             <?php
             if(isset($_POST["signUp"])){
@@ -49,10 +49,11 @@
                 $getpassword=$_POST["getpassword"];
                 $confirmgetpassword=$_POST["confirmgetpassword"];
 
-                $getname = filter_var($getname, FILTER_SANITIZE_STRING);
-                $getemail = filter_var($getemail, FILTER_SANITIZE_STRING);
-                $getpassword = filter_var($getpassword, FILTER_SANITIZE_STRING);
-                $confirmgetpassword = filter_var($confirmgetpassword, FILTER_SANITIZE_STRING);
+                $getname = filter_var($getname, FILTER_SANITIZE_SPECIAL_CHARS);
+				$getemail = filter_var($getemail, FILTER_SANITIZE_EMAIL);
+				$getpassword = htmlspecialchars($getpassword);
+				$confirmgetpassword = htmlspecialchars($confirmgetpassword);
+
 
                 $sql="select user_name from users where user_name ='$getname'";
                 $sqlres=mysqli_query($connect, $sql);
