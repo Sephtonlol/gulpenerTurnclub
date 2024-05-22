@@ -36,12 +36,7 @@
             </div>
         </div>
         <div class="menu">
-            <button class="headerButtons">Foto's</button>
-            <div class="expanding">
-            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option2</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option3</button>
-            </div>
+            <button onclick="window.location.href='gallery.php'" class="headerButtons">Foto's</button>
         </div>
         <div class="menu">
             <button  class="headerButtons">Nieuws</button>
