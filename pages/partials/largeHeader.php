@@ -80,9 +80,12 @@
             <button id="dropdownMenu" class="headerButtons">Option2</button>
             </div>
             </div>
-			<div class=menu>
-            <button onclick="window.location.href='profile.php'" class="headerButtons">Profiel</button>
-        </div>
+			<?php 
+	if (isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true){
+		
+		echo '<div class="menu"><button onclick="window.location.href=\'profile.php\'" class="headerButtons">Profiel</button></div>';
+	}
+				?>
         </div>
     </div>
 

@@ -1,5 +1,5 @@
 function check() {
-  var result = confirm("Wil je echt deze blogpost verwijderen?");
+  var result = confirm("Wil je echt dit verwijderen?");
   if (result == false) {
     event.preventDefault();
   }

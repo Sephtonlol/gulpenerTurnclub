@@ -40,7 +40,7 @@ $query = "SELECT * FROM blog
 order by blog_id desc";
 
 $result = $mysqli->query($query);
-if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+if(isset($_SESSION['loggedin'])) {
 
 if ($_SESSION['authlevel'] <= 1) {
     echo "<a href='newBlog.php';' style='justify-content: center;' class='blogSpecial'>
@@ -59,7 +59,7 @@ while ($row = $result->fetch_assoc()) {
     $date = $row["date"];
     
     echo "<div class='blogPost'>";
-    $imagePath = "../assets/images/blogimages/{$blogId}.png";
+    $imagePath = "../assets/images/blogimages/blogimage_$blogId.png";
     if (file_exists($imagePath)) {
         echo "<div><img src='$imagePath' alt='$title' class='blogImage' ><br>";
     }

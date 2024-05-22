@@ -9,7 +9,7 @@ if ($_SESSION['authlevel'] != 0 || $_SESSION['authlevel'] == null) {
   header("location: ./index.php");
   exit;
 }
-if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+if(isset($_SESSION['loggedin'])) {
 
 } else {
   header("location: ./index.php");
@@ -52,12 +52,12 @@ if(isset($_POST['edited_post'])){
 
 
   if (move_uploaded_file($_FILES["image"]["tmp_name"], $uploadFile)) {
-    header("Location: ./index.php");
+    header("Location: ./blog.php");
   }
   elseif (($sqlres) && !move_uploaded_file($_FILES["image"]["tmp_name"], $uploadFile)) {
-    header("Location: ./index.php");
+    header("Location: ./blog.php");
   } {
-    header("Location: ./index.php");
+    header("Location: ./blog.php");
   }
 
 }

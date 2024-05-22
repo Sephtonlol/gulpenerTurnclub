@@ -1,7 +1,13 @@
 <?php
 
-include "partials/_dbcon.php"
+include "partials/_dbcon.php";
 
+session_start();
+
+if(!isset($_SESSION['loggedin']) || $_SESSION['authlevel'] > 1) {
+
+header("location: ./index.php");
+}
 ?>
 
 
@@ -13,7 +19,7 @@ include "partials/_dbcon.php"
     <title>Gulpener Turnclub</title>
 	<link rel="icon" type="x-icon" href="../assets/images/favicon.png">
 	
-    <script src="../scripts/newBlog.js"></script>
+    <script src="../scripts/newBlog.js" defer></script>
     <link rel="stylesheet" href="../styling/blogPost.css">
 </head>
 <body>

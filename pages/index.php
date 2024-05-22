@@ -56,7 +56,7 @@ require __DIR__ . "/partials/_dbcon.php";
     <div class="preface">
 <?php
 echo "<div class='column'><img class='images' src=../assets/images/pageimages/pageImage_2.png >";
-if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+if(isset($_SESSION['loggedin'])) {
 if ($_SESSION['authlevel'] <= 1) {
     echo "<a href=editImage.php?imageToEdit=2>Edit Image</a>";
 }
@@ -334,7 +334,7 @@ if ($_SESSION['authlevel'] <= 1) {
         $date = $row["date"];
         
         echo "<div class='blogPost'>";
-        $imagePath = "../assets/images/blogimages/$blogId.png";
+        $imagePath = "../assets/images/blogimages/blogimage_$blogId.png";
         if (file_exists($imagePath)) {
             echo "<div><img src='$imagePath' alt='$title' class='blogImage' ><br>";
         }

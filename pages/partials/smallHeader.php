@@ -57,14 +57,17 @@
             <button id="dropdownMenu" class="headerButtons">Option2</button>
             </div>
 			</div>
-			<div class="menu">
-            <button onclick="window.location.href='profile.php'" class="headerButtons">Profiel</button>
-        </div>
+	<?php 
+	if (isset($_SESSION['loggedin'])){
+		
+		echo '<div class="menu"><button onclick="window.location.href=\'profile.php\'" class="headerButtons">Profiel</button></div>';
+	}
+				?>
 
 
         <form method="post" class="menu">
     <?php 
-    echo '<button class="headerButtons" style="margin-top: 2px" type="submit" name="logoutsub">' . ((!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true)?"Inloggen":"Uitloggen") . '</button>        </div>'; 
+    echo '<button class="headerButtons" style="margin-top: 2px" type="submit" name="logoutsub">' . ((!isset($_SESSION['loggedin']))?"Inloggen":"Uitloggen") . '</button>        </div>'; 
 			
 			if (isset($_POST['logoutsub'])) {
     session_unset();

@@ -57,7 +57,7 @@ else {
 
     <?php
 echo "<div class='blogPost' style='max-height: 700vh; '> ";
-        $imagePath = "../assets/images/blogimages/{$blogId}.png";
+        $imagePath = "../assets/images/blogimages/blogimage_{$blogId}.png";
         if (file_exists($imagePath)) {
             echo "<div class='imageContainer' style='flex-shrink: 0.1;'><img src='$imagePath' alt='$title' class='blogImage'></div>";
         }
@@ -66,7 +66,7 @@ echo "<div class='blogPost' style='max-height: 700vh; '> ";
         
         echo "<div class='blogDate'> <span>" . $date . "</span>";
 
-        if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+        if(isset($_SESSION['loggedin'])) {
         if ($_SESSION['authlevel'] <= 1) {
         echo "<div class='editButtons'><a href=editPost.php?posttoedit=" . $blogId . ">Edit post</a><br>";
         echo "<a onclick='check()' href=deletePost.php/?posttodelete=" . $blogId . ">Delete post</a> </div>";

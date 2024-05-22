@@ -20,7 +20,7 @@
                 <?xml version="1.0" encoding="UTF-8"?>
             </div>
         <form class="log-in" action="" method="POST">
-            <h4><span>SignUp</span></h4>
+            <h4><span>Create account</span></h4>
             <div class="floating-label">
             <input class="input" type="text" name="getname" placeholder="Naam"/>
                 <label for="name">Naam:</label>

@@ -9,7 +9,7 @@ if ($_SESSION['authlevel'] != 0 || !isset($_SESSION['authlevel'])) {
     exit;
 }
 
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+if(!isset($_SESSION['loggedin'])) {
     header("Location: ./index.php");
     exit;
 }

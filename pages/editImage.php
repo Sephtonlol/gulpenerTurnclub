@@ -23,12 +23,10 @@ if ($_SESSION['authlevel'] != 0 || $_SESSION['authlevel'] == null) {
     header("location: ./index.php");
     exit;
 }
-if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
-
-} else {
-    header("location: ./index.php");
-    exit;
-    }
+if(!isset($_SESSION['loggedin'])) {
+header("location: ./index.php");
+exit;
+}
 
 ?>
 

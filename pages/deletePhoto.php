@@ -12,13 +12,13 @@ if(!isset($_SESSION['loggedin'])) {
     exit;
 }
 
-$postToDelete = $_GET['posttodelete'];
+$photoToDelete = $_GET['phototodelete'];
 
-$delete = mysqli_query($connect, "DELETE FROM `blog` WHERE `blog_id`='$postToDelete'");
+$delete = mysqli_query($connect, "DELETE FROM `photo` WHERE `photo_id`='$photoToDelete'");
 
 
-unlink( "../assets/images/blogimages/blogimage_". $postToDelete .".png");
+unlink( "../assets/images/photoimages/galleryimage_". $photoToDelete .".png");
 
-header("Location: ../blog.php");
+header("Location: ../gallery.php");
 
 ?>
