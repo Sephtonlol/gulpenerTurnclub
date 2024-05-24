@@ -11,6 +11,7 @@ require __DIR__ . "/partials/_dbcon.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GulpenerTurnclub</title>
+    <link rel="icon" type="x-icon" href="../assets/images/favicon.png">
 
     <link rel="stylesheet" href="../styling/header.css">
     <link rel="stylesheet" href="../styling/gallery.css">
