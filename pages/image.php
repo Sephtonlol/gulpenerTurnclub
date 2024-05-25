@@ -7,7 +7,7 @@ error_reporting(0);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="min-width: unset;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +22,7 @@ error_reporting(0);
 
 <script src="../scripts/header.js" defer></script>
 </head>
-<body>
+<body style="min-width: unset;">
 <?php
 
 include "./partials/smallHeader.php";
