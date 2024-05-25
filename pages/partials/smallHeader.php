@@ -29,11 +29,7 @@
             </div>
         </div>
         <div class="menu">
-            <button class="headerButtons">Geschiedenis</button>
-            <div class="expanding">
-            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option2</button>
-            </div>
+            <button onclick="window.location.href='history.php'" class="headerButtons">Geschiedenis</button>
         </div>
         <div class="menu">
             <button onclick="window.location.href='gallery.php'" class="headerButtons">Foto's</button>

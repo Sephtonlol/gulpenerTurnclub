@@ -1,0 +1,156 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--primary-color);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.anotherContainer {
+  background-color: var(--secundary-color);
+  width: 100%;
+}
+/* Historie css */
+
+/* Container voor de tijdlijn */
+.timeline-container {
+  width: 90%;
+  margin: 0 auto;
+  background-color: var(--primary-color);
+  padding: 20px;
+  margin: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+/* Titel van de tijdlijn */
+.timeline-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+/* Container voor de tijdlijnitems */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Individuele tijdlijnitems */
+.timeline-item {
+  /*display: flex;*/
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  position: relative;
+  gap: 20px;
+}
+
+/* Inhoud van de tijdlijnitems */
+.timeline-content {
+  flex: 1;
+  background-color: var(--primary-color);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-content p {
+  color: black;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+/* Container voor de afbeeldingen */
+.timeline-images {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+}
+
+/* Placeholder voor de afbeeldingen */
+.timeline-image {
+  width: 200px;
+  height: 150px;
+  background-color: #ccc;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.timeline-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+/* Jaarweergave */
+.timeline-year {
+  background-color: #333;
+  color: var(--primary-color);
+  padding: 5px 10px;
+  border-radius: 8px;
+  text-align: center;
+  top: 10px;
+  left: calc(50% - 40px);
+  z-index: 1;
+}
+
+/* Omkeren van de volgorde voor even items */
+.timeline-item:nth-child(even) .timeline-content {
+  order: 1;
+}
+.timeline-item:nth-child(even) .timeline-images {
+  order: 2;
+}
+.addHistory {
+  justify-content: center;
+  display: flex;
+  padding: 10px;
+  background-color: #e6e6e6;
+  border-radius: 15px;
+}
+a {
+  text-decoration: none;
+  color: black;
+  font-size: large;
+  font-weight: 5rem;
+  max-width: fit-content;
+  align-self: center;
+}
+.blogImage {
+  width: 33%;
+  height: 50%;
+}
+@media only screen and (max-width: 1400px) {
+  .imageContainer {
+    flex-direction: column;
+  }
+  .blogImage {
+    width: 80%;
+    height: 80%;
+  }
+}
+/* Responsive Design */
+@media only screen and (max-width: 768px) {
+  .timeline-content p {
+    font-size: 15px;
+  }
+
+  .timeline-container {
+    padding: 0;
+  }
+  .timeline-images {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 0px;
+  }
+  .timeline-image {
+    width: 100%;
+  }
+  .blogImage {
+    align-self: center;
+    width: 350px;
+    height: 250px;
+  }
+}

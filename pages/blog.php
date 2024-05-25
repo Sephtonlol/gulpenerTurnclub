@@ -21,8 +21,8 @@ if (isset($_POST['logoutsub'])) {
 	
     <link rel="stylesheet" href="../styling/header.css">
     <link rel="stylesheet" href="../styling/style.css">
-    <link rel="stylesheet" href="../styling/blog.css">
     <link rel="stylesheet" href="../styling/footer.css">
+    <link rel="stylesheet" href="../styling/blog.css">
     
 
     <script src="../scripts/header.js" defer></script>
