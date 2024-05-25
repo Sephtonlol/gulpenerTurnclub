@@ -40,7 +40,7 @@ include __DIR__ . "/partials/smallHeader.php";
         if(isset($_SESSION['loggedin'])) {
         
         if ($_SESSION['authlevel'] <= 1) {
-            echo "<a href='newHistory.php';' style='justify-content: center; align-items:' class='timeline-item'>
+            echo "<a href='newHistory.php';' style='justify-content: center; align-items:' class='timeline-item newHistory'>
                     <div class='specialTextContainer'>
                         <span class='addHistory'>Geschiedenis Toevoegen</span>
                         </div>
@@ -81,8 +81,15 @@ include __DIR__ . "/partials/smallHeader.php";
                     <img src="' . $img3 . '" alt="tijdlijn-image">
                 </div>';
             }
-            echo '</div>
-        </div>';
+            echo '</div>';
+            if (isset($_SESSION["loggedin"])){
+
+                if ($_SESSION['authlevel'] <= 1) {
+                    echo '<div class="imageCol" ><a href=\'editHistory.php?historyToEdit=' . $historyId . '\'>Edit</a>';
+                    echo '<a onclick="check()" href=\'deleteHistory.php?historyToDelete=' . $historyId . '\'>Delete</a></div>';
+                }
+            }
+        echo '</div>';
         }        
         ?>
     </div>

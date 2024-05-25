@@ -11,6 +11,10 @@ html,
 body {
   scroll-behavior: smooth;
   overflow: auto;
+  min-height: 100vh;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
 }
 p {
   color: red;

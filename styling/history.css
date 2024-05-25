@@ -115,7 +115,7 @@ body {
   background-color: #e6e6e6;
   border-radius: 15px;
 }
-a {
+.newHistory {
   text-decoration: none;
   color: black;
   font-size: large;
@@ -148,6 +148,11 @@ a {
   max-width: none;
   flex-grow: 1;
 }
+.imageCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 /* Responsive Design */
 @media only screen and (max-width: 768px) {
   .timeline-content p {
@@ -165,7 +170,7 @@ a {
   }
   .timeline-image {
     width: 80%;
-    height: 35vw;
+    height: 200px;
     margin-bottom: 15px;
   }
   .blogImage {

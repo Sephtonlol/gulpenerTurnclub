@@ -1,18 +1,17 @@
 <?php
+
 require "partials/_dbcon.php";
 
 session_start();
-if ($_SESSION['authlevel'] != 0 || !isset($_SESSION['authlevel'])) {
-    header("Location: ./index.php");
-    exit;
+
+if(!isset($_SESSION['loggedin']) || $_SESSION['authlevel'] > 1) {
+
+header("location: ./index.php");
 }
 
-if(!isset($_SESSION['loggedin'])) {
-    header("Location: ./index.php");
-    exit;
-}
+$historyToDelete = $_GET["historyToDelete"];
 
-$postToDelete = $_GET['posttodelete'];
+echo $historyToDelete;
 
 for ($i = 1; $i <= 3; $i++){
     if (file_exists("../assets/images/historyimages/historyimage_". $historyToDelete . "_" . $i .  ".png")){

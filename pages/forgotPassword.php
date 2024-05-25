@@ -6,8 +6,8 @@
     <title>Gulpener Turnclub</title>
 	<link rel="icon" type="x-icon" href="../assets/images/favicon.png">
 	
-    <link rel="stylesheet" href="../styling/loginSignUp.css">
     <link rel="stylesheet" href="../styling/style.css">
+    <link rel="stylesheet" href="../styling/loginSignUp.css">
     <script>
         let countdownTime;
 

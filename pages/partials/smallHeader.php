@@ -1,3 +1,4 @@
+<div>
 <div class="smallHeader">
     <svg id="hamburger" class="Header__toggle-svg" viewbox="0 0 60 40">
                     <g stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
@@ -73,3 +74,4 @@
 
     <link rel="stylesheet" href="../styling/header.css">
 
+    </div>
