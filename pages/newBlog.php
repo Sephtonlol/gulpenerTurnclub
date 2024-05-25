@@ -21,6 +21,7 @@ header("location: ./index.php");
 	
     <script src="../scripts/newBlog.js" defer></script>
     <link rel="stylesheet" href="../styling/blogPost.css">
+    <link rel="stylesheet" href="../styling/style.css">
 </head>
 <body>
 <form class="blogPost" method='post' action='procesPost.php' enctype="multipart/form-data" >
@@ -30,18 +31,20 @@ header("location: ./index.php");
         <div class='blogContent' style="max-width: 90vw; height: 100%;">
             <div>
                 <div class='blogTitle' style="display: flex;">
-                    <input style="flex-shrink: 1; min-width: 1px; max-width: none; flex-grow: 1;" name="title" type="text" maxlength="50" placeholder="Enter title">
+                    <input style="flex-shrink: 1; min-width: 1px; max-width: none; flex-grow: 1;" name="title" type="text" maxlength="50" placeholder="Enter title" required>
                 </div>
                 <div class='blogTextContainer' style="flex-shrink: 1;">
                     <div class='blogText' style="display: flex; margin: 10px; background-color: #FFFFFF00;">
-                        <textarea style="flex-grow: 1;"name="content" rows="35" max-cols="50" placeholder="Enter content"></textarea>
+                        <textarea style="flex-grow: 1;"name="content" rows="35" max-cols="50" placeholder="Enter content"></textarea required>
                     </div>
                     <input type="file" name="image" id="image" onchange="previewImage()" accept=".jpg, .jpeg, .png">
                 </div>
             </div>
+            <div style="display: flex; justify-content: center; flex-direction: row-reverse;">
             <button type="submit" name="new_post">Add post</button>
             <input type="hidden" name="postToEdit" value="">
-            <button onclick="window.location.href='index.php'">Cancel</button>
+            <button onclick="window.location.href='blog.php'">Cancel</button>
+</div>
         </div>
     </form>
 </body>

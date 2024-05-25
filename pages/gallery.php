@@ -48,7 +48,7 @@ while ($row = $result->fetch_assoc()) {
     $galleryId = $row["photo_id"];
     $date = $row["date"];
     
-    echo '<div class="image-container" onclick="window.location.href=\'galleryimage.php?galleryimage=' . $galleryId . '\'" >
+    echo '<div class="image-container" onclick="window.location.href=\'image.php?galleryimage=' . $galleryId . '\'" >
         <img src="../assets/images/galleryimages/galleryimage_' . $galleryId . '.png">';
     echo '<span style="font-size: 1.5rem;">' . $date . '</span>';
     if(isset($_SESSION['loggedin'])) {

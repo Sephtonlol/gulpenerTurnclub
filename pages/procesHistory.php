@@ -28,11 +28,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $title=$_REQUEST["title"];
         $content=$_REQUEST["content"];
+        $date=$_REQUEST["date"];
+        
 
         $title = filter_var($title, FILTER_SANITIZE_STRING);
         $content = filter_var($content, FILTER_SANITIZE_STRING);
+        $date = filter_var($date, FILTER_SANITIZE_STRING);
 
-        $sql="insert into history (history_id, title, content) value ('$id', '$title', '$content')";
+        $sql="insert into history (history_id, title, content, date) value ('$id', '$title', '$content', '$date')";
         $sqlres=mysqli_query($connect, $sql);
         header("location: ./history.php");
     } else {

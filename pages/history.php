@@ -33,8 +33,8 @@ include __DIR__ . "/partials/smallHeader.php";
     <!-- Container voor de tijdlijnitems -->
     <div class="timeline">
         <?php 
-        $query = "SELECT * FROM blog
-        order by blog_id desc";
+        $query = "SELECT * FROM history
+        order by date desc";
         
         $result = $mysqli->query($query);
         if(isset($_SESSION['loggedin'])) {
@@ -48,109 +48,43 @@ include __DIR__ . "/partials/smallHeader.php";
                 
         }}
         
+        while ($row = $result->fetch_assoc()) {
+            $historyId = $row["history_id"];
+            $date = $row["date"];
+            $title = $row["title"];
+            $content = $row["content"];
+            
+            $img1 = "../assets/images/historyimages/historyimage_{$historyId}_1.png";
+            $img2 = "../assets/images/historyimages/historyimage_{$historyId}_2.png";
+            $img3 = "../assets/images/historyimages/historyimage_{$historyId}_3.png";
+
+
+            echo '<div class="timeline-item">
+            <span class="timeline-year">' . $date . '</span>
+            <div class="timeline-content">
+                <h3>' . $title . '</h3>
+                <p>' . $content . '</p>
+            </div>
+            <div class="timeline-images">';
+            if(file_exists($img1)){
+                echo '<div class="timeline-image" onclick="window.location.href=\'image.php?historyimage=' . $historyId . '_1\'">
+                    <img src="' . $img1 . '" alt="tijdlijn-image">
+                </div>';
+            }
+            if(file_exists($img2)){
+                echo '<div class="timeline-image" onclick="window.location.href=\'image.php?historyimage=' . $historyId . '_2\'">
+                    <img src="' . $img2 . '" alt="tijdlijn-image">
+                </div>';
+            }
+            if(file_exists($img3)){
+                echo '<div class="timeline-image" onclick="window.location.href=\'image.php?historyimage=' . $historyId . '_3\'">
+                    <img src="' . $img3 . '" alt="tijdlijn-image">
+                </div>';
+            }
+            echo '</div>
+        </div>';
+        }        
         ?>
-        
-        <!-- Tijdlijnitem voor 1877 -->
-        <div class="timeline-item">
-            <span class="timeline-year">1877</span>
-            <!-- Inhoud van het tijdlijnitem -->
-            <div class="timeline-content">
-                <h3>Oprichting en vroege jaren</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit quidem reprehenderit, atque beatae aspernatur est iure veritatis officiis illo quo?</p>
-            </div>
-            <!-- Container voor de afbeeldingen -->
-            <div class="timeline-images">
-                <div class="timeline-image">
-                    <img src="../assets/images/pageimages/???" alt="tijdlijn-image">
-                </div>
-                <div class="timeline-image">
-                    <img src="../assets/images/pageimages/???" alt="tijdlijn-image">
-                </div>
-                <div class="timeline-image">
-                    <img src="../assets/images/pageimages/???" alt="tijdlijn-image">
-                </div>
-            </div>
-        </div>
-        
-        <!-- Tijdlijnitem voor 1950 -->
-        <div class="timeline-item">
-            <span class="timeline-year">1950</span>
-            <div class="timeline-content">
-                <h3>Belangrijke mijlpalen en prestatie</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum veniam fugit mollitia praesentium ea iusto magni deleniti, incidunt molestias laudantium.</p>
-            </div>
-            <div class="timeline-images">
-                <div class="timeline-image">
-                    <img src="../assets/images/pageimages/???" alt="tijdlijn-image">
-                </div>
-                <div class="timeline-image">
-                    <img src="../assets/images/pageimages/???" alt="tijdlijn-image">
-                </div>
-                <div class="timeline-image">
-                    <img src="../assets/images/pageimages/???" alt="tijdlijn-image">
-                </div>
-            </div>
-        </div>
-        
-        <!-- Tijdlijnitem voor 2000 -->
-        <div class="timeline-item">
-            <span class="timeline-year">2000</span>
-            <div class="timeline-content">
-                <h3>Groeiperiode en ontwikkeling</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non excepturi quibusdam alias corrupti molestias a velit harum. Sequi, maxime deserunt.</p>
-            </div>
-            <div class="timeline-images">
-                <div class="timeline-image">
-                    <img src="../assets/images/pageimages/???" alt="tijdlijn-image">
-                </div>
-                <div class="timeline-image">
-                    <img src="../assets/images/pageimages/???" alt="tijdlijn-image">
-                </div>
-                <div class="timeline-image">
-                    <img src="../assets/images/pageimages/???" alt="tijdlijn-image">
-                </div>
-            </div>
-        </div>
-        
-        <!-- Tijdlijnitem voor 2015 -->
-        <div class="timeline-item">
-            <span class="timeline-year">2015</span>
-            <div class="timeline-content">
-                <h3>Speciale evenementen</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur maiores dolorem nihil non iste, eos ipsa assumenda accusantium porro facere.</p>
-            </div>
-            <div class="timeline-images">
-                <div class="timeline-image">
-                    <img src="../assets/images/pageimages/???" alt="tijdlijn-image">
-                </div>
-                <div class="timeline-image">
-                    <img src="../assets/images/pageimages/???" alt="tijdlijn-image">
-                </div>
-                <div class="timeline-image">
-                    <img src="../assets/images/pageimages/???" alt="tijdlijn-image">
-                </div>
-            </div>
-        </div>
-        
-        <!-- Tijdlijnitem voor 2024 -->
-        <div class="timeline-item">
-            <span class="timeline-year">2024</span>
-            <div class="timeline-content">
-                <h3>Huidige status</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit quas dolor enim nulla illo perspiciatis quo quae beatae minima soluta.</p>
-            </div>
-            <div class="timeline-images">
-                <div class="timeline-image">
-                    <img src="../assets/images/pageimages/???" alt="tijdlijn-image">
-                </div>
-                <div class="timeline-image">
-                    <img src="../assets/images/pageimages/???" alt="tijdlijn-image">
-                </div>
-                <div class="timeline-image">
-                    <img src="../assets/images/pageimages/???" alt="tijdlijn-image">
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 <div class="anotherContainer">

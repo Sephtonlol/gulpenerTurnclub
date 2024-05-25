@@ -59,7 +59,8 @@ else {
 echo "<div class='blogPost' style='max-height: 700vh; '> ";
         $imagePath = "../assets/images/blogimages/blogimage_{$blogId}.png";
         if (file_exists($imagePath)) {
-            echo "<div class='imageContainer' style='flex-shrink: 0.1;'><img src='$imagePath' alt='$title' class='blogImage'></div>";
+            echo "<div onclick=\"window.location.href='image.php?blogimage=" . $blogId . "'\" class='imageContainer' style='flex-shrink: 0.1;'><img src='$imagePath' alt='$title' class='blogImage'></div>";
+
         }
         echo "<div class='blogContent' style='height: 100%; margin-bottom: 20px; overflow: hidden;'><div><div class='blogTitle'><div>" . $title .  "</div></div>";
         echo "<div class='blogTextContainer' style='padding: 10px;'><div class='filler2'></div><div class='blogText'><span>" . $content .  "</span></div><div class='filler2'></div></div></div>";

@@ -24,3 +24,6 @@ p {
   font-family: sans-serif;
   font-size: xx-large;
 }
+textarea {
+  resize: none;
+}

@@ -52,6 +52,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['edited_text'])) {
     <link rel="stylesheet" href="../styling/blogPost.css">
     <title>Edit Text</title>
 	<link rel="icon" type="x-icon" href="../assets/images/favicon.png">
+    
+    <link rel="stylesheet" href="../styling/style.css">
 	
 </head>
 <body>
