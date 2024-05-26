@@ -35,6 +35,7 @@ textarea {
   display: flex;
   justify-content: center;
   background-color: var(--primary-color);
+  flex-direction: row-reverse;
 }
 .prevNext button {
   margin: 5px;

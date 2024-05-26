@@ -66,7 +66,7 @@ header("location: ./index.php");
 <div class="prevNext">
 <button type="submit" name="new_post">Add history</button>
             <input type="hidden" name="postToEdit" value="">
-            <button onclick="window.location.href='history.php'">Cancel</button>
+            <button onclick="window.location.href='./history.php'">Cancel</button>
 </div>
 </div>
 </form>

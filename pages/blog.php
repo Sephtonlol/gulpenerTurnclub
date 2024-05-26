@@ -48,12 +48,12 @@ if(isset($_SESSION['loggedin'])) {
         </a>";
         
     }}
-    $query = "SELECT * FROM blog
+$query = "SELECT * FROM blog 
 order by blog_id desc";
     $result = $mysqli->query($query);
 
 $pageNumber = 1;
-if (isset($_GET["page"])){
+if (isset($_GET["page"]) && $_GET["page"] > 0){
     $pageNumber = $_GET["page"];
 }
 
@@ -62,11 +62,11 @@ if ($result && mysqli_num_rows($result) > 0) {
     $highestBlogId = $row["blog_id"];
 }
 
-$amountPerPage = 8;
+$amountPerPage = 4;
 if (isset($_SESSION["loggedin"])){
     $amountPerPage -= 1;
 }
-// $nowPrinting = (($amountPerPage / $pageNumber) - $amountPerPage) + $highestBlogId ;
+// $nowPrinting = (($amountPerPage / $pageNumber) - $amountPerPage) + $highestBlogId;
 $nowPrinting = ($amountPerPage - ($amountPerPage * $pageNumber)) + $highestBlogId;
 $totalPages = $highestBlogId / $amountPerPage;
 $totalPages = ceil($totalPages);
@@ -116,7 +116,7 @@ echo "<div class='filler'></div></div></div>";
 
         ?>
         </div>
-        <div class="prevNext">
+        <div class="prevNext" style="flex-direction: row;">
             <?php
             for ($i = ($pageNumber - 2); $i <= $totalPages; $i++){
                 if ($i > 0 && $i < ($pageNumber + 3) && $totalPages > 1){

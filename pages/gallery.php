@@ -2,16 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gulpener Turnclub</title>
 	  <link rel="icon" type="x-icon" href="../assets/images/favicon.png">
 
-    <link rel="stylesheet" href="../styling/gallery.css" />
-    <link rel="stylesheet" href="../styling/header.css">
-
-
-    <link rel="stylesheet" href="../styling/style.css">
+      <link rel="stylesheet" href="../styling/style.css">
+      <link rel="stylesheet" href="../styling/header.css">
+      
+      
+      <link rel="stylesheet" href="../styling/gallery.css" />
 
     <script src="../scripts/header.js" defer></script>
     <script src="../scripts/deletePostConfirm.js"> defer</script>
@@ -46,11 +45,11 @@ order by photo_id desc";
 $result = $mysqli->query($query);
 
 
-if (!$pageNumber = $_GET["page"]){
-    if ($pageNumber < 1){
-        $pageNumber = 1;
-    }
+$pageNumber = 1;
+if (isset($_GET["page"]) && $_GET["page"] > 0){
+    $pageNumber = $_GET["page"];
 }
+
 
 if ($result && mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
@@ -97,7 +96,7 @@ while ($nowPrinting > 0) {
 ?>
     </div>
 </div>
-<div class="prevNext">
+<div class="prevNext" style="flex-direction: row;">
             <?php
             for ($i = ($pageNumber - 2); $i <= $totalPages; $i++){
                 if ($i > 0 && $i < ($pageNumber + 3) && $totalPages > 1){
