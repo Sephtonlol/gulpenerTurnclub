@@ -23,8 +23,8 @@ header("location: ./index.php");
 
   <script src="../scripts/newHistory.js" defer></script>
 
+  <link rel="stylesheet" href="../styling/style.css">
     <link rel="stylesheet" href="../styling/history.css">
-    <link rel="stylesheet" href="../styling/style.css">
 
 </head>
 <body>
@@ -63,9 +63,11 @@ header("location: ./index.php");
 </div>
 </div>
 <div class="subContainer">
+<div class="prevNext">
 <button type="submit" name="new_post">Add history</button>
             <input type="hidden" name="postToEdit" value="">
             <button onclick="window.location.href='history.php'">Cancel</button>
+</div>
 </div>
 </form>
 </body>

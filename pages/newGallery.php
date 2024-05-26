@@ -7,17 +7,24 @@
     <title>GulpenerTurnclub</title>
 	  <link rel="icon" type="x-icon" href="../assets/images/favicon.png">
 
+      <link rel="stylesheet" href="../styling/style.css" />
     <link rel="stylesheet" href="../styling/gallery.css" />
+
     <script src="../scripts/newBlog.js"></script>
 </head>
 <body>
-    <form method="post" enctype="multipart/form-data">
-        <div>
+    <form class="newImage" method="post" enctype="multipart/form-data">
+        <div class="newGalleryContainer">
+            <div class="image-container" style="width: 400px;">
+            <img src="../assets/images/logoWB.png" id="preview" class="photoImage" alt="galleryImage">
+            <span style="font-size: 1.5rem;"><?php echo date("Y-m-d");  ?></span>
+            </div>
         <input id="image"type="file" onchange="previewImage()" accept=".jpg, .jpeg, .png" name="image" required>
-        <button type="button" onclick="window.location.reload();">Cancel</button>
+        <div class="prevNext">
+        <button type="button" onclick="window.location.href='gallery.php'">Cancel</button>
         <button type="submit">Apply</button>
         </div>
-        <img id="preview" class="photoImage" alt="galleryImage">
+        </div>
     </form>
 
     <?php 

@@ -90,14 +90,17 @@ if(isset($_POST['edited_post'])){
           <div class='blogTextContainer' >
             <div class='blogText' style='display: flex; justify-content: center;'>
               <textarea style='display:flex; flex-grow: 1; margin: 20px;'name="edited_post" rows="35" required max-cols="50" ><?php echo $content; ?></textarea>
-            </div>
+          </div>
             <input type="file" name="image" id="image" onchange="previewImage()" accept=".jpg, .jpeg, .png">
           </div>
         </div>
 		  <div style="display: flex; justify-content: center; flex-direction: row-reverse;">
+      <div class="prevNext" style="background-color: unset;">
+
         <button type="submit" name="editBlogPost">Apply Changes</button>
         <input type="hidden" name="postToEdit" value="<?php echo $postToEdit;?>">
         <button onclick="window.location.href='index.php'">Cancel</button>
+			  </div>
 			  </div>
       </div>
     </form>

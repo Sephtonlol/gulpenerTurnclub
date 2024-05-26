@@ -20,8 +20,8 @@ header("location: ./index.php");
 	<link rel="icon" type="x-icon" href="../assets/images/favicon.png">
 	
     <script src="../scripts/newBlog.js" defer></script>
-    <link rel="stylesheet" href="../styling/blogPost.css">
     <link rel="stylesheet" href="../styling/style.css">
+    <link rel="stylesheet" href="../styling/blogPost.css">
 </head>
 <body>
 <form class="blogPost" method='post' action='procesPost.php' enctype="multipart/form-data" >
@@ -35,15 +35,17 @@ header("location: ./index.php");
                 </div>
                 <div class='blogTextContainer' style="flex-shrink: 1;">
                     <div class='blogText' style="display: flex; margin: 10px; background-color: #FFFFFF00;">
-                        <textarea style="flex-grow: 1;"name="content" rows="35" max-cols="50" placeholder="Enter content"></textarea required>
+                        <textarea style="flex-grow: 1;"name="content" rows="35" max-cols="50" placeholder="Enter content" required></textarea>
                     </div>
                     <input type="file" name="image" id="image" onchange="previewImage()" accept=".jpg, .jpeg, .png">
                 </div>
             </div>
             <div style="display: flex; justify-content: center; flex-direction: row-reverse;">
+            <div class="prevNext" style="background-color: unset;">
             <button type="submit" name="new_post">Add post</button>
             <input type="hidden" name="postToEdit" value="">
             <button onclick="window.location.href='blog.php'">Cancel</button>
+</div>
 </div>
         </div>
     </form>

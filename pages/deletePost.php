@@ -23,7 +23,7 @@ if (!unlink("../assets/images/blogimages/blogimage_". $historyToDelete . ".png")
     
 
     if(mysqli_query($connect, "DELETE FROM `blog` WHERE `blog_id`='$postToDelete'")){
-        header("Location: ./blog.php");
+        header("Location: ../blog.php");
         exit;
     }
 

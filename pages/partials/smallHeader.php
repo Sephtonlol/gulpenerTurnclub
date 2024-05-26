@@ -11,7 +11,7 @@
 	</div>
                 
 
-<div class="buttonContainer" style="background-color: var(--quinary-color);">
+<div class="buttonContainer" style="background-color: var(--quinary-color); padding-bottom: 10px;">
          <div  class="menu">
             <button class="headerButtons">HomePage</button>
             <div class="expanding">

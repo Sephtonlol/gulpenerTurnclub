@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+error_reporting(0); 
 session_start();
 
 if (isset($_POST['logoutsub'])) {
@@ -30,33 +30,66 @@ if (isset($_POST['logoutsub'])) {
 </head>
 <body>
 <?php require __DIR__ . "/partials/smallHeader.php"; ?>
+<div>
 <div class='blogGrid'>
 
         <?php
 
 require __DIR__ . "/partials/_dbcon.php";
 
-$query = "SELECT * FROM blog
-order by blog_id desc";
 
-$result = $mysqli->query($query);
 if(isset($_SESSION['loggedin'])) {
-
-if ($_SESSION['authlevel'] <= 1) {
-    echo "<a href='newBlog.php';' style='justify-content: center;' class='blogSpecial'>
-            <div class='specialTextContainer'>
-                <span class='addPost'>Post Toevoegen</span>
-                </div>
-    </a>";
+    
+    if ($_SESSION['authlevel'] <= 1) {
+        echo "<a href='newBlog.php';' style='justify-content: center;' class='blogSpecial'>
+        <div class='specialTextContainer'>
+        <span class='addPost'>Post Toevoegen</span>
+        </div>
+        </a>";
         
-}}
+    }}
+    $query = "SELECT * FROM blog
+order by blog_id desc";
+    $result = $mysqli->query($query);
 
+$pageNumber = 1;
+if (isset($_GET["page"])){
+    $pageNumber = $_GET["page"];
+}
 
-while ($row = $result->fetch_assoc()) {
-    $blogId = $row["blog_id"];
-    $title = $row["title"];
-    $content = $row["content"];
-    $date = $row["date"];
+if ($result && mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+    $highestBlogId = $row["blog_id"];
+}
+
+$amountPerPage = 4;
+if (isset($_SESSION["loggedin"])){
+    $amountPerPage -= 1;
+}
+// $nowPrinting = (($amountPerPage / $pageNumber) - $amountPerPage) + $highestBlogId ;
+$nowPrinting = ($amountPerPage - ($amountPerPage * $pageNumber)) + $highestBlogId;
+$totalPages = $highestBlogId / $amountPerPage;
+$totalPages = ceil($totalPages);
+if ($_GET["page"] > $totalPages){
+    header("location: ./blog.php");
+}
+// echo $highestBlogId . "<br>";
+// echo $pageNumber . "<br>";
+// echo $nowPrinting;
+
+while ($nowPrinting > 0) {
+        $query = "SELECT * FROM blog WHERE blog_id = '$nowPrinting'";
+        
+        $result = mysqli_query($connect, $query);
+        $row = $result->fetch_assoc();
+        $blogId = $row["blog_id"];
+        $title = $row["title"];
+        $content = $row["content"];
+        $date = $row["date"];
+        $nowPrinting--;
+            if ($amountPerPage > 0){
+                $amountPerPage--;
+
     
     echo "<div class='blogPost'>";
     $imagePath = "../assets/images/blogimages/blogimage_$blogId.png";
@@ -76,11 +109,26 @@ if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
 }
 }
 echo "<div class='filler'></div></div></div>";
+}
 
 }
 
+
         ?>
         </div>
+        <div class="prevNext">
+            <?php
+            for ($i = ($pageNumber - 2); $i <= $totalPages; $i++){
+                if ($i > 0 && $i < ($pageNumber + 3) && $totalPages > 1){
+                    echo "<button onclick='window.location.href=\"./blog.php?page=" . $i . "\"'>" . $i . "</button>";
+
+                }
+            }
+            
+
+            ?>
+        </div>
+</div>
         <?php require __DIR__ . "/partials/footer.php"; ?>
         </body>
 </html>

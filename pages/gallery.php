@@ -19,6 +19,8 @@
 <body>
     
 <?php
+// error_reporting(0);
+
 session_start();
 include __DIR__ . "/partials/smallHeader.php";
 require __DIR__ . "/partials/_dbcon.php";
@@ -29,25 +31,57 @@ require __DIR__ . "/partials/_dbcon.php";
 
 
 <?php
-
-$query = "SELECT * FROM photo
-order by photo_id desc";
-
-$result = $mysqli->query($query);
+error_reporting(0);
 if(isset($_SESSION['loggedin'])) {
 
 if ($_SESSION['authlevel'] <= 1) {
-    echo "<a class='image-container'  style='justify-content: center;' href='./newGallery.php'>
-    <span>voeg foto toe</span>
-</a>";
+    echo "<a class='image-container'  style='justify-content: center; padding: 0px 20px 0px 20px;' href='./newGallery.php'>
+    <span>Foto Toevoegen</span>
+    </a>";
         
 }
 }
+$query = "SELECT * FROM photo
+order by photo_id desc";
+$result = $mysqli->query($query);
 
-while ($row = $result->fetch_assoc()) {
-    $galleryId = $row["photo_id"];
-    $date = $row["date"];
-    
+
+if (!$pageNumber = $_GET["page"]){
+    if ($pageNumber < 1){
+        $pageNumber = 1;
+    }
+}
+
+if ($result && mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+    $highestPhotoId = $row["photo_id"];
+}
+
+$amountPerPage = 4;
+if (isset($_SESSION["loggedin"])){
+    $amountPerPage -= 1;
+}
+$nowPrinting = ($amountPerPage - ($amountPerPage * $pageNumber)) + $highestPhotoId;
+$totalPages = $highestPhotoId / $amountPerPage;
+$totalPages = ceil($totalPages);
+if ($_GET["page"] > $totalPages){
+    header("location: ./blog.php");
+}
+
+while ($nowPrinting > 0) {
+        $query = "SELECT * FROM photo WHERE photo_id = '$nowPrinting'";
+        
+        $result = mysqli_query($connect, $query);
+        $row = $result->fetch_assoc();
+        $galleryId = $row["photo_id"];
+        $date = $row["date"];
+        $nowPrinting--;
+            if ($amountPerPage > 0){
+                $amountPerPage--;
+                if (file_exists("../assets/images/galleryimages/galleryimage_" . $galleryId . ".png")){
+
+                
+
     echo '<div class="image-container" onclick="window.location.href=\'image.php?galleryimage=' . $galleryId . '\'" >
         <img src="../assets/images/galleryimages/galleryimage_' . $galleryId . '.png">';
     echo '<span style="font-size: 1.5rem;">' . $date . '</span>';
@@ -58,10 +92,23 @@ while ($row = $result->fetch_assoc()) {
 }
     echo "</div>";
 }
-
+}
+}
 ?>
     </div>
 </div>
+<div class="prevNext">
+            <?php
+            for ($i = ($pageNumber - 2); $i <= $totalPages; $i++){
+                if ($i > 0 && $i < ($pageNumber + 3) && $totalPages > 1){
+                    echo "<button onclick='window.location.href=\"./gallery.php?page=" . $i . "\"'>" . $i . "</button>";
+
+                }
+            }
+            
+
+            ?>
+        </div>
 <?php 
 
 include __DIR__ . "/partials/footer.php";

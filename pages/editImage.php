@@ -38,21 +38,24 @@ exit;
     <title>Gulpener Turnclub</title>
 	<link rel="icon" type="x-icon" href="../assets/images/favicon.png">
 	
+    <link rel="stylesheet" href="../styling/style.css">
     <link rel="stylesheet" href="../styling/blogPost.css">
     <script src="../scripts/editPost.js"></script>
 </head>
 <body>
 
-    <div class="row">
+    <div>
 <form class="blogPost" method="post" enctype="multipart/form-data">
-    <img style="max-height: 100vh; max-width:75vw;" class="blogImage" src="../assets/images/pageimages/pageImage_<?php echo htmlspecialchars($imageToEdit) . '.png'; ?>" alt="<?php echo htmlspecialchars($imageToEdit) . '.png'?>">
-    <div class='blogTextContainer'>
-        <input type="file" name="editedImage" id="image" onchange="previewImage()" accept=".jpg, .jpeg, .png">
+    <div style="display: flex; flex-direction: column;" class='blogTextContainer'>
+    <img style="border-radius: 0px; max-height: 85vh; max-width:100vw;" class="blogImage" src="../assets/images/pageimages/pageImage_<?php echo htmlspecialchars($imageToEdit) . '.png'; ?>" alt="<?php echo htmlspecialchars($imageToEdit) . '.png'?>">
+        <input type="file" name="editedImage" id="image" onchange="previewImage()" accept=".jpg, .jpeg, .png" required>
+        <div class="prevNext">
         <button type="submit" name="editBlogPost">Apply Changes</button>
         <input type="hidden" name="postToEdit" value="<?php echo htmlspecialchars($imageToEdit);?>">
-    </form>
+        <button class="button" onclick="window.location.href='./index.php'">Cancel</button>
+        </div>
     </div>
-<button class="button" onclick="window.location.href='index.php'">Cancel</button>
+    </form>
 </div>
 </body>
 </html>

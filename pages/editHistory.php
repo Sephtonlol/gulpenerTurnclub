@@ -25,7 +25,7 @@ if ($result && mysqli_num_rows($result) > 0) {
     $content = "History not found";
 }
 
-if(isset($_POST['date'])){
+if(isset($_POST['submit'])){
     $historyId = $_POST["historyToEdit"];
     $title = $_POST["title"];
     $content = $_POST["content"];

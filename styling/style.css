@@ -31,3 +31,14 @@ p {
 textarea {
   resize: none;
 }
+.prevNext {
+  display: flex;
+  justify-content: center;
+  background-color: var(--primary-color);
+}
+.prevNext button {
+  margin: 5px;
+  padding: 5px;
+  background-color: var(--primary-color);
+  border-radius: 5px;
+}

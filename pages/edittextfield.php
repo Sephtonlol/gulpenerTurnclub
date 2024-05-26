@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['edited_text'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="overflow-x: hidden">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -56,20 +56,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['edited_text'])) {
     <link rel="stylesheet" href="../styling/style.css">
 	
 </head>
-<body>
+<body style="overflow-x: hidden">
     <form class="blogPost" method="post" style="width: 100vw;">
-        <div class='blogContent' style='min-height: 90vh; align-items: center; min-width: 80vw;'>
-            <div style="width: 85%; margin-top: 20px">
+        <div class='blogContent' style='min-height: 90vh; align-items: center; min-width: 80vw; background-color: unset; justify-content: center;'>
+            <div style="width: 95%; margin-top: 20px">
                 <div class='blogTextContainer' >
-                    <div class='blogText' style="display: flex;">
+                    <div class='blogText' style="display: flex; background-color: unset;">
                         <textarea id="dynamicTextarea" style='display:flex; flex-grow: 1; margin-top: 30px;' name="edited_text" rows="35" max-cols="50"><?php echo $textContent; ?></textarea>
                     </div>
                 </div>
             </div>
-			<div>
-        <button style='max-height: 30px;' type="submit" name="editTextfield">Apply Changes</button>
+			<div class="prevNext">
+        <button type="submit" name="editTextfield">Apply Changes</button>
         <input type="hidden" name="textfieldToEdit" value="<?php echo $textfieldToEdit; ?>">
-        <button style='max-height: 30px;' type="button" onclick="window.location.href='index.php'">Cancel</button>
+        <button type="button" onclick="window.location.href='index.php'">Cancel</button>
 			</div>
         </div>
 		

@@ -358,7 +358,7 @@ if ($_SESSION['authlevel'] <= 1) {
             ?>
             <div onclick="window.location.href='blog.php';" style="justify-content: center;" class="blogSpecial">
             <div class="specialTextContainer">
-                <span class="blogTitle">alles zien</span>
+                <span class="blogTitle">Alles Zien</span>
                 </div>
             </div>
             </div>
