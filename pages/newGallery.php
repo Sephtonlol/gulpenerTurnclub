@@ -21,8 +21,8 @@
             </div>
         <input id="image"type="file" onchange="previewImage()" accept=".jpg, .jpeg, .png" name="image" required>
         <div class="prevNext">
+            <button type="submit">Apply</button>
         <button type="button" onclick="window.location.href='gallery.php'">Cancel</button>
-        <button type="submit">Apply</button>
         </div>
         </div>
     </form>
