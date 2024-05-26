@@ -14,17 +14,16 @@ if(!isset($_SESSION['loggedin'])) {
 
 $postToDelete = $_GET['posttodelete'];
 
-for ($i = 1; $i <= 3; $i++){
-    if (file_exists("../assets/images/historyimages/historyimage_". $historyToDelete . "_" . $i .  ".png")){
-        if (!unlink("../assets/images/historyimages/historyimage_". $historyToDelete . "_" . $i .  ".png")){
+if (file_exists("../assets/images/blogimages/blogimage_" . $historyToDelete . ".png")){
+if (!unlink("../assets/images/blogimages/blogimage_". $historyToDelete . ".png")){
             throw new Exception("FAILED TO DELETE");
             }
 
     } 
-    }
+    
 
-    if(mysqli_query($connect, "DELETE FROM `history` WHERE `history_id`='$historyToDelete'")){
-        header("Location: ./history.php");
+    if(mysqli_query($connect, "DELETE FROM `blog` WHERE `blog_id`='$postToDelete'")){
+        header("Location: ./blog.php");
         exit;
     }
 
