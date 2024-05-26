@@ -89,28 +89,22 @@ move_uploaded_file($_FILES["image3"]["tmp_name"], $uploadFile3);
                 $img1 = "../assets/images/historyimages/historyimage_{$historyToEdit}_1.png";
                 $img2 = "../assets/images/historyimages/historyimage_{$historyToEdit}_2.png";
                 $img3 = "../assets/images/historyimages/historyimage_{$historyToEdit}_3.png";
-            if(file_exists($img1)){
                 echo '<div class="imageCol"><div class="timeline-image" >
                     <img src="' . $img1 . '" id="preview1" alt="tijdlijn-image"></div>
                     <input type="file" name="image1" id="image1" onchange="previewImage1()" accept=".jpg, .jpeg, .png">
                 </div>';
-            }
-            if(file_exists($img2)){
                 echo '<div class="imageCol"><div class="timeline-image" >
                     <img src="' . $img2 . '" id="preview2" alt="tijdlijn-image"></div>
                     <input type="file" name="image2" id="image2" onchange="previewImage2()" accept=".jpg, .jpeg, .png">
                 </div>';
-            }
-            if(file_exists($img3)){
                 echo '<div class="imageCol"><div class="timeline-image" >
                     <img src="' . $img3 . '" id="preview3" alt="tijdlijn-image"></div>
                     <input type="file" name="image3" id="image3" onchange="previewImage3)" accept=".jpg, .jpeg, .png">
                 </div>';
-            }
             ?>
 </div>
 <div class="subContainer">
-<button type="submit" name="new_post">Add history</button>
+<button type="submit" name="new_post">Apply Changes</button>
             <input type="hidden" name="historyToEdit" value="<?php echo $historyToEdit; ?>">
             <button onclick="window.location.href='history.php'">Cancel</button>
 </div>
