@@ -57,7 +57,7 @@ if ($result && mysqli_num_rows($result) > 0) {
     $highestPhotoId = $row["photo_id"];
 }
 
-$amountPerPage = 4;
+$amountPerPage = 12;
 if (isset($_SESSION["loggedin"])){
     $amountPerPage -= 1;
 }

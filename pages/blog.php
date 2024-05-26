@@ -62,7 +62,7 @@ if ($result && mysqli_num_rows($result) > 0) {
     $highestBlogId = $row["blog_id"];
 }
 
-$amountPerPage = 4;
+$amountPerPage = 8;
 if (isset($_SESSION["loggedin"])){
     $amountPerPage -= 1;
 }
