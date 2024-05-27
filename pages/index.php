@@ -70,14 +70,14 @@ $result = $mysqli->query($query);
 while ($row = $result->fetch_assoc()) {
 $textfieldId = $row["textfield_id"];
 $textContent = $row["textContent"];	
-	
+    
 if ($textfieldId == 1){
     echo "<div class='column'><span class='text'>" . $textContent . "</span>";
     }
 }
 if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
     if ($_SESSION['authlevel'] <= 1) {
-        echo "<a href=editTextfield.php?textfieldToEdit=1>Edit textfield</a>";
+        echo "<a href=edittextfield.php?textfieldToEdit=1>Edit textfield</a>";
         }
     }
 ?>
@@ -113,7 +113,7 @@ if ($textfieldId == 2){
 echo "<span class='lesInformatieTitle'>" . $textContent . "</span>";
 if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
 if ($_SESSION['authlevel'] <= 1) {
-    echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+    echo "<a href=edittextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
     }
 }
 }
@@ -121,7 +121,7 @@ if ($textfieldId == 3){
 echo "<span class='lesInformatieText'>" . $textContent . "</span>";
 if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
 if ($_SESSION['authlevel'] <= 1) {
-    echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+    echo "<a href=edittextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
     }
 }
 }
@@ -129,7 +129,7 @@ if ($textfieldId == 4){
 echo "<span class='lesInformatieText'>" . $textContent . "</span>";
 if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
 if ($_SESSION['authlevel'] <= 1) {
-    echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+    echo "<a href=edittextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
     }
 }
 }
@@ -137,7 +137,7 @@ if ($textfieldId == 5){
 echo "<span class='lesInformatieText'>" . $textContent . "</span>";
 if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
 if ($_SESSION['authlevel'] <= 1) {
-    echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+    echo "<a href=edittextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
     }}
 }
 }
@@ -170,7 +170,7 @@ if ($textfieldId == 6){
 echo "<span class='lesInformatieText'>" . $textContent . "</span>";
 if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
 if ($_SESSION['authlevel'] <= 1) {
-    echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+    echo "<a href=edittextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
 }
     }
 }
@@ -178,7 +178,7 @@ if ($textfieldId == 7){
 echo "<span class='lesInformatieText'>" . $textContent . "</span>";
 if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
 if ($_SESSION['authlevel'] <= 1) {
-    echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+    echo "<a href=edittextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
 }
     }
 }
@@ -206,7 +206,7 @@ echo "</div></div></div>";
         echo "<span class='bulletPointsTitle'>" . $textContent . "</span>";
         if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
         if ($_SESSION['authlevel'] <= 1) {
-            echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+            echo "<a href=edittextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
         }
             }
         }
@@ -214,7 +214,7 @@ echo "</div></div></div>";
             echo "<span class='bulletPointsText'>• " . $textContent . "</span>";
             if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
             if ($_SESSION['authlevel'] <= 1) {
-                echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+                echo "<a href=edittextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
             }
                 }
             }
@@ -222,14 +222,14 @@ echo "</div></div></div>";
         echo "<span class='bulletPointsText'>• " . $textContent . "</span>";
         if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
         if ($_SESSION['authlevel'] <= 1) {
-            echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+            echo "<a href=edittextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
             }}
         }
         if ($textfieldId == 13){
             echo "<span class='bulletPointsText'>• " . $textContent . "</span>";
             if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
             if ($_SESSION['authlevel'] <= 1) {
-                echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+                echo "<a href=edittextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
             }
                 }
         }
@@ -252,42 +252,42 @@ echo "</div></div></div>";
     echo "<span class='bulletPointsTitle'>" . $textContent . "</span>";
     if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
     if ($_SESSION['authlevel'] <= 1) {
-        echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+        echo "<a href=edittextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
         }}
     }
     if ($textfieldId == 15){
         echo "<span class='bulletPointsText'>• " . $textContent . "</span>";
         if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
         if ($_SESSION['authlevel'] <= 1) {
-            echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+            echo "<a href=edittextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
             }}
         }
     if ($textfieldId == 16){
     echo "<span class='bulletPointsText'>• " . $textContent . "</span>";
     if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
     if ($_SESSION['authlevel'] <= 1) {
-        echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+        echo "<a href=edittextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
         }}
     }
     if ($textfieldId == 17){
         echo "<span class='bulletPointsText'>• " . $textContent . "</span>";
         if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
         if ($_SESSION['authlevel'] <= 1) {
-            echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+            echo "<a href=edittextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
             }}
     }
     if ($textfieldId == 18){
         echo "<span class='bulletPointsText'>• " . $textContent . "</span>";
         if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
         if ($_SESSION['authlevel'] <= 1) {
-            echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+            echo "<a href=edittextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
             }}
         }
         if ($textfieldId == 19){
             echo "<span class='bulletPointsText'>• " . $textContent . "</span>";
             if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
             if ($_SESSION['authlevel'] <= 1) {
-                echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+                echo "<a href=edittextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
                 }
         }}
 }
@@ -380,7 +380,7 @@ if ($textfieldId == 8){
 echo "<span class='footerTitle'>" . $textContent . "</span>";
 if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
 if ($_SESSION['authlevel'] <= 1) {
-    echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+    echo "<a href=edittextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
     }
 }
 }
@@ -388,7 +388,7 @@ if ($textfieldId == 9){
 echo "<span class='footerText'>" . $textContent . "</span>";
 if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
 if ($_SESSION['authlevel'] <= 1) {
-    echo "<a href=editTextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
+    echo "<a href=edittextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
     }
 }
 }

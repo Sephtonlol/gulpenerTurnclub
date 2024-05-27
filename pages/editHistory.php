@@ -25,8 +25,8 @@ if ($result && mysqli_num_rows($result) > 0) {
     $content = "History not found";
 }
 
-if(isset($_POST['submit'])){
-    $historyId = $_POST["historyToEdit"];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['submit'])) {
     $title = $_POST["title"];
     $content = $_POST["content"];
     $date = $_POST["date"];
@@ -34,29 +34,34 @@ if(isset($_POST['submit'])){
     $title = filter_var($title, FILTER_SANITIZE_STRING);
     $content = filter_var($content, FILTER_SANITIZE_STRING);
     $date = filter_var($date, FILTER_SANITIZE_STRING);
-    $sql = "UPDATE history SET title = '$title', content = '$content', date = '$date' WHERE history_id = '$historyId'";
+    $sql = "UPDATE history SET title = '$title', content = '$content', date = '$date' WHERE history_id = '$historyToEdit'";
     $sqlres = mysqli_query($connect, $sql);
 
   $uploadDir = "../assets/images/historyimages/historyimage_";
-  $uploadFile1 = "{$uploadDir}{$historyId}_1.png";
-  $uploadFile2 = "{$uploadDir}{$historyId}_2.png";
-  $uploadFile3 = "{$uploadDir}{$historyId}_3.png";
+  $uploadFile1 = "{$uploadDir}{$historyToEdit}_1.png";
+  $uploadFile2 = "{$uploadDir}{$historyToEdit}_2.png";
+  $uploadFile3 = "{$uploadDir}{$historyToEdit}_3.png";
   
 
-if(file_exists($uploadFile1)){
+
 move_uploaded_file($_FILES["image1"]["tmp_name"], $uploadFile1);
-}
-if(file_exists($uploadFile2)){
+
+
 move_uploaded_file($_FILES["image2"]["tmp_name"], $uploadFile2);
-}
-if(file_exists($uploadFile3)){
+
+
 move_uploaded_file($_FILES["image3"]["tmp_name"], $uploadFile3);
-}
-    header("Location: ./history.php");
 
 
+    header("Location: ./history.php");    
+    exit; 
+
+
+} else {
+    header("Location: ./history.php");    
+exit;
 }
- 
+}
 ?>
 
 
@@ -104,9 +109,11 @@ move_uploaded_file($_FILES["image3"]["tmp_name"], $uploadFile3);
             ?>
 </div>
 <div class="subContainer">
-<button type="submit" name="new_post">Apply Changes</button>
-            <input type="hidden" name="historyToEdit" value="<?php echo $historyToEdit; ?>">
-            <button onclick="window.location.href='history.php'">Cancel</button>
+<div class="prevNext">
+<button type="submit" name="submit" >Add history</button>
+            <input type="hidden" name="postToEdit" value="">
+            <button type="cancel" name="cancel" onclick="window.location.href='./history.php'">Cancel</button>
+</div>
 </div>
 </form>
 </body>

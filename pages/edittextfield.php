@@ -24,8 +24,8 @@ if ($result && mysqli_num_rows($result) > 0) {
 } else {
     $textContent = "Text not found";
 }
-
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['edited_text'])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_POST['submit']) && isset($_POST['edited_text'])) {
     $edited_text = filter_var($_POST["edited_text"], FILTER_SANITIZE_STRING);
     $textfieldToEdit = intval($_POST['textfieldToEdit']);
     $sql = "UPDATE textfields SET textContent = ? WHERE textfield_id = ?";
@@ -41,6 +41,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['edited_text'])) {
         echo "Error editing text";
     }
     mysqli_stmt_close($stmt);
+} else {
+    header("Location: ./index.php");    
+exit;
+}
 }
 ?>
 
@@ -67,9 +71,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['edited_text'])) {
                 </div>
             </div>
 			<div class="prevNext">
-        <button type="submit" name="editTextfield">Apply Changes</button>
+        <button type="submit" name="submit">Apply Changes</button>
         <input type="hidden" name="textfieldToEdit" value="<?php echo $textfieldToEdit; ?>">
-        <button type="button" onclick="window.location.href='index.php'">Cancel</button>
+        <button onclick="window.location.href='index.php'">Cancel</button>
 			</div>
         </div>
 		

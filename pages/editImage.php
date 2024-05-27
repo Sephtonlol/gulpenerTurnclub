@@ -9,6 +9,9 @@ require __DIR__ . "/partials/_dbcon.php";
 $imageToEdit = $_GET["imageToEdit"] ?? '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_FILES["editedImage"]["name"])) {
+    if (isset($_POST["submit"])){
+
+   
     $uploadDir = "../assets/images/pageimages/pageImage_";
     $uploadFile = $uploadDir . $imageToEdit . ".png";
 	
@@ -18,6 +21,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_FILES["editedImage"]["name"
         header("Location: ./index.php");
         exit();
     }
+} else {
+    header("Location: ./index.php");    
+exit;
+}
 }
 if ($_SESSION['authlevel'] != 0 || $_SESSION['authlevel'] == null) {
     header("location: ./index.php");
@@ -50,7 +57,7 @@ exit;
     <img style="border-radius: 0px; max-height: 85vh; max-width:100vw;" class="blogImage" src="../assets/images/pageimages/pageImage_<?php echo htmlspecialchars($imageToEdit) . '.png'; ?>" alt="<?php echo htmlspecialchars($imageToEdit) . '.png'?>">
         <input type="file" name="editedImage" id="image" onchange="previewImage()" accept=".jpg, .jpeg, .png" required>
         <div class="prevNext">
-        <button type="submit" name="editBlogPost">Apply Changes</button>
+        <button type="submit" name="submit">Apply Changes</button>
         <input type="hidden" name="postToEdit" value="<?php echo htmlspecialchars($imageToEdit);?>">
         <button class="button" onclick="window.location.href='./index.php'">Cancel</button>
         </div>

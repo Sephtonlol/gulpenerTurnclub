@@ -37,8 +37,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
       $content = "Blog not found";
   }
 
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
-if(isset($_POST['edited_post'])){
+
+if(isset($_POST['submit'])){
     $edited_post = $_POST["edited_post"];
     $edited_title = $_POST["edited_title"];
     $edited_post = filter_var($edited_post, FILTER_SANITIZE_STRING);
@@ -59,6 +61,12 @@ if(isset($_POST['edited_post'])){
   } {
     header("Location: ./blog.php");
   }
+
+} 
+  else {
+    header("Location: ./blog.php");    
+exit;
+}
 
 }
     
@@ -97,7 +105,7 @@ if(isset($_POST['edited_post'])){
 		  <div style="display: flex; justify-content: center; flex-direction: row-reverse;">
       <div class="prevNext" style="background-color: unset;">
 
-        <button type="submit" name="editBlogPost">Apply Changes</button>
+        <button type="submit" name="submit">Apply Changes</button>
         <input type="hidden" name="postToEdit" value="<?php echo $postToEdit;?>">
         <button onclick="window.location.href='index.php'">Cancel</button>
 			  </div>

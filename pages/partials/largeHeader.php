@@ -44,14 +44,6 @@
             </div>
         </div>
         <div class=menu>
-            <button class="headerButtons">Vereniging</button>
-            <div class="expanding">
-            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option2</button>
-            </div>
-        </div>
-        
-        <div class=menu>
         <button onclick="window.location.href='history.php'" class="headerButtons">Geschiedenis</button>
         </div>
         <div class=menu>
@@ -68,8 +60,8 @@
         <div class=menu>
             <button class="headerButtons">Contact</button>
             <div class="expanding">
-            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option2</button>
+            <button onclick="window.location.href='contact.php'" id="dropdownMenu" class="headerButtons">Mail</button><br>
+            <button onclick="window.location.href='enrol.php'" id="dropdownMenu" class="headerButtons">Inschrijven</button>
             </div>
             </div>
 			<?php 
