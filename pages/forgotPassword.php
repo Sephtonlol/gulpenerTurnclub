@@ -111,7 +111,7 @@
                 echo "<p>Invalid email address.</p>";
             }
         } else {
-            echo "<p>Wacht " . $_SESSION['remainingTime'] . " seconden voor dat een nieuwe code verstuurd kan worden</p>";
+            echo "<p>Wacht " . $_SESSION['remainingTime'] . " seconden voor nogmaals te versturen/p>";
         }
     }
 
