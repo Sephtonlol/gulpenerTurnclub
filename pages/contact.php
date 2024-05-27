@@ -126,7 +126,12 @@ $textContent = $row["textContent"];
 
 
 if ($textfieldId >= 19 && $textfieldId <= 28){
-	echo "<p>" . $textContent . "</p>";
+	if ($textfieldId != 19 && $textfieldId != 24){
+		echo "<p>" . $textContent . "</p>";
+	} else{
+		
+		echo "<b>" . $textContent . "</b>";
+	}
 	if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
 		if ($_SESSION['authlevel'] <= 1) {
 			echo "<a href=edittextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";

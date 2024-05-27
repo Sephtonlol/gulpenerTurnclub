@@ -283,13 +283,6 @@ echo "</div></div></div>";
             echo "<a href=edittextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
             }}
         }
-        if ($textfieldId == 19){
-            echo "<span class='bulletPointsText'>• " . $textContent . "</span>";
-            if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
-            if ($_SESSION['authlevel'] <= 1) {
-                echo "<a href=edittextfield.php?textfieldToEdit=" . $textfieldId . ">Edit textfield</a>";
-                }
-        }}
 }
         ?>
     </div>
