@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Home Page</title>
-	<link rel="icon" type="image/x-icon" href="images/icon.png">
+	<link rel="icon" type="x-icon" href="../assets/images/favicon.png">
 	<link rel="stylesheet" href="../styling/style.css"> 
 	<link rel="stylesheet" href="../styling/footer.css"> 
 	<link rel="stylesheet" href="../styling/header.css"> 
@@ -25,9 +25,7 @@
 
 	?>
 	<div class="container">
-<button target="_blank" onclick="window.location.href='../assets/inschrijfformulier.pdf'" class="button">Inschrijven
-	 <!-- <a href="inschrijf.html" target="_blank">Inschrijven</a> --> 
-	</button>
+	<a download href='/assets/InschrijfFormulier.zip' class="button">Inschrijven</a>
 	<div class="text">
 <p>Hieronder vindt u het inschrijfformulier voor onze turnclub. Als u het formulier wilt downloaden of uitprinten, klik dan op de knop met de tekst 'inschrijven'. We verwelkomen u graag bij onze turnclub en kijken ernaar uit om samen met u aan de slag te gaan!
 Als u klaar bent om lid te worden en wilt inschrijven, volgt hier het proces voor het indienen van uw inschrijfformulier:</p>
