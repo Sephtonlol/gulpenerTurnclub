@@ -57,7 +57,7 @@ if ($result && mysqli_num_rows($result) > 0) {
 }
 
 $amountPerPage = 12;
-if (isset($_SESSION["loggedin"])){
+if ($_SESSION["authlevel"] < 1){
     $amountPerPage -= 1;
 }
 $nowPrinting = ($amountPerPage - ($amountPerPage * $pageNumber)) + $highestPhotoId;
