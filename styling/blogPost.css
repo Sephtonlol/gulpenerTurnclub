@@ -4,12 +4,12 @@
   --secundary-color: #659dc6;
   --tertiary--color: #4c95c9;
 }
-
+body, html, .blogPost {
+overflow-x: hidden;
+}
 body {
-  overflow: hidden;
   background-color: var(--primary-color);
 }
-
 .blogPost {
   display: flex;
   flex-direction: row;
@@ -28,8 +28,8 @@ body {
 .blogImage {
   object-fit: cover;
   height: 100%;
-  max-width: 1000px;
-  min-width: 300px;
+
+  width: 100%;
   border-radius: 40px;
 }
 .blogContent {
@@ -62,6 +62,9 @@ body {
 }
 .blogDate {
   text-align: end;
+	justify-content: end;
+	display: flex;
+	flex-direction: column;
 }
 
 .blogTitle input {
@@ -84,11 +87,21 @@ body {
   display: flex;
 }
 @media screen and (max-width: 1000px) {
+
+	  .hiddenPhone {
+    display: none;
+  }
+.blogContent {
+  margin: 40px;
+	}
   body {
     overflow: scroll;
   }
   .blogPost {
     flex-direction: column;
+	  align-items: center;
+	      margin-bottom: 20px;
+
   }
   .blogContent,
   .imageContainer {
@@ -97,8 +110,8 @@ body {
   }
   .imageContainer {
     flex-direction: column;
-    height: 30vh;
-    margin-top: 50px;
+    max-height: 50vh;
+    	  margin-top: 30px;
   }
   .blogContent {
     height: 60vh;
@@ -122,9 +135,8 @@ body {
     height: 100%;
     border-radius: 0px 0px 40px 40px;
   }
+		.blogContent, .imageContainer {
+		min-width: 90vw;
+	}
 }
-@media screen and (max-width: 1000px) {
-  .hiddenPhone {
-    display: none;
-  }
-}
+

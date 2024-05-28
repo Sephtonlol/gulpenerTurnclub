@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+error_reporting(0); 
 session_start();
 
 if (isset($_POST['logoutsub'])) {
@@ -17,112 +17,82 @@ if (isset($_POST['logoutsub'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gulpener Turnclub</title>
-    <link rel="stylesheet" href="../styling/header.css">
-
+	<link rel="icon" type="x-icon" href="../assets/images/favicon.png">
+	
     <link rel="stylesheet" href="../styling/header.css">
     <link rel="stylesheet" href="../styling/style.css">
-    <link rel="stylesheet" href="../styling/blog.css">
     <link rel="stylesheet" href="../styling/footer.css">
+    <link rel="stylesheet" href="../styling/blog.css">
+    
 
-
-    <script src="../scripts/deletePostConfirm.js"></script>
+    <script src="../scripts/header.js" defer></script>
+    <script src="../scripts/deletePostConfirm.js"> defer</script>
 </head>
 <body>
-<span class="smallHeader">Laatste nieuws</span>
-<div class="buttonContainer" style="background-color: var(--quinary-color); padding-bottom:20px;">
-            <div  class="menu">
-            <button onclick="window.location.href='index.php'" class="headerButtons">HomePage</button>
-            <div class="expanding">
-            <button id="dropdownMenu" onclick="window.location.href='index.php#info'" class="headerButtons">Info</button><br>
-            <button id="dropdownMenu" onclick="window.location.href='index.php#algemeen'" class="headerButtons">algemeen</button><br>
-            <button id="dropdownMenu" onclick="window.location.href='index.php#news'" class="headerButtons">Nieuws</button><br>
-            <button id="dropdownMenu" onclick="window.location.href='index.php#footer'" class="headerButtons">Ondersteuning</button>
-            </div>
-        </div>
-        <div class="menu">
-            <button class="headerButtons">Vereniging</button>
-            <div class="expanding">
-            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option2</button>
-            </div>
-        </div>
-        <div class="menu">
-            <button class="headerButtons">Groepen</button>
-            <div class="expanding">
-            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option2</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option3</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option4</button>
-            </div>
-        </div>
-        <div class="menu">
-            <button class="headerButtons">Geschiedenis</button>
-            <div class="expanding">
-            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option2</button>
-            </div>
-        </div>
-        <div class="menu">
-            <button class="headerButtons">Foto's</button>
-            <div class="expanding">
-            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option2</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option3</button>
-            </div>
-        </div>
-        <div class="menu">
-            <button onclick="window.location.href='#news'" class="headerButtons">Nieuws</button>
-            <div class="expanding">
-            <button id="dropdownMenu" onclick="window.location.href='index.php#news'" class="headerButtons">Recent</button><br>
-            <button id="dropdownMenu" onclick="window.location.href='blog.php'" class="headerButtons">Alle nieuws</button>
-            </div>
-        </div>
-        <div class="menu">
-            <button class="headerButtons">Contact</button>
-            <div class="expanding">
-            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option2</button>
-            </div>
-        </div>
-        <form method="post">
-    <?php 
-    echo '<button class="headerButtons" style="margin-top: 2px" type="submit" name="logoutsub">' . ((!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true)?"Inloggen":"Uitloggen") . '</button>'; 
-    ?>
-</form>
-        </div>
-    </div>
-
-
+<?php require __DIR__ . "/partials/smallHeader.php"; ?>
+<div>
 <div class='blogGrid'>
 
         <?php
 
 require __DIR__ . "/partials/_dbcon.php";
 
-$query = "SELECT * FROM blog
-order by blog_id desc";
 
-$result = $mysqli->query($query);
-if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
-
-if ($_SESSION['authlevel'] <= 1) {
-    echo "<a href='newBlog.php';' style='justify-content: center;' class='blogSpecial'>
-            <div class='specialTextContainer'>
-                <span class='addPost'>Post Toevoegen</span>
-                </div>
-    </a>";
+if(isset($_SESSION['loggedin'])) {
+    
+    if ($_SESSION['authlevel'] <= 1) {
+        echo "<a href='newBlog.php';' style='justify-content: center;' class='blogSpecial'>
+        <div class='specialTextContainer'>
+        <span class='addPost'>Post Toevoegen</span>
+        </div>
+        </a>";
         
-}}
+    }}
+$query = "SELECT * FROM blog 
+order by blog_id desc";
+    $result = $mysqli->query($query);
 
+$pageNumber = 1;
+if (isset($_GET["page"]) && $_GET["page"] > 0){
+    $pageNumber = $_GET["page"];
+}
 
-while ($row = $result->fetch_assoc()) {
-    $blogId = $row["blog_id"];
-    $title = $row["title"];
-    $content = $row["content"];
-    $date = $row["date"];
+if ($result && mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+    $highestBlogId = $row["blog_id"];
+}
+
+$amountPerPage = 4;
+if (isset($_SESSION["loggedin"])){
+    $amountPerPage -= 1;
+}
+// $nowPrinting = (($amountPerPage / $pageNumber) - $amountPerPage) + $highestBlogId;
+$nowPrinting = ($amountPerPage - ($amountPerPage * $pageNumber)) + $highestBlogId;
+$totalPages = $highestBlogId / $amountPerPage;
+$totalPages = ceil($totalPages);
+if ($_GET["page"] > $totalPages){
+    header("location: ./blog.php");
+}
+// echo $highestBlogId . "<br>";
+// echo $pageNumber . "<br>";
+// echo $nowPrinting;
+
+while ($nowPrinting > 0) {
+        $query = "SELECT * FROM blog WHERE blog_id = '$nowPrinting'";
+        
+        $result = mysqli_query($connect, $query);
+        $row = $result->fetch_assoc();
+        $blogId = $row["blog_id"];
+        $title = $row["title"];
+        $content = $row["content"];
+        $date = $row["date"];
+        $nowPrinting--;
+            if ($amountPerPage > 0){
+                $amountPerPage--;
+
     
     echo "<div class='blogPost'>";
-    $imagePath = "../assets/images/blogimages/{$blogId}.png";
+    $imagePath = "../assets/images/blogimages/blogimage_$blogId.png";
     if (file_exists($imagePath)) {
         echo "<div><img src='$imagePath' alt='$title' class='blogImage' ><br>";
     }
@@ -139,25 +109,26 @@ if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
 }
 }
 echo "<div class='filler'></div></div></div>";
+}
 
 }
 
+
         ?>
         </div>
-        <footer>
+        <div class="prevNext" style="flex-direction: row;">
+            <?php
+            for ($i = ($pageNumber - 2); $i <= $totalPages; $i++){
+                if ($i > 0 && $i < ($pageNumber + 3) && $totalPages > 1){
+                    echo "<button onclick='window.location.href=\"./blog.php?page=" . $i . "\"'>" . $i . "</button>";
 
-                <div id="footer" class="footerContainer">
-                    <div class="footer">
-                    <div class="footerLine"></div>
-                    <div class="footerIcons">
-                        <span>volg ons</span>
-                        <a href="https://www.facebook.com/gulpenerturnclub/"><img class="icons" src="../assets/images/icons/facebook.png" alt="facebook"></a>
-                        <a href="https://www.instagram.com/gulpenerturnclub/"><img class="icons" src="../assets/images/icons/instagram.png" alt="instagram"></a>
+                }
+            }
+            
 
-                    </div>
-                    </div>
-                </div>
-                
-        </footer>
+            ?>
+        </div>
+</div>
+        <?php require __DIR__ . "/partials/footer.php"; ?>
         </body>
 </html>

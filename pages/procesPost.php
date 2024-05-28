@@ -7,7 +7,7 @@ $query = "SELECT MAX(blog_id) as max_id from blog";
         
         $row = $result->fetch_assoc();
         $id = $row['max_id'] + 1;
-        $uploadDir = "../assets/images/blogimages/";
+        $uploadDir = "../assets/images/blogimages/blogimage_";
         $uploadFile = $uploadDir . $id . ".png";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $sql="insert into blog (blog_id, title, content) value ('$id', '$title', '$content')";
         $sqlres=mysqli_query($connect, $sql);
-        header("location: index.php");
+        header("location: ./blog.php");
     } else {
         echo "Upload failed.";
     }

@@ -4,86 +4,113 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gulpener Turnclub</title>
-    <link rel="stylesheet" href="../styling/gallery.css" />
-    <link rel="stylesheet" href="../styling/header.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crosso.com/css2?family=Archivo+Black&display=swap rel="stylesheet">
+	  <link rel="icon" type="x-icon" href="../assets/images/favicon.png">
+
+      <link rel="stylesheet" href="../styling/style.css">
+      <link rel="stylesheet" href="../styling/header.css">
+      
+      
+      <link rel="stylesheet" href="../styling/gallery.css" />
+
+    <script src="../scripts/header.js" defer></script>
+    <script src="../scripts/deletePostConfirm.js"> defer</script>
 </head>
-    <link href="https://fonts.googleapis">
 <body>
-<div class="buttonContainer" style="background-color: var(--quinary-color); padding-bottom:20px;">
-            <div  class="menu">
-            <button onclick="window.location.href='index.php'" class="headerButtons">HomePage</button>
-            <div class="expanding">
-            <button id="dropdownMenu" onclick="window.location.href='index.php#info'" class="headerButtons">Info</button><br>
-            <button id="dropdownMenu" onclick="window.location.href='index.php#algemeen'" class="headerButtons">algemeen</button><br>
-            <button id="dropdownMenu" onclick="window.location.href='index.php#news'" class="headerButtons">Nieuws</button><br>
-            <button id="dropdownMenu" onclick="window.location.href='index.php#footer'" class="headerButtons">Ondersteuning</button>
-            </div>
-        </div>
-        <div class="menu">
-            <button class="headerButtons">Vereniging</button>
-            <div class="expanding">
-            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option2</button>
-            </div>
-        </div>
-        <div class="menu">
-            <button class="headerButtons">Groepen</button>
-            <div class="expanding">
-            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option2</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option3</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option4</button>
-            </div>
-        </div>
-        <div class="menu">
-            <button class="headerButtons">Geschiedenis</button>
-            <div class="expanding">
-            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option2</button>
-            </div>
-        </div>
-        <div class="menu">
-            <button class="headerButtons">Foto's</button>
-            <div class="expanding">
-            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option2</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option3</button>
-            </div>
-        </div>
-        <div class="menu">
-            <button onclick="window.location.href='#news'" class="headerButtons">Nieuws</button>
-            <div class="expanding">
-            <button id="dropdownMenu" onclick="window.location.href='index.php#news'" class="headerButtons">Recent</button><br>
-            <button id="dropdownMenu" onclick="window.location.href='blog.php'" class="headerButtons">Alle nieuws</button>
-            </div>
-        </div>
-        <div class="menu">
-            <button class="headerButtons">Contact</button>
-            <div class="expanding">
-            <button id="dropdownMenu" class="headerButtons">Option1</button><br>
-            <button id="dropdownMenu" class="headerButtons">Option2</button>
-            </div>
+    
+<?php
+// error_reporting(0);
+
+session_start();
+include __DIR__ . "/partials/smallHeader.php";
+require __DIR__ . "/partials/_dbcon.php";
+?>
+
+<div class="container">
+    <div class="image_flex">
+
+
+<?php
+error_reporting(0);
+if(isset($_SESSION['loggedin'])) {
+
+if ($_SESSION['authlevel'] <= 1) {
+    echo "<a class='image-container'  style='justify-content: center; padding: 0px 20px 0px 20px;' href='./newGallery.php'>
+    <span>Foto Toevoegen</span>
+    </a>";
+        
+}
+}
+$query = "SELECT * FROM photo
+order by photo_id desc";
+$result = $mysqli->query($query);
+
+
+$pageNumber = 1;
+if (isset($_GET["page"]) && $_GET["page"] > 0){
+    $pageNumber = $_GET["page"];
+}
+
+
+if ($result && mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+    $highestPhotoId = $row["photo_id"];
+}
+
+$amountPerPage = 12;
+if (isset($_SESSION["loggedin"])){
+    $amountPerPage -= 1;
+}
+$nowPrinting = ($amountPerPage - ($amountPerPage * $pageNumber)) + $highestPhotoId;
+$totalPages = $highestPhotoId / $amountPerPage;
+$totalPages = ceil($totalPages);
+if ($_GET["page"] > $totalPages){
+    header("location: ./blog.php");
+}
+
+while ($nowPrinting > 0) {
+        $query = "SELECT * FROM photo WHERE photo_id = '$nowPrinting'";
+        
+        $result = mysqli_query($connect, $query);
+        $row = $result->fetch_assoc();
+        $galleryId = $row["photo_id"];
+        $date = $row["date"];
+        $nowPrinting--;
+            if ($amountPerPage > 0){
+                $amountPerPage--;
+                if (file_exists("../assets/images/galleryimages/galleryimage_" . $galleryId . ".png")){
+
+                
+
+    echo '<div class="image-container" onclick="window.location.href=\'image.php?galleryimage=' . $galleryId . '\'" >
+        <img src="../assets/images/galleryimages/galleryimage_' . $galleryId . '.png">';
+    echo '<span style="font-size: 1.5rem;">' . $date . '</span>';
+    if(isset($_SESSION['loggedin'])) {
+    if ($_SESSION['authlevel'] <= 1) {
+        echo "<a onclick='check()' href='deletePhoto.php/?phototodelete=" . $galleryId . "'>Delete photo</a>";
+    }
+}
+    echo "</div>";
+}
+}
+}
+?>
+    </div>
 </div>
+<div class="prevNext" style="flex-direction: row;">
+            <?php
+            for ($i = ($pageNumber - 2); $i <= $totalPages; $i++){
+                if ($i > 0 && $i < ($pageNumber + 3) && $totalPages > 1){
+                    echo "<button onclick='window.location.href=\"./gallery.php?page=" . $i . "\"'>" . $i . "</button>";
+
+                }
+            }
+            
+
+            ?>
         </div>
-<div class="image_flex">
+<?php 
 
-    <div class="image-container">
-        <img src="../assets/images/galleryimages/IMG-20240417-WA0001.jpg">
-    </div>
-
-    <div class="image-container">
-        <img src="../assets/images/galleryimages/IMG-20240417-WA0002.jpg" alt="">
-    </div>
-
-    <div class="image-container">
-        <img src="../assets/images/galleryimages/429669251_908194747771447_1156375767718345662_n.jpg ">
-    </div>
-
-    <div class="image-container">
-        <img src="../assets/images/galleryimages/438222617_937470711510517_5206002319568830627_n.jpg">
-    </div>
-</div>
+include __DIR__ . "/partials/footer.php";
+?>
 </body>
 </html>

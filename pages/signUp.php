@@ -1,6 +1,8 @@
-            <?php
-            require __DIR__ . "\partials\_dbcon.php";
-            ?>
+<?php
+	error_reporting(E_ALL);
+	ini_set("display_errors", "on");
+	require_once "partials/_dbcon.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,33 +14,46 @@
     <link rel="stylesheet" href="../styling/loginSignUp.css">
 </head>
 <body>
-    <div class="containerIndex">
-        <h1>Sign up</h1>
-        <form action="" method="POST">
-            <span>Name:</span> <br />
-            <input type="text" name="getname" /> <br />
-
-            <span>Email:</span> <br />
-            <input type="text" name="getemail" /> <br />
-
-            <span>Password:</span> <br />
-            <input type="password" name="getpassword" /> <br />
-
-            <span>Confirm Password:</span> <br />
-            <input type="password" name="confirmgetpassword" /> <br />
+<div class="deContainer">
+    <div>
+        <div class="session">
+            <div class="left2">
+                <?xml version="1.0" encoding="UTF-8"?>
+            </div>
+        <form class="log-in" action="" method="POST">
+            <h4><span>Create account</span></h4>
+            <div class="floating-label">
+            <input class="input" type="text" name="getname" placeholder="Naam"/>
+                <label for="name">Naam:</label>
+            </div>
+            <div class="floating-label">
+            <input class="input" type="text" name="getemail" placeholder="Email"/>
+            <label for="email">Email:</label>
+            </div>
+            <div class="floating-label">
+            <input class="input" type="password" name="getpassword" placeholder="Wachtwoord"/>
+                <label for="password">Wachtwoord:</label>
+            </div>
+                <div class="floating-label">
+            <input class="input" type="password" name="confirmgetpassword" placeholder="Bevestig wachtwoord"/>
+                    <label for="password">Bevestig wachtwoord:</label>
+                </div>
 
             <button id="signUpButton" name="signUp">Confirm</button>
 
-            <a href='login.php'>log in.</a>
-        </form>
-    
-        <?php
-        if(isset($_POST["signUp"])){
-          require __DIR__ . "\partials\_dbcon.php";
-            $getname=$_POST["getname"];
-            $getemail=$_POST["getemail"];
-            $getpassword=$_POST["getpassword"];
-            $confirmgetpassword=$_POST["confirmgetpassword"];
+            <a class='discrete' href='login.php'>log in.</a>
+        </div>
+            <?php
+            if(isset($_POST["signUp"])){
+                $getname=$_POST["getname"];
+                $getemail=$_POST["getemail"];
+                $getpassword=$_POST["getpassword"];
+                $confirmgetpassword=$_POST["confirmgetpassword"];
+
+                $getname = filter_var($getname, FILTER_SANITIZE_STRING);
+                $getemail = filter_var($getemail, FILTER_SANITIZE_STRING);
+                $getpassword = filter_var($getpassword, FILTER_SANITIZE_STRING);
+                $confirmgetpassword = filter_var($confirmgetpassword, FILTER_SANITIZE_STRING);
 
                 $sql="select user_name from users where user_name ='$getname'";
                 $sqlres=mysqli_query($connect, $sql);
@@ -72,6 +87,7 @@
             }
                 if((empty($getname) == 0) && (empty($getemail) == 0) && (empty($getpassword) == 0) && ($rowcount ==0) && ($getpassword == $confirmgetpassword)){
 
+					$getpassword = password_hash($getpassword, PASSWORD_DEFAULT);
                     $sql="insert into users (user_name, email, password) value ('$getname', '$getemail','$getpassword')";
                     $sqlres=mysqli_query($connect, $sql);
 

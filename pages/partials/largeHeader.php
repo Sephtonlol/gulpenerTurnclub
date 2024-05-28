@@ -1,0 +1,76 @@
+<div class="phoneHeader">
+<?php require __DIR__ . "/smallHeader.php"; ?>
+        </div>
+        <div class="container">
+    <div class="header">
+        <div class="upperHeader">
+            <div class="column">
+            <img src="../assets/images/pageimages/pageImage_3.png" alt="logo" class="simpleImage">
+            <?php
+            if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+                if ($_SESSION['authlevel'] <= 1) {
+                echo "<a href=editImage.php?imageToEdit=3>Edit Image</a><br>";
+            }
+        }
+            ?>
+            </div>
+            <div class="line"></div>
+                
+            <div class="simpleImage" style="align-self: center;">
+            <?php
+            
+            echo '<form  method="post">
+                <button class="button" type="submit" name="logoutsub">'.((!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true)?"Inloggen":"Uitloggen").'</button>
+                </form>';
+                if(isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+            if ($_SESSION['authlevel'] <= 1) {
+                echo "<a href=editImage.php?imageToEdit=1>Edit Image</a><br>";
+            }
+        }
+            
+            ?>
+            </div>
+        </div>
+        <span class="headerTitle">GULPENER TURNCLUB</span>
+        <span class="headerText">Landsraderweg 5, 6271 NT Gulpen</span>
+        <div class="buttonContainer">
+            <div class=menu>
+            <button class="headerButtons">HomePage</button>
+            <div class="expanding">
+                <button id="dropdownMenu" onclick="window.location.href='index.php'" class="headerButtons">Home</button><br>
+            <button id="dropdownMenu" onclick="window.location.href='index.php#info'" class="headerButtons">Info</button><br>
+            <button id="dropdownMenu" onclick="window.location.href='index.php#algemeen'" class="headerButtons">Algemeen</button><br>
+            <button id="dropdownMenu" onclick="window.location.href='index.php#footer'" class="headerButtons">Ondersteuning</button>
+            </div>
+        </div>
+        <div class=menu>
+        <button onclick="window.location.href='history.php'" class="headerButtons">Geschiedenis</button>
+        </div>
+        <div class=menu>
+            <button class="headerButtons" onclick="window.location.href='gallery.php'" >Foto's</button>
+            
+        </div>
+        <div class=menu>
+            <button   class="headerButtons">Nieuws</button>
+            <div class="expanding">
+            <button id="dropdownMenu" onclick="window.location.href='index.php#news'" class="headerButtons">Recent</button><br>
+            <button id="dropdownMenu" onclick="window.location.href='blog.php'" class="headerButtons">Alle nieuws</button>
+            </div>
+        </div>
+        <div class=menu>
+            <button class="headerButtons">Contact</button>
+            <div class="expanding">
+            <button onclick="window.location.href='contact.php'" id="dropdownMenu" class="headerButtons">Mail</button><br>
+            <button onclick="window.location.href='enrol.php'" id="dropdownMenu" class="headerButtons">Inschrijven</button>
+            </div>
+            </div>
+			<?php 
+	if (isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true){
+		
+		echo '<div class="menu"><button onclick="window.location.href=\'profile.php\'" class="headerButtons">Profiel</button></div>';
+	}
+				?>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="../styling/header.css">
