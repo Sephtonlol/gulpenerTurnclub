@@ -4,8 +4,10 @@
   --secundary-color: #659dc6;
   --tertiary--color: #4c95c9;
 }
-body, html, .blogPost {
-overflow-x: hidden;
+body,
+html,
+.blogPost {
+  overflow-x: hidden;
 }
 body {
   background-color: var(--primary-color);
@@ -30,14 +32,14 @@ body {
   height: 100%;
 
   width: 100%;
-  border-radius: 40px;
+  border-radius: 20px;
 }
 .blogContent {
   margin: 40px;
   display: flex;
   flex-direction: column;
   background-color: var(--accent-color);
-  border-radius: 40px;
+  border-radius: 20px;
   padding: 0px 20px 0px 20px;
   justify-content: space-between;
   height: 90vh;
@@ -62,9 +64,9 @@ body {
 }
 .blogDate {
   text-align: end;
-	justify-content: end;
-	display: flex;
-	flex-direction: column;
+  justify-content: end;
+  display: flex;
+  flex-direction: column;
 }
 
 .blogTitle input {
@@ -87,21 +89,19 @@ body {
   display: flex;
 }
 @media screen and (max-width: 1000px) {
-
-	  .hiddenPhone {
+  .hiddenPhone {
     display: none;
   }
-.blogContent {
-  margin: 40px;
-	}
+  .blogContent {
+    margin: 40px;
+  }
   body {
     overflow: scroll;
   }
   .blogPost {
     flex-direction: column;
-	  align-items: center;
-	      margin-bottom: 20px;
-
+    align-items: center;
+    margin-bottom: 20px;
   }
   .blogContent,
   .imageContainer {
@@ -111,7 +111,7 @@ body {
   .imageContainer {
     flex-direction: column;
     max-height: 50vh;
-    	  margin-top: 30px;
+    margin-top: 30px;
   }
   .blogContent {
     height: 60vh;
@@ -135,8 +135,8 @@ body {
     height: 100%;
     border-radius: 0px 0px 40px 40px;
   }
-		.blogContent, .imageContainer {
-		min-width: 90vw;
-	}
+  .blogContent,
+  .imageContainer {
+    min-width: 90vw;
+  }
 }
-
