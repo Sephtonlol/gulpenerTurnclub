@@ -62,7 +62,7 @@ if ($result && mysqli_num_rows($result) > 0) {
     $highestBlogId = $row["blog_id"];
 }
 
-$amountPerPage = 8;
+$amountPerPage = 12;
 if ($_SESSION["authlevel"] < 1){
     $amountPerPage -= 1;
 }
